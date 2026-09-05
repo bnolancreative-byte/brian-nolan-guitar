@@ -31,7 +31,7 @@ const FEATURES = [
   {
     icon: Wifi,
     title: "Studio or live online",
-    body: "Same teacher, same plan. In-county studio time, or live online when the week is loud.",
+    body: "Same teacher, same plan. In person in New Haven County, or live online when the week is loud.",
   },
   {
     icon: UserRound,
@@ -75,7 +75,7 @@ export function Features() {
         <div className="mt-12 grid gap-4 overflow-hidden rounded-2xl bg-hero lg:grid-cols-2">
           <img
             src="/images/brian-prep.jpg"
-            alt="Brian Nolan preparing a set with guitar and laptop at a cafe venue"
+            alt="Brian Nolan at home with a Telecaster and a laptop"
             className="aspect-4/3 h-full w-full object-cover object-top lg:aspect-auto lg:min-h-80"
             width={1200}
             height={1600}

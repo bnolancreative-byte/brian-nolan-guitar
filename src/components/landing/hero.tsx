@@ -25,8 +25,8 @@ export function Hero() {
             <em className="italic">books the room</em>.
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            I am Brian Nolan — jazz guitarist, private teacher, and the booker
-            for solo sets plus Weekend Update and Lowlight Collective around New
+            I am Brian Nolan — jazz guitarist and private teacher. I play and
+            book solo sets, Weekend Update, and Lowlight Collective around New
             Haven County. One-to-one lessons. Real gigs. No YouTube rabbit holes.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
@@ -52,13 +52,13 @@ export function Hero() {
         <figure className="rise-in rise-in-2">
           <img
             src="/images/brian-hero.png"
-            alt="Brian Nolan smiling with a butterscotch Telecaster in a New Haven County venue"
+            alt="Brian Nolan at a table with a butterscotch Telecaster and a laptop"
             className="aspect-4/5 w-full rounded-2xl object-cover object-top sm:aspect-4/5 lg:aspect-4/5"
             width={900}
             height={1125}
           />
           <figcaption className="mt-3 text-sm text-hero-muted">
-            Brian Nolan — jazz guitar, private lessons, live in the county.
+            Brian Nolan — Telecaster on the table, New Haven County.
           </figcaption>
         </figure>
       </div>

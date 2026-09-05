@@ -15,7 +15,7 @@ const TIERS = [
       "60-minute private lesson",
       "$60 flat — no packages, no hidden months",
       "Jazz first; rock and blues in the bag",
-      "Studio in New Haven County or live online",
+      "In person in New Haven County, or live online",
       "Written notes for the week",
     ],
     cta: "Book a weekly hour",

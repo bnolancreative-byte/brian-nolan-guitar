@@ -11,9 +11,9 @@ export function StartSection() {
             Book a weekly hour, or a date.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
-            Lessons are $60 per hour, weekly. Gigs — solo, Weekend Update,
+            Lessons are $60 per hour, weekly. Gigs — solo, Weekend Update, or
             Lowlight Collective — are quoted by the room. After you submit, send
-            the note from your phone so I actually get it.
+            the note from your phone so it reaches me.
           </p>
           <dl className="mt-10 grid gap-6 sm:grid-cols-2">
             <div>

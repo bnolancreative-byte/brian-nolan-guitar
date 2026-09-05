@@ -4,7 +4,7 @@ export const INTERESTS = [
 ] as const;
 
 export const FORMATS = [
-  { value: "studio", label: "In-county studio" },
+  { value: "studio", label: "In person" },
   { value: "online", label: "Live online" },
 ] as const;
 
@@ -112,7 +112,7 @@ export function formatLeadMessage(lead: Omit<Lead, "createdAt">) {
           `Name: ${lead.name.trim()}`,
           `Phone: ${lead.phone.trim()}`,
           `Email: ${lead.email.trim()}`,
-          `Format: ${lead.format === "online" ? "Live online" : "In-county studio"}`,
+          `Format: ${lead.format === "online" ? "Live online" : "In person"}`,
           `Time: ${TIMINGS.find((item) => item.value === lead.timing)?.label ?? ""}`,
           lead.goal?.trim() ? `Wants to play: ${lead.goal.trim()}` : "",
         ];
