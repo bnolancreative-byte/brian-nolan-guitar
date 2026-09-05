@@ -1,0 +1,64 @@
+import { Instagram } from "lucide-react";
+import { Logo } from "@/components/landing/logo";
+import { SITE } from "@/lib/site";
+
+const LINKS = [
+  { href: "#lessons", label: "Lessons" },
+  { href: "#gigs", label: "Gigs" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "/?book=lesson#start", label: "Book" },
+];
+
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6 md:flex-row md:items-start md:justify-between">
+        <div>
+          <Logo />
+          <p className="mt-3 max-w-sm text-sm text-muted-foreground">
+            {SITE.teacher} — jazz guitar, private lessons, and live booking in{" "}
+            {SITE.region}. $60 per hour, weekly.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+            <a
+              href={SITE.instagram.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              <Instagram className="size-4" aria-hidden="true" />
+              {SITE.instagram.label}
+            </a>
+            <a
+              href={SITE.facebook.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              {SITE.facebook.label}
+            </a>
+          </div>
+        </div>
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+          {LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="flex h-11 items-center text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+      <div className="border-t border-border">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p>
+            © {new Date().getFullYear()} {SITE.name}
+          </p>
+          <p>New Haven County · Lessons and live dates</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
