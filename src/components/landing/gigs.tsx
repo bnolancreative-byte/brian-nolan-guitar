@@ -3,14 +3,14 @@ import { SITE } from "@/lib/site";
 
 const GIGS = [
   {
-    src: "/images/brian-outdoor.png",
-    alt: "Brian Nolan playing guitar outdoors",
+    src: "/images/brian-formal.jpg",
+    alt: "Brian Nolan in a navy blazer with a wine-red PRS guitar",
     title: "Solo",
     body: "Acoustic and electric sets for rooms that want one guitarist who can carry the night — jazz standards, roots, and the songs people actually request.",
   },
   {
-    src: "/images/brian-formal.jpg",
-    alt: "Brian Nolan in a navy blazer with a wine-red PRS guitar",
+    src: "/images/brian-outdoor.png",
+    alt: "Brian Nolan playing guitar outdoors",
     title: "Weekend Update",
     body: "Six-piece pop and rock covers for breweries, halls, and private events. Full band energy, tight set lists, county-wide.",
   },
