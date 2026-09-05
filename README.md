@@ -3,7 +3,7 @@
 Personal booking site for jazz guitar lessons and live dates in New Haven County, CT.
 
 - Lessons: **$60 per hour, weekly**
-- Gigs: solo, Weekend Update, Hat Trick
+- Gigs: solo, Weekend Update, Lowlight Collective
 
 ## Deploy on Vercel
 
