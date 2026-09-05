@@ -51,11 +51,11 @@ export function Hero() {
         </div>
         <figure className="rise-in rise-in-2">
           <img
-            src="/images/brian-hero.png"
+            src="/images/brian-hero.jpg"
             alt="Brian Nolan at a table with a butterscotch Telecaster and a laptop"
             className="aspect-4/5 w-full rounded-2xl object-cover object-top sm:aspect-4/5 lg:aspect-4/5"
-            width={900}
-            height={1125}
+            width={536}
+            height={572}
             fetchPriority="high"
             loading="eager"
             decoding="async"

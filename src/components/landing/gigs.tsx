@@ -9,7 +9,7 @@ const GIGS = [
     body: "Acoustic and electric sets for rooms that want one guitarist who can carry the night — jazz standards, roots, and the songs people actually request.",
   },
   {
-    src: "/images/brian-outdoor.png",
+    src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing guitar outdoors",
     title: "Weekend Update",
     body: "Six-piece pop and rock covers for breweries, halls, and private events. Full band energy, tight set lists, county-wide.",
