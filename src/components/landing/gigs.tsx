@@ -17,8 +17,8 @@ const GIGS = [
   {
     src: "/images/brian-jazz.jpg",
     alt: "Brian Nolan playing jazz guitar on a club stage",
-    title: "Hat Trick",
-    body: "Jazz and original-leaning rooms. Smaller stages, listening crowds, the kind of night where the guitar has to mean it.",
+    title: "Lowlight Collective",
+    body: "Me and my friends. Jazz for speakeasies and cafes — small rooms, late lights, the set you lean in for.",
   },
 ];
 
@@ -34,8 +34,8 @@ export function Gigs() {
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Solo guitar, Weekend Update, and Hat Trick — all booked out of New
-            Haven County. Weddings, breweries, clubs, private rooms.
+            Solo guitar, Weekend Update, and Lowlight Collective — booked out of
+            New Haven County. Weddings, breweries, speakeasies, cafes.
           </p>
         </div>
 

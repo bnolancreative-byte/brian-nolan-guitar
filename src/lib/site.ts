@@ -20,8 +20,4 @@ export const SITE = {
     href: "https://www.instagram.com/weekendupdatect",
     label: "Weekend Update",
   },
-  hatTrick: {
-    href: "https://www.instagram.com/hattrickmusic4",
-    label: "Hat Trick",
-  },
 } as const;

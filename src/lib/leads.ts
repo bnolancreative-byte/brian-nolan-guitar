@@ -18,7 +18,7 @@ export const TIMINGS = [
 export const ACTS = [
   { value: "solo", label: "Solo" },
   { value: "weekend-update", label: "Weekend Update" },
-  { value: "hat-trick", label: "Hat Trick" },
+  { value: "lowlight", label: "Lowlight Collective" },
 ] as const;
 
 export type Interest = (typeof INTERESTS)[number]["value"];
@@ -88,4 +88,47 @@ export function saveLead(lead: Omit<Lead, "createdAt">): "ok" | "duplicate" {
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify([next, ...existing]));
   return "ok";
+}
+
+export function actLabel(value?: Act) {
+  return ACTS.find((item) => item.value === value)?.label ?? value ?? "";
+}
+
+export function formatLeadMessage(lead: Omit<Lead, "createdAt">) {
+  const lines =
+    lead.interest === "gig"
+      ? [
+          "Gig request — Brian Nolan Guitar",
+          `Name: ${lead.name.trim()}`,
+          `Phone: ${lead.phone.trim()}`,
+          `Email: ${lead.email.trim()}`,
+          `Act: ${actLabel(lead.act)}`,
+          `Date: ${lead.eventDate?.trim() ?? ""}`,
+          `Venue: ${lead.venue?.trim() ?? ""}`,
+          lead.notes?.trim() ? `Notes: ${lead.notes.trim()}` : "",
+        ]
+      : [
+          "Lesson request — Brian Nolan Guitar",
+          `Name: ${lead.name.trim()}`,
+          `Phone: ${lead.phone.trim()}`,
+          `Email: ${lead.email.trim()}`,
+          `Format: ${lead.format === "online" ? "Live online" : "In-county studio"}`,
+          `Time: ${TIMINGS.find((item) => item.value === lead.timing)?.label ?? ""}`,
+          lead.goal?.trim() ? `Wants to play: ${lead.goal.trim()}` : "",
+        ];
+  return lines.filter(Boolean).join("\n");
+}
+
+export function leadShareLinks(lead: Omit<Lead, "createdAt">) {
+  const body = formatLeadMessage(lead);
+  const subject =
+    lead.interest === "gig" ? "Gig request — Brian Nolan Guitar" : "Lesson request — Brian Nolan Guitar";
+  const encodedBody = encodeURIComponent(body);
+  const iOS = typeof navigator !== "undefined" && /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  return {
+    body,
+    subject,
+    sms: iOS ? `sms:&body=${encodedBody}` : `sms:?body=${encodedBody}`,
+    mail: `mailto:?subject=${encodeURIComponent(subject)}&body=${encodedBody}`,
+  };
 }

@@ -3,7 +3,7 @@ import { getRouteApi } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Copy, Instagram, Mail, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,7 @@ import {
   INTERESTS,
   TIMINGS,
   saveLead,
+  leadShareLinks,
   type Act,
   type Format,
   type Interest,
@@ -35,7 +36,7 @@ const schema = z
     format: z.enum(["studio", "online"]),
     timing: z.enum(["weekday", "evening", "weekend", "flex"]),
     goal: z.string().max(280).optional(),
-    act: z.enum(["solo", "weekend-update", "hat-trick"]),
+    act: z.enum(["solo", "weekend-update", "lowlight"]),
     eventDate: z.string().optional(),
     venue: z.string().optional(),
     notes: z.string().max(400).optional(),
@@ -129,6 +130,8 @@ function ChoiceGroup<T extends string>({
 
 export function StartForm() {
   const [status, setStatus] = useState<"idle" | "ok" | "duplicate">("idle");
+  const [share, setShare] = useState<ReturnType<typeof leadShareLinks> | null>(null);
+  const [copied, setCopied] = useState(false);
   const { book } = routeApi.useSearch();
   const {
     register,
@@ -165,7 +168,7 @@ export function StartForm() {
   }, [book, setValue]);
 
   function onSubmit(values: FormValues) {
-    const result = saveLead({
+    const payload = {
       name: values.name,
       phone: values.phone,
       email: values.email,
@@ -177,12 +180,15 @@ export function StartForm() {
       eventDate: values.interest === "gig" ? values.eventDate : undefined,
       venue: values.interest === "gig" ? values.venue : undefined,
       notes: values.interest === "gig" ? values.notes : undefined,
-    });
+    };
+    const result = saveLead(payload);
+    setShare(leadShareLinks(payload));
+    setCopied(false);
     setStatus(result);
     if (result === "duplicate") {
-      toast("That request just came through. I will text you.");
+      toast("That request is already written. Send it from your phone.");
     } else {
-      toast("Request received. I will text you within a day.");
+      toast("Request written. Send it so I actually get it.");
     }
   }
 
@@ -190,18 +196,63 @@ export function StartForm() {
     return (
       <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10">
         <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} />
-        <h3 className="mt-4 font-display text-3xl">You are on the list.</h3>
+        <h3 className="mt-4 font-display text-3xl">One more tap.</h3>
         <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
           {status === "duplicate"
-            ? `I already have this. Watch your phone — or ping ${SITE.instagram.label}.`
-            : "I usually text first, then email. You will hear from me within one business day with the hour or the date, plus cash / Zelle / Venmo details."}
+            ? "I already have this on your phone. Send it so it actually reaches me."
+            : "This does not email me by itself. Text, email, or DM the note below — I reply the same day."}
         </p>
+        {share ? (
+          <>
+            <pre className="mt-6 max-h-48 overflow-auto whitespace-pre-wrap rounded-xl bg-secondary p-4 text-sm leading-relaxed text-foreground">
+              {share.body}
+            </pre>
+            <div className="mt-6 grid gap-2 sm:grid-cols-2">
+              <Button asChild size="lg">
+                <a href={share.sms}>
+                  <MessageSquare className="size-4" />
+                  Text this request
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href={share.mail}>
+                  <Mail className="size-4" />
+                  Email this request
+                </a>
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(share.body);
+                    setCopied(true);
+                    toast("Copied. Paste it in a text or DM.");
+                  } catch {
+                    toast("Copy failed — select the note above.");
+                  }
+                }}
+              >
+                <Copy className="size-4" />
+                {copied ? "Copied" : "Copy note"}
+              </Button>
+              <Button asChild variant="outline">
+                <a href={SITE.instagram.href} target="_blank" rel="noreferrer">
+                  <Instagram className="size-4" />
+                  DM @bnolan.mp4
+                </a>
+              </Button>
+            </div>
+          </>
+        ) : null}
         <Button
           type="button"
-          variant="outline"
-          className="mt-8"
+          variant="ghost"
+          className="mt-6"
           onClick={() => {
             setStatus("idle");
+            setShare(null);
+            setCopied(false);
             reset();
           }}
         >
@@ -349,7 +400,7 @@ export function StartForm() {
               <Input
                 id="venue"
                 autoComplete="address-level2"
-                placeholder="Wallingford, Foolproof…"
+                placeholder={act === "lowlight" ? "Cafe, speakeasy…" : "Wallingford, Foolproof…"}
                 aria-invalid={Boolean(errors.venue)}
                 aria-describedby={errors.venue ? "venue-error" : undefined}
                 {...register("venue")}
@@ -363,7 +414,11 @@ export function StartForm() {
               id="notes"
               rows={3}
               maxLength={400}
-              placeholder="Wedding hour, brewery patio, private party…"
+              placeholder={
+                act === "lowlight"
+                  ? "Speakeasy, cafe, listening room…"
+                  : "Wedding hour, brewery patio, private party…"
+              }
               {...register("notes")}
             />
           </div>
@@ -374,7 +429,7 @@ export function StartForm() {
         {isSubmitting ? "Sending…" : interest === "gig" ? "Request this date" : "Book my weekly hour"}
       </Button>
       <p className="mt-3 text-sm text-muted-foreground">
-        I reply within one business day. $60 due at each weekly hour — cash, Zelle, or Venmo.
+        I text back myself. After you hit send, text or email the note so I actually get it.
       </p>
     </form>
   );

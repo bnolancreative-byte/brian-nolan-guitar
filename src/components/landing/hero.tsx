@@ -26,8 +26,8 @@ export function Hero() {
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
             I am Brian Nolan — jazz guitarist, private teacher, and the booker
-            for solo sets plus Weekend Update and Hat Trick around New Haven
-            County. One-to-one lessons. Real gigs. No YouTube rabbit holes.
+            for solo sets plus Weekend Update and Lowlight Collective around New
+            Haven County. One-to-one lessons. Real gigs. No YouTube rabbit holes.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">
