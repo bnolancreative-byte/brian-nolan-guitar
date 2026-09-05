@@ -79,6 +79,8 @@ export function Features() {
             className="aspect-4/3 h-full w-full object-cover object-top lg:aspect-auto lg:min-h-80"
             width={1200}
             height={1600}
+            loading="lazy"
+            decoding="async"
           />
           <div className="flex flex-col justify-center p-8 text-hero-foreground md:p-12">
             <p className="text-sm font-medium tracking-wide text-hero-muted">Who it is for</p>

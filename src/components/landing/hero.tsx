@@ -56,6 +56,9 @@ export function Hero() {
             className="aspect-4/5 w-full rounded-2xl object-cover object-top sm:aspect-4/5 lg:aspect-4/5"
             width={900}
             height={1125}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
           />
           <figcaption className="mt-3 text-sm text-hero-muted">
             Brian Nolan — Telecaster on the table, New Haven County.

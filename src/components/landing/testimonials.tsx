@@ -43,6 +43,8 @@ export function Testimonials() {
               className="mt-8 hidden aspect-3/4 w-full rounded-2xl object-cover object-top lg:block"
               width={1200}
               height={1600}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="grid gap-4 lg:col-span-8">

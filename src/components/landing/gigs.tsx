@@ -46,6 +46,10 @@ export function Gigs() {
                 src={gig.src}
                 alt={gig.alt}
                 className="aspect-3/4 w-full object-cover object-top"
+                width={900}
+                height={1200}
+                loading="lazy"
+                decoding="async"
               />
               <div className="p-6">
                 <h3 className="font-display text-2xl tracking-tight">{gig.title}</h3>
