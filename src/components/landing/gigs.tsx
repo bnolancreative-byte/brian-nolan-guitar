@@ -4,20 +4,20 @@ import { SITE } from "@/lib/site";
 const GIGS = [
   {
     src: "/images/brian-formal.jpg",
-    alt: "Brian Nolan in a navy blazer with a wine-red PRS guitar",
+    alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
     title: "Solo",
     body: "Acoustic and electric sets for rooms that want one guitarist who can carry the night — jazz standards, roots, and the songs people actually request.",
   },
   {
     src: "/images/brian-outdoor.jpg",
-    alt: "Brian Nolan playing guitar outdoors",
+    alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
     body: "Six-piece pop and rock covers for breweries, halls, and private events. Full-band energy, tight setlists, county-wide.",
     follow: SITE.weekendUpdate,
   },
   {
     src: "/images/brian-jazz.jpg",
-    alt: "Brian Nolan playing a nylon-string guitar in a small brick room",
+    alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
     body: "Jazz with friends for speakeasies and cafes — small rooms, late lights, the set you lean in for.",
   },

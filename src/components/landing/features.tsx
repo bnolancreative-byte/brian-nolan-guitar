@@ -75,7 +75,7 @@ export function Features() {
         <div className="mt-12 grid gap-4 overflow-hidden rounded-2xl bg-hero lg:grid-cols-2">
           <img
             src="/images/brian-prep.jpg"
-            alt="Brian Nolan at home with a Telecaster and a laptop"
+            alt="Brian Nolan sitting at home with a Telecaster across his lap and a laptop on the table"
             className="aspect-4/3 h-full w-full object-cover object-top lg:aspect-auto lg:min-h-80"
             width={1200}
             height={1600}

@@ -2,6 +2,9 @@ export const SITE = {
   name: "Brian Nolan Guitar",
   teacher: "Brian Nolan",
   region: "New Haven County, CT",
+  url: "https://brian-nolan-guitar.vercel.app",
+  description:
+    "Jazz guitar lessons at $60 an hour, weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",
   lessonRate: "$60",
   lessonCadence: "per hour, weekly",
   email: {
@@ -28,3 +31,18 @@ export const SITE = {
     ariaLabel: "Follow Weekend Update on Instagram",
   },
 } as const;
+
+export const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE.teacher,
+  url: SITE.url,
+  image: `${SITE.url}/og.jpg`,
+  jobTitle: "Jazz guitarist and guitar teacher",
+  description: SITE.description,
+  address: {
+    "@type": "AdministrativeArea",
+    name: SITE.region,
+  },
+  sameAs: [SITE.instagram.href, SITE.facebook.href, SITE.weekendUpdate.href],
+};

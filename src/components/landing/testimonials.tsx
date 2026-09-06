@@ -39,7 +39,7 @@ export function Testimonials() {
             </p>
             <img
               src="/images/brian-portrait.jpg"
-              alt="Brian Nolan in a black blazer holding a wine-red PRS guitar"
+              alt="Portrait of Brian Nolan in a black blazer, holding a wine-red PRS guitar"
               className="mt-8 hidden aspect-3/4 w-full rounded-2xl object-cover object-top lg:block"
               width={1200}
               height={1600}
