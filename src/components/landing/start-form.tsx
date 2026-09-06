@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle2, Copy, Mail } from "lucide-react";
@@ -23,11 +23,57 @@ import { cn } from "@/lib/utils";
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="text-sm text-destructive">
+    <p id={id} role="alert" className="text-sm text-destructive">
       {message}
     </p>
   );
 }
+
+const nameField = z
+  .string()
+  .trim()
+  .min(1, "Enter your name")
+  .min(2, "Name needs at least two letters")
+  .max(80, "Keep the name under 80 characters")
+  .refine((value) => /[A-Za-z]/.test(value), "Name needs a letter");
+
+const emailField = z
+  .string()
+  .trim()
+  .min(1, "Enter your email")
+  .max(254, "That email is too long")
+  .email("Use a valid email, like name@email.com");
+
+const lessonSchema = z.object({
+  name: nameField,
+  email: emailField,
+  format: z.enum(["studio", "online"], { message: "Pick in person or live online" }),
+  timing: z.enum(["weekday", "evening", "weekend", "flex"], { message: "Pick a time" }),
+  goal: z.string().trim().max(280, "Keep this under 280 characters").optional(),
+});
+
+const gigSchema = z.object({
+  name: nameField,
+  email: emailField,
+  act: z.enum(["solo", "weekend-update", "lowlight"], { message: "Pick an act" }),
+  eventDate: z
+    .string()
+    .trim()
+    .min(1, "Add the date")
+    .min(4, "Add a date, like Sat Oct 18")
+    .max(40, "Keep the date shorter")
+    .refine(
+      (value) => /\d/.test(value) || /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(value),
+      "Add a real date",
+    ),
+  venue: z
+    .string()
+    .trim()
+    .min(1, "Add a town or venue")
+    .min(2, "Town or venue needs at least two letters")
+    .max(80, "Keep the town or venue shorter"),
+  notes: z.string().trim().max(400, "Keep notes under 400 characters").optional(),
+});
 
 function ChoiceGroup<T extends string>({
   value,
@@ -125,23 +171,6 @@ function SuccessCard({
   );
 }
 
-const lessonSchema = z.object({
-  name: z.string().trim().min(2, "Name needs at least two letters"),
-  email: z.string().trim().email("Enter a valid email"),
-  format: z.enum(["studio", "online"]),
-  timing: z.enum(["weekday", "evening", "weekend", "flex"]),
-  goal: z.string().max(280).optional(),
-});
-
-const gigSchema = z.object({
-  name: z.string().trim().min(2, "Name needs at least two letters"),
-  email: z.string().trim().email("Enter a valid email"),
-  act: z.enum(["solo", "weekend-update", "lowlight"]),
-  eventDate: z.string().trim().min(2, "Add the date"),
-  venue: z.string().trim().min(2, "Town or venue"),
-  notes: z.string().max(400).optional(),
-});
-
 type LessonValues = z.infer<typeof lessonSchema>;
 type GigValues = z.infer<typeof gigSchema>;
 
@@ -151,11 +180,14 @@ export function LessonForm() {
     register,
     handleSubmit,
     setValue,
+    setFocus,
     watch,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitted, isValid },
   } = useForm<LessonValues>({
     resolver: zodResolver(lessonSchema),
+    mode: "onTouched",
+    reValidateMode: "onChange",
     defaultValues: {
       name: "",
       email: "",
@@ -167,6 +199,12 @@ export function LessonForm() {
 
   const format = watch("format");
   const timing = watch("timing");
+
+  function onInvalid(formErrors: FieldErrors<LessonValues>) {
+    toast("Fix the highlighted fields, then send again.");
+    const first = Object.keys(formErrors)[0] as keyof LessonValues | undefined;
+    if (first) setFocus(first);
+  }
 
   function onSubmit(values: LessonValues) {
     const payload = {
@@ -194,12 +232,17 @@ export function LessonForm() {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
       className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
       <h3 className="font-display text-2xl tracking-tight">Book a weekly hour</h3>
       <p className="mt-1 text-sm text-muted-foreground">$60 per hour, weekly. I confirm by email.</p>
+      {isSubmitted && !isValid ? (
+        <p role="alert" className="mt-4 text-sm text-destructive">
+          Fix the highlighted fields, then send again.
+        </p>
+      ) : null}
 
       <div className="mt-6 grid gap-5">
         <div className="grid gap-2">
@@ -209,6 +252,7 @@ export function LessonForm() {
             autoComplete="name"
             autoCapitalize="words"
             placeholder="Your name"
+            maxLength={80}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "lesson-name-error" : undefined}
             {...register("name")}
@@ -222,6 +266,7 @@ export function LessonForm() {
             type="email"
             autoComplete="email"
             placeholder="you@email.com"
+            maxLength={254}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "lesson-email-error" : "lesson-email-hint"}
             {...register("email")}
@@ -283,11 +328,14 @@ export function GigForm() {
     register,
     handleSubmit,
     setValue,
+    setFocus,
     watch,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitted, isValid },
   } = useForm<GigValues>({
     resolver: zodResolver(gigSchema),
+    mode: "onTouched",
+    reValidateMode: "onChange",
     defaultValues: {
       name: "",
       email: "",
@@ -299,6 +347,12 @@ export function GigForm() {
   });
 
   const act = watch("act");
+
+  function onInvalid(formErrors: FieldErrors<GigValues>) {
+    toast("Fix the highlighted fields, then send again.");
+    const first = Object.keys(formErrors)[0] as keyof GigValues | undefined;
+    if (first) setFocus(first);
+  }
 
   function onSubmit(values: GigValues) {
     const payload = {
@@ -327,7 +381,7 @@ export function GigForm() {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
       className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
@@ -335,6 +389,11 @@ export function GigForm() {
       <p className="mt-1 text-sm text-muted-foreground">
         Tell me the act, the room, and the night. I will quote back by email.
       </p>
+      {isSubmitted && !isValid ? (
+        <p role="alert" className="mt-4 text-sm text-destructive">
+          Fix the highlighted fields, then send again.
+        </p>
+      ) : null}
 
       <div className="mt-6 grid gap-5">
         <div className="grid gap-2">
@@ -344,6 +403,7 @@ export function GigForm() {
             autoComplete="name"
             autoCapitalize="words"
             placeholder="Your name"
+            maxLength={80}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "gig-name-error" : undefined}
             {...register("name")}
@@ -357,6 +417,7 @@ export function GigForm() {
             type="email"
             autoComplete="email"
             placeholder="you@email.com"
+            maxLength={254}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "gig-email-error" : "gig-email-hint"}
             {...register("email")}
@@ -389,6 +450,7 @@ export function GigForm() {
             id="eventDate"
             autoComplete="off"
             placeholder="Sat Oct 18"
+            maxLength={40}
             aria-invalid={Boolean(errors.eventDate)}
             aria-describedby={errors.eventDate ? "eventDate-error" : undefined}
             {...register("eventDate")}
@@ -401,6 +463,7 @@ export function GigForm() {
             id="venue"
             autoComplete="address-level2"
             placeholder={act === "lowlight" ? "Cafe, speakeasy…" : "Wallingford, Foolproof…"}
+            maxLength={80}
             aria-invalid={Boolean(errors.venue)}
             aria-describedby={errors.venue ? "venue-error" : undefined}
             {...register("venue")}
