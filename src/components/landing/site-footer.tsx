@@ -22,7 +22,7 @@ export function SiteFooter() {
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
             <a
               href={SITE.email.href}
-              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Mail className="size-4" aria-hidden="true" />
               Email me
@@ -32,7 +32,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={SITE.instagram.ariaLabel}
-              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Instagram className="size-4" aria-hidden="true" />
               {SITE.instagram.label}
@@ -42,7 +42,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={SITE.facebook.ariaLabel}
-              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Facebook className="size-4" aria-hidden="true" />
               {SITE.facebook.label}
@@ -54,7 +54,7 @@ export function SiteFooter() {
             <a
               key={link.href}
               href={link.href}
-              className="flex h-11 items-center text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              className="flex h-11 items-center text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {link.label}
             </a>

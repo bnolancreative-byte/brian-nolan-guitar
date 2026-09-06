@@ -12,7 +12,7 @@ export function HomePage() {
   return (
     <div id="top" className="min-h-dvh bg-background">
       <SiteHeader />
-      <main id="main">
+      <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         <ValueProp />
         <Features />

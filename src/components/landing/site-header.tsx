@@ -63,7 +63,7 @@ export function SiteHeader() {
               href={item.href}
               aria-current={active === item.href ? "true" : undefined}
               className={cn(
-                "flex h-11 items-center rounded-md px-3 text-sm font-medium transition-colors duration-150",
+                "flex h-11 items-center rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 active === item.href
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground",

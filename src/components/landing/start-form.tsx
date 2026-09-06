@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -18,14 +18,54 @@ import {
   type Format,
   type Timing,
 } from "@/lib/leads";
+import {
+  EMAIL_PATTERN,
+  isValidEmail,
+  isValidEventDate,
+  isValidName,
+} from "@/lib/validation";
 import { cn } from "@/lib/utils";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} role="alert" className="text-sm text-destructive">
+    <p id={id} className="text-sm text-destructive">
       {message}
     </p>
+  );
+}
+
+function ErrorSummary({
+  id,
+  items,
+}: {
+  id: string;
+  items: { href: string; label: string; message: string }[];
+}) {
+  if (items.length === 0) return null;
+  return (
+    <div
+      id={id}
+      role="alert"
+      tabIndex={-1}
+      className="mt-4 rounded-md border border-destructive/40 p-4 outline-none"
+    >
+      <p className="text-sm font-medium text-destructive">
+        Fix the highlighted fields, then send again.
+      </p>
+      <ul className="mt-2 list-disc space-y-1 pl-5">
+        {items.map((item) => (
+          <li key={item.href}>
+            <a
+              href={item.href}
+              className="text-sm text-destructive underline-offset-4 hover:underline"
+            >
+              {item.label}: {item.message}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -35,14 +75,14 @@ const nameField = z
   .min(1, "Enter your name")
   .min(2, "Name needs at least two letters")
   .max(80, "Keep the name under 80 characters")
-  .refine((value) => /[A-Za-z]/.test(value), "Name needs a letter");
+  .refine(isValidName, "Use letters. Hyphens and apostrophes are fine.");
 
 const emailField = z
   .string()
   .trim()
   .min(1, "Enter your email")
   .max(254, "That email is too long")
-  .email("Use a valid email, like name@email.com");
+  .refine(isValidEmail, "Use a valid email, like name@email.com");
 
 const lessonSchema = z.object({
   name: nameField,
@@ -60,12 +100,7 @@ const gigSchema = z.object({
     .string()
     .trim()
     .min(1, "Add the date")
-    .min(4, "Add a date, like Sat Oct 18")
-    .max(40, "Keep the date shorter")
-    .refine(
-      (value) => /\d/.test(value) || /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(value),
-      "Add a real date",
-    ),
+    .refine(isValidEventDate, "Add a date, like Sat Oct 18"),
   venue: z
     .string()
     .trim()
@@ -88,9 +123,28 @@ function ChoiceGroup<T extends string>({
   columns: string;
   ariaLabel: string;
 }) {
+  const refs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  function move(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    const keys = ["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"];
+    if (!keys.includes(event.key)) return;
+    event.preventDefault();
+    let next = index;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      next = (index + 1) % items.length;
+    }
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      next = (index - 1 + items.length) % items.length;
+    }
+    if (event.key === "Home") next = 0;
+    if (event.key === "End") next = items.length - 1;
+    onChange(items[next].value);
+    refs.current[next]?.focus();
+  }
+
   return (
     <div role="radiogroup" aria-label={ariaLabel} className={cn("mt-3 grid gap-2", columns)}>
-      {items.map((item) => {
+      {items.map((item, index) => {
         const selected = value === item.value;
         return (
           <button
@@ -98,9 +152,14 @@ function ChoiceGroup<T extends string>({
             type="button"
             role="radio"
             aria-checked={selected}
+            tabIndex={selected ? 0 : -1}
+            ref={(node) => {
+              refs.current[index] = node;
+            }}
             onClick={() => onChange(item.value)}
+            onKeyDown={(event) => move(event, index)}
             className={cn(
-              "flex min-h-12 items-center justify-between rounded-md border px-4 text-left text-sm font-medium transition-[border-color,background-color] duration-150",
+              "flex min-h-12 items-center justify-between rounded-md border px-4 text-left text-sm font-medium transition-[border-color,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               selected
                 ? "border-foreground bg-secondary text-foreground"
                 : "border-border bg-background text-muted-foreground hover:border-foreground/40 hover:text-foreground",
@@ -202,6 +261,9 @@ export function LessonForm() {
 
   function onInvalid(formErrors: FieldErrors<LessonValues>) {
     toast("Fix the highlighted fields, then send again.");
+    requestAnimationFrame(() => {
+      document.getElementById("lesson-errors")?.focus();
+    });
     const first = Object.keys(formErrors)[0] as keyof LessonValues | undefined;
     if (first) setFocus(first);
   }
@@ -239,9 +301,17 @@ export function LessonForm() {
       <h3 className="font-display text-2xl tracking-tight">Book a weekly hour</h3>
       <p className="mt-1 text-sm text-muted-foreground">$60 per hour, weekly. I confirm by email.</p>
       {isSubmitted && !isValid ? (
-        <p role="alert" className="mt-4 text-sm text-destructive">
-          Fix the highlighted fields, then send again.
-        </p>
+        <ErrorSummary
+          id="lesson-errors"
+          items={[
+            errors.name?.message
+              ? { href: "#lesson-name", label: "Name", message: errors.name.message }
+              : null,
+            errors.email?.message
+              ? { href: "#lesson-email", label: "Email", message: errors.email.message }
+              : null,
+          ].filter((item): item is { href: string; label: string; message: string } => Boolean(item))}
+        />
       ) : null}
 
       <div className="mt-6 grid gap-5">
@@ -253,6 +323,8 @@ export function LessonForm() {
             autoCapitalize="words"
             placeholder="Your name"
             maxLength={80}
+            required
+            aria-required="true"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "lesson-name-error" : undefined}
             {...register("name")}
@@ -264,9 +336,16 @@ export function LessonForm() {
           <Input
             id="lesson-email"
             type="email"
+            inputMode="email"
             autoComplete="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
             placeholder="you@email.com"
             maxLength={254}
+            required
+            aria-required="true"
+            pattern={EMAIL_PATTERN.source}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "lesson-email-error" : "lesson-email-hint"}
             {...register("email")}
@@ -350,6 +429,9 @@ export function GigForm() {
 
   function onInvalid(formErrors: FieldErrors<GigValues>) {
     toast("Fix the highlighted fields, then send again.");
+    requestAnimationFrame(() => {
+      document.getElementById("gig-errors")?.focus();
+    });
     const first = Object.keys(formErrors)[0] as keyof GigValues | undefined;
     if (first) setFocus(first);
   }
@@ -390,9 +472,23 @@ export function GigForm() {
         Tell me the act, the room, and the night. I will quote back by email.
       </p>
       {isSubmitted && !isValid ? (
-        <p role="alert" className="mt-4 text-sm text-destructive">
-          Fix the highlighted fields, then send again.
-        </p>
+        <ErrorSummary
+          id="gig-errors"
+          items={[
+            errors.name?.message
+              ? { href: "#gig-name", label: "Name", message: errors.name.message }
+              : null,
+            errors.email?.message
+              ? { href: "#gig-email", label: "Email", message: errors.email.message }
+              : null,
+            errors.eventDate?.message
+              ? { href: "#eventDate", label: "Date", message: errors.eventDate.message }
+              : null,
+            errors.venue?.message
+              ? { href: "#venue", label: "Town or venue", message: errors.venue.message }
+              : null,
+          ].filter((item): item is { href: string; label: string; message: string } => Boolean(item))}
+        />
       ) : null}
 
       <div className="mt-6 grid gap-5">
@@ -404,6 +500,8 @@ export function GigForm() {
             autoCapitalize="words"
             placeholder="Your name"
             maxLength={80}
+            required
+            aria-required="true"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "gig-name-error" : undefined}
             {...register("name")}
@@ -415,9 +513,16 @@ export function GigForm() {
           <Input
             id="gig-email"
             type="email"
+            inputMode="email"
             autoComplete="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
             placeholder="you@email.com"
             maxLength={254}
+            required
+            aria-required="true"
+            pattern={EMAIL_PATTERN.source}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "gig-email-error" : "gig-email-hint"}
             {...register("email")}
@@ -450,6 +555,8 @@ export function GigForm() {
             id="eventDate"
             autoComplete="off"
             placeholder="Sat Oct 18"
+            required
+            aria-required="true"
             maxLength={40}
             aria-invalid={Boolean(errors.eventDate)}
             aria-describedby={errors.eventDate ? "eventDate-error" : undefined}
@@ -464,6 +571,8 @@ export function GigForm() {
             autoComplete="address-level2"
             placeholder={act === "lowlight" ? "Cafe, speakeasy…" : "Wallingford, Foolproof…"}
             maxLength={80}
+            required
+            aria-required="true"
             aria-invalid={Boolean(errors.venue)}
             aria-describedby={errors.venue ? "venue-error" : undefined}
             {...register("venue")}

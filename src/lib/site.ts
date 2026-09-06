@@ -20,17 +20,17 @@ export const SITE = {
   instagram: {
     href: "https://www.instagram.com/bnolan.mp4/",
     label: "@bnolan.mp4",
-    ariaLabel: "Follow Brian Nolan on Instagram",
+    ariaLabel: "Follow Brian Nolan on Instagram (opens in a new tab)",
   },
   facebook: {
     href: "https://www.facebook.com/profile.php?id=61558041956278",
     label: "Brian Nolan Guitar",
-    ariaLabel: "Follow Brian Nolan Guitar on Facebook",
+    ariaLabel: "Follow Brian Nolan Guitar on Facebook (opens in a new tab)",
   },
   weekendUpdate: {
     href: "https://www.instagram.com/weekendupdatect/",
     label: "@weekendupdatect",
-    ariaLabel: "Follow Weekend Update on Instagram",
+    ariaLabel: "Follow Weekend Update on Instagram (opens in a new tab)",
   },
 } as const;
 
