@@ -2,6 +2,8 @@ export const SITE = {
   name: "Brian Nolan Guitar",
   teacher: "Brian Nolan",
   region: "New Haven County, CT",
+  towns: "North Haven and Wallingford",
+  rooms: "Foolproof Brewing, Center Street Brewing, and Carcosa Lounge",
   url: "https://brian-nolan-guitar.vercel.app",
   description:
     "Jazz guitar lessons at $60 an hour, weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",

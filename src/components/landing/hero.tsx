@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 const STATS = [
   { label: "Jazz at the core" },
   { label: "$60 per hour, weekly" },
-  { label: "New Haven County, CT" },
+  { label: "North Haven and Wallingford" },
 ];
 
 export function Hero() {
@@ -26,18 +26,18 @@ export function Hero() {
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
             I am Brian Nolan — jazz guitarist and private teacher. I play and
-            book solo sets, Weekend Update, and Lowlight Collective around New
-            Haven County. One-to-one lessons. Real gigs. No YouTube rabbit holes.
+            book solo sets, Weekend Update, and Lowlight Collective around{" "}
+            {SITE.towns}. One-to-one lessons. Real gigs. No YouTube rabbit holes.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">
-              <a href="/?book=lesson#start">
-                Book a weekly hour
+              <a href="/#book-lesson">
+                Book a weekly hour — $60
                 <ArrowRight className="size-4" />
               </a>
             </Button>
             <Button asChild variant="inverseOutline" size="lg" className="min-h-12">
-              <a href="/?book=gig#start">Book a gig</a>
+              <a href="/#book-gig">Book a gig</a>
             </Button>
           </div>
           <ul className="rise-in rise-in-4 mt-10 flex flex-col gap-2 text-sm text-hero-muted sm:flex-row sm:flex-wrap sm:gap-x-6">
@@ -61,7 +61,7 @@ export function Hero() {
             decoding="async"
           />
           <figcaption className="mt-3 text-sm text-hero-muted">
-            Brian Nolan — Telecaster on the table, New Haven County.
+            Brian Nolan — Telecaster on the table, {SITE.towns}.
           </figcaption>
         </figure>
       </div>

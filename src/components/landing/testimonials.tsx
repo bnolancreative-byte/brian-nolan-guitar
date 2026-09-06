@@ -2,23 +2,23 @@ const STORIES = [
   {
     quote:
       "I came back after fifteen years of not touching a guitar. Six months later I played a full set at my brother's wedding — and I was not pretending.",
-    name: "Maya R.",
-    role: "Adult beginner, weekly lessons",
-    initials: "MR",
+    name: "Maya",
+    role: "Adult student, Wallingford",
+    initials: "M",
   },
   {
     quote:
       "My son has a hard time sitting still for lectures. Here the lesson is the song. He actually opens the practice map without a fight.",
-    name: "Jordan L.",
-    role: "Parent of a student",
-    initials: "JL",
+    name: "Jordan",
+    role: "Parent, North Haven",
+    initials: "J",
   },
   {
     quote:
       "I did not want campfire chords. We went after jazz voicings without turning the hour into a theory class. Finally, something that sounds like me.",
-    name: "Dominic K.",
-    role: "Returning player, weekly lessons",
-    initials: "DK",
+    name: "Dominic",
+    role: "Returning player, New Haven",
+    initials: "D",
   },
 ];
 

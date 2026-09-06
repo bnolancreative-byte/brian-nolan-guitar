@@ -15,11 +15,11 @@ const TIERS = [
       "60-minute private lesson",
       "$60 flat — no packages, no hidden months",
       "Jazz first; rock and blues in the bag",
-      "In person in New Haven County, or live online",
+      "In person in North Haven and Wallingford, or live online",
       "Written notes for the week",
     ],
     cta: "Book a weekly hour",
-    href: "/?book=lesson#start",
+    href: "/#book-lesson",
   },
   {
     name: "Live booking",
@@ -31,10 +31,10 @@ const TIERS = [
       "Solo jazz, roots, and request sets",
       "Weekend Update — six-piece pop/rock",
       "Lowlight Collective — jazz for speakeasies and cafes",
-      "New Haven County and nearby",
+      "North Haven, Wallingford, and nearby",
     ],
     cta: "Request a date",
-    href: "/?book=gig#start",
+    href: "/#book-gig",
   },
 ];
 

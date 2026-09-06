@@ -36,7 +36,8 @@ export function Gigs() {
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
             Solo guitar, Weekend Update, and Lowlight Collective — booked out of
-            New Haven County. Weddings, breweries, speakeasies, and cafes.
+            North Haven and Wallingford. Rooms include Foolproof Brewing, Center
+            Street Brewing, and Carcosa Lounge.
           </p>
         </div>
 
@@ -73,7 +74,7 @@ export function Gigs() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button asChild size="lg">
-            <a href="/?book=gig#start">Request a date</a>
+            <a href="/#book-gig">Request a date</a>
           </Button>
           <p className="text-sm text-muted-foreground">
             Check out the work on{" "}

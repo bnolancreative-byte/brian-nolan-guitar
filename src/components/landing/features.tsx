@@ -31,7 +31,7 @@ const FEATURES = [
   {
     icon: Wifi,
     title: "In person or live online",
-    body: "Same teacher, same plan. In person in New Haven County, or live online when the week is loud.",
+    body: "Same teacher, same plan. In person in North Haven and Wallingford, or live online when the week is loud.",
   },
   {
     icon: UserRound,
@@ -92,7 +92,7 @@ export function Features() {
               the itch, I have the structure. No shame about rusty hands.
             </p>
             <a
-              href="/?book=lesson#start"
+              href="/#book-lesson"
               className="mt-8 inline-flex h-12 w-fit items-center rounded-md bg-background px-6 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-background/90"
             >
               Book a weekly hour

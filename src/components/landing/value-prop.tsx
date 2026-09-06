@@ -31,11 +31,11 @@ export function ValueProp() {
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
             I teach the way I play: ears first, hands honest, theory only when
-            it serves the tune. Private lessons in New Haven County, or live
-            online if you are farther out.
+            it serves the tune. Private lessons in North Haven and Wallingford,
+            or live online if you are farther out.
           </p>
           <Button asChild className="mt-8">
-            <a href="/?book=lesson#start">Book a weekly hour</a>
+            <a href="/#book-lesson">Book a weekly hour</a>
           </Button>
         </div>
         <ol className="grid gap-4 lg:col-span-7">

@@ -6,7 +6,7 @@ const LINKS = [
   { href: "#lessons", label: "Lessons" },
   { href: "#gigs", label: "Gigs" },
   { href: "#pricing", label: "Pricing" },
-  { href: "/?book=lesson#start", label: "Book" },
+  { href: "/#book-lesson", label: "Book" },
 ];
 
 export function SiteFooter() {
