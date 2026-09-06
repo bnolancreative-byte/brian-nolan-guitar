@@ -30,7 +30,7 @@ const FEATURES = [
   },
   {
     icon: Wifi,
-    title: "Studio or live online",
+    title: "In person or live online",
     body: "Same teacher, same plan. In person in New Haven County, or live online when the week is loud.",
   },
   {

@@ -15,7 +15,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Brian Nolan Guitar — jazz guitar lessons at $60/hour weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",
+          "Brian Nolan Guitar — jazz guitar lessons at $60 an hour, weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",
       },
       { name: "theme-color", content: "#0e0d0c" },
     ],

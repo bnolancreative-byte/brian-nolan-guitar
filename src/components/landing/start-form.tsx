@@ -198,7 +198,7 @@ export function StartForm() {
         <h3 className="mt-4 font-display text-3xl">Send it from your mail app.</h3>
         <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
           Your mail app should open with this request filled in. If it did not,
-          tap Email me.
+          use Email me below.
         </p>
         {share ? (
           <>
@@ -259,7 +259,7 @@ export function StartForm() {
       </h3>
       <p className="mt-1 text-sm text-muted-foreground">
         {interest === "gig"
-          ? "Tell me the act, the room, and the night. I quote back by email."
+          ? "Tell me the act, the room, and the night. I will quote back by email."
           : "$60 per hour, weekly. I confirm by email."}
       </p>
 

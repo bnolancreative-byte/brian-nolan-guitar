@@ -30,7 +30,8 @@ export function SiteFooter() {
             <a
               href={SITE.instagram.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label={SITE.instagram.ariaLabel}
               className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
               <Instagram className="size-4" aria-hidden="true" />
@@ -39,7 +40,8 @@ export function SiteFooter() {
             <a
               href={SITE.facebook.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label={SITE.facebook.ariaLabel}
               className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
               <Facebook className="size-4" aria-hidden="true" />

@@ -12,15 +12,16 @@ const GIGS = [
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing guitar outdoors",
     title: "Weekend Update",
-    body: "Six-piece pop and rock covers for breweries, halls, and private events. Full band energy, tight set lists, county-wide.",
+    body: "Six-piece pop and rock covers for breweries, halls, and private events. Full-band energy, tight setlists, county-wide.",
+    follow: SITE.weekendUpdate,
   },
   {
     src: "/images/brian-jazz.jpg",
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room",
     title: "Lowlight Collective",
-    body: "Me and my friends. Jazz for speakeasies and cafes — small rooms, late lights, the set you lean in for.",
+    body: "Jazz with friends for speakeasies and cafes — small rooms, late lights, the set you lean in for.",
   },
-];
+] as const;
 
 export function Gigs() {
   return (
@@ -35,7 +36,7 @@ export function Gigs() {
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
             Solo guitar, Weekend Update, and Lowlight Collective — booked out of
-            New Haven County. Weddings, breweries, speakeasies, cafes.
+            New Haven County. Weddings, breweries, speakeasies, and cafes.
           </p>
         </div>
 
@@ -54,6 +55,17 @@ export function Gigs() {
               <div className="p-6">
                 <h3 className="font-display text-2xl tracking-tight">{gig.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{gig.body}</p>
+                {"follow" in gig ? (
+                  <a
+                    href={gig.follow.href}
+                    className="mt-3 inline-flex text-sm font-medium text-foreground underline-offset-4 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={gig.follow.ariaLabel}
+                  >
+                    {gig.follow.label}
+                  </a>
+                ) : null}
               </div>
             </article>
           ))}
@@ -69,7 +81,8 @@ export function Gigs() {
               href={SITE.instagram.href}
               className="font-medium text-foreground underline-offset-4 hover:underline"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label={SITE.instagram.ariaLabel}
             >
               Instagram
             </a>
@@ -78,7 +91,8 @@ export function Gigs() {
               href={SITE.facebook.href}
               className="font-medium text-foreground underline-offset-4 hover:underline"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              aria-label={SITE.facebook.ariaLabel}
             >
               Facebook
             </a>

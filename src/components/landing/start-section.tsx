@@ -30,7 +30,8 @@ export function StartSection() {
             <div className="sm:col-span-2">
               <dt className="text-sm font-medium text-hero-foreground">Payment</dt>
               <dd className="mt-1 text-sm leading-relaxed text-hero-muted">
-                Lessons: {SITE.payment.lessons} Gigs: {SITE.payment.gigs}
+                <span className="block">Lessons: {SITE.payment.lessons}</span>
+                <span className="mt-2 block">Gigs: {SITE.payment.gigs}</span>
               </dd>
             </div>
           </dl>
