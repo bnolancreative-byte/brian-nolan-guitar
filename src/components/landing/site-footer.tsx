@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Facebook, Instagram, Mail } from "lucide-react";
 import { Logo } from "@/components/landing/logo";
 import { SITE } from "@/lib/site";
 
@@ -19,13 +19,31 @@ export function SiteFooter() {
             {SITE.teacher} — jazz guitar, private lessons, and live booking in{" "}
             {SITE.region}. $60 per hour, weekly.
           </p>
-          <div className="mt-4">
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
             <a
               href={SITE.email.href}
               className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
               <Mail className="size-4" aria-hidden="true" />
               Email me
+            </a>
+            <a
+              href={SITE.instagram.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              <Instagram className="size-4" aria-hidden="true" />
+              {SITE.instagram.label}
+            </a>
+            <a
+              href={SITE.facebook.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              <Facebook className="size-4" aria-hidden="true" />
+              {SITE.facebook.label}
             </a>
           </div>
         </div>

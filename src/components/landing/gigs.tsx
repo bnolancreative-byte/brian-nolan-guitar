@@ -64,14 +64,23 @@ export function Gigs() {
             <a href="/?book=gig#start">Request a date</a>
           </Button>
           <p className="text-sm text-muted-foreground">
-            Follow the work on Instagram{" "}
+            Check out the work on{" "}
             <a
               href={SITE.instagram.href}
               className="font-medium text-foreground underline-offset-4 hover:underline"
               target="_blank"
               rel="noreferrer"
             >
-              {SITE.instagram.label}
+              Instagram
+            </a>
+            {" and "}
+            <a
+              href={SITE.facebook.href}
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Facebook
             </a>
             .
           </p>
