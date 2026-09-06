@@ -40,7 +40,7 @@ export function StartSection() {
               href={SITE.email.href}
               className="text-hero-foreground underline-offset-4 hover:underline"
             >
-              {SITE.email.address}
+              Email me
             </a>
             <a
               href={SITE.instagram.dm}

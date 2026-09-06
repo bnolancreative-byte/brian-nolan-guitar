@@ -5,8 +5,8 @@ export const SITE = {
   lessonRate: "$60",
   lessonCadence: "per hour, weekly",
   email: {
-    address: "bn02712@gmail.com",
-    href: "mailto:bn02712@gmail.com",
+    address: "bnolancreative@gmail.com",
+    href: "mailto:bnolancreative@gmail.com",
   },
   payment: {
     lessons: "Due at each weekly hour. Cash, Zelle, or Venmo — I send details when we confirm.",

@@ -25,7 +25,7 @@ export function SiteFooter() {
               className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
               <Mail className="size-4" aria-hidden="true" />
-              {SITE.email.address}
+              Email me
             </a>
             <a
               href={SITE.instagram.dm}

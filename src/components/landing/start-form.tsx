@@ -187,7 +187,7 @@ export function StartForm() {
     if (result === "duplicate") {
       toast("Same request is ready. Email, Instagram, or Facebook.");
     } else {
-      toast(`Opening mail to ${SITE.email.address}`);
+      toast("Opening your mail app");
       openMail(links.mail);
     }
   }
@@ -198,9 +198,9 @@ export function StartForm() {
         <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} />
         <h3 className="mt-4 font-display text-3xl">Send it from your mail app.</h3>
         <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-          To: {SITE.email.address}. Subject and the request are filled in. If
-          mail did not open, use a button below — email, Instagram, or Facebook.
-          I do not take texts from this page.
+          Your mail app should open with this request filled in. If it did not,
+          use a button below — email, Instagram, or Facebook. I do not take
+          texts from this page.
         </p>
         {share ? (
           <>
@@ -211,7 +211,7 @@ export function StartForm() {
               <Button asChild size="lg">
                 <a href={share.mail}>
                   <Mail className="size-4" />
-                  Email {SITE.email.address}
+                  Email me
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">
@@ -419,7 +419,7 @@ export function StartForm() {
         {isSubmitting ? "Opening email…" : interest === "gig" ? "Email this date" : "Email this lesson"}
       </Button>
       <p className="mt-3 text-sm text-muted-foreground">
-        Opens mail to {SITE.email.address}. Or{" "}
+        Opens your mail app with the request filled in. Or{" "}
         <a
           href={SITE.instagram.dm}
           className="font-medium text-foreground underline-offset-4 hover:underline"
