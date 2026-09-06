@@ -121,5 +121,6 @@ export function leadShareLinks(lead: Omit<Lead, "createdAt">) {
     subject,
     mail: `mailto:${SITE.email.address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
     dm: SITE.instagram.dm,
+    facebook: SITE.facebook.message,
   };
 }

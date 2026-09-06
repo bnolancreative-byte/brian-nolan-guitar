@@ -3,7 +3,7 @@ import { getRouteApi } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, Copy, Instagram, Mail } from "lucide-react";
+import { CheckCircle2, Copy, Facebook, Instagram, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -125,12 +125,7 @@ function ChoiceGroup<T extends string>({
 }
 
 function openMail(href: string) {
-  const link = document.createElement("a");
-  link.href = href;
-  link.style.display = "none";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+  window.location.assign(href);
 }
 
 export function StartForm() {
@@ -190,9 +185,9 @@ export function StartForm() {
     setCopied(false);
     setStatus(result);
     if (result === "duplicate") {
-      toast("That request is already written. Email or DM it.");
+      toast("Same request is ready. Email, Instagram, or Facebook.");
     } else {
-      toast(`Opening email to ${SITE.email.address}`);
+      toast(`Opening mail to ${SITE.email.address}`);
       openMail(links.mail);
     }
   }
@@ -201,10 +196,11 @@ export function StartForm() {
     return (
       <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10">
         <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} />
-        <h3 className="mt-4 font-display text-3xl">Email me, or DM me.</h3>
+        <h3 className="mt-4 font-display text-3xl">Send it from your mail app.</h3>
         <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-          Your mail app should open to {SITE.email.address} with this request filled
-          in. Hit send. Prefer Instagram? DM works too. No texts.
+          To: {SITE.email.address}. Subject and the request are filled in. If
+          mail did not open, use a button below — email, Instagram, or Facebook.
+          I do not take texts from this page.
         </p>
         {share ? (
           <>
@@ -221,7 +217,13 @@ export function StartForm() {
               <Button asChild size="lg" variant="outline">
                 <a href={share.dm} target="_blank" rel="noreferrer">
                   <Instagram className="size-4" />
-                  DM @bnolan.mp4
+                  Instagram DM
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href={share.facebook} target="_blank" rel="noreferrer">
+                  <Facebook className="size-4" />
+                  Facebook message
                 </a>
               </Button>
               <Button
@@ -231,7 +233,7 @@ export function StartForm() {
                   try {
                     await navigator.clipboard.writeText(share.body);
                     setCopied(true);
-                    toast("Copied. Paste it in an email or DM.");
+                    toast("Copied. Paste it in email, Instagram, or Facebook.");
                   } catch {
                     toast("Copy failed — select the note above.");
                   }
@@ -417,16 +419,25 @@ export function StartForm() {
         {isSubmitting ? "Opening email…" : interest === "gig" ? "Email this date" : "Email this lesson"}
       </Button>
       <p className="mt-3 text-sm text-muted-foreground">
-        Opens an email to {SITE.email.address}. Or{" "}
+        Opens mail to {SITE.email.address}. Or{" "}
         <a
           href={SITE.instagram.dm}
           className="font-medium text-foreground underline-offset-4 hover:underline"
           target="_blank"
           rel="noreferrer"
         >
-          DM @bnolan.mp4
+          Instagram
         </a>
-        . No phone, no texts.
+        {" / "}
+        <a
+          href={SITE.facebook.message}
+          className="font-medium text-foreground underline-offset-4 hover:underline"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Facebook
+        </a>
+        . No phone number on this page.
       </p>
     </form>
   );

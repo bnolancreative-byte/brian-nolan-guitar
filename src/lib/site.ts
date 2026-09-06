@@ -15,11 +15,12 @@ export const SITE = {
   instagram: {
     href: "https://www.instagram.com/bnolan.mp4",
     dm: "https://ig.me/m/bnolan.mp4",
-    label: "instagram.com/bnolan.mp4",
+    label: "@bnolan.mp4",
   },
   facebook: {
     href: "https://www.facebook.com/profile.php?id=61558041956278",
-    label: "Brian Nolan Guitar",
+    message: "https://m.me/61558041956278",
+    label: "Facebook",
   },
   weekendUpdate: {
     href: "https://www.instagram.com/weekendupdatect",

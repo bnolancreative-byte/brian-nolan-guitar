@@ -12,8 +12,8 @@ export function StartSection() {
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
             Lessons are $60 per hour, weekly. Gigs — solo, Weekend Update, or
-            Lowlight Collective — are quoted by the room. Book by email or
-            Instagram DM. I do not take texts from this page.
+            Lowlight Collective — are quoted by the room. Reach me by email,
+            Instagram, or Facebook. No texts, no phone number here.
           </p>
           <dl className="mt-10 grid gap-6 sm:grid-cols-2">
             <div>
@@ -35,23 +35,28 @@ export function StartSection() {
               </dd>
             </div>
           </dl>
-          <p className="mt-8 text-sm text-hero-muted">
+          <p className="mt-8 flex flex-col gap-2 text-sm text-hero-muted sm:flex-row sm:flex-wrap sm:gap-x-5">
             <a
-              href={SITE.instagram.href}
+              href={SITE.email.href}
               className="text-hero-foreground underline-offset-4 hover:underline"
-              target="_blank"
-              rel="noreferrer"
             >
-              {SITE.instagram.label}
+              {SITE.email.address}
             </a>
-            {" · "}
             <a
-              href={SITE.facebook.href}
+              href={SITE.instagram.dm}
               className="text-hero-foreground underline-offset-4 hover:underline"
               target="_blank"
               rel="noreferrer"
             >
-              {SITE.facebook.label}
+              Instagram DM
+            </a>
+            <a
+              href={SITE.facebook.message}
+              className="text-hero-foreground underline-offset-4 hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Facebook message
             </a>
           </p>
         </div>
