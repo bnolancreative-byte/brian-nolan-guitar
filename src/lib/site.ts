@@ -4,12 +4,17 @@ export const SITE = {
   region: "New Haven County, CT",
   lessonRate: "$60",
   lessonCadence: "per hour, weekly",
+  email: {
+    address: "bn02712@gmail.com",
+    href: "mailto:bn02712@gmail.com",
+  },
   payment: {
     lessons: "Due at each weekly hour. Cash, Zelle, or Venmo — I send details when we confirm.",
     gigs: "Quote first. A deposit holds the date; balance night-of.",
   },
   instagram: {
     href: "https://www.instagram.com/bnolan.mp4",
+    dm: "https://ig.me/m/bnolan.mp4",
     label: "instagram.com/bnolan.mp4",
   },
   facebook: {

@@ -21,6 +21,12 @@ export function SiteFooter() {
           </p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
             <a
+              href={SITE.email.href}
+              className="inline-flex h-11 items-center text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              {SITE.email.address}
+            </a>
+            <a
               href={SITE.instagram.href}
               target="_blank"
               rel="noreferrer"

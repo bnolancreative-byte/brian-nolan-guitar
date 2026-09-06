@@ -12,8 +12,8 @@ export function StartSection() {
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
             Lessons are $60 per hour, weekly. Gigs — solo, Weekend Update, or
-            Lowlight Collective — are quoted by the room. After you submit, send
-            the note from your phone so it reaches me.
+            Lowlight Collective — are quoted by the room. Book by email or
+            Instagram DM. I do not take texts from this page.
           </p>
           <dl className="mt-10 grid gap-6 sm:grid-cols-2">
             <div>

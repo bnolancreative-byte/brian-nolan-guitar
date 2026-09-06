@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export const INTERESTS = [
   { value: "weekly", label: "Weekly lesson — $60/hr" },
   { value: "gig", label: "Book a gig" },
@@ -28,7 +30,6 @@ export type Act = (typeof ACTS)[number]["value"];
 
 export type Lead = {
   name: string;
-  phone: string;
   email: string;
   interest: Interest;
   format?: Format;
@@ -48,10 +49,6 @@ function canUseStorage() {
   return typeof window !== "undefined" && typeof localStorage !== "undefined";
 }
 
-function digits(value: string) {
-  return value.replace(/\D/g, "");
-}
-
 export function readLeads(): Lead[] {
   if (!canUseStorage()) return [];
   try {
@@ -67,19 +64,17 @@ export function readLeads(): Lead[] {
 export function saveLead(lead: Omit<Lead, "createdAt">): "ok" | "duplicate" {
   const existing = readLeads();
   const email = lead.email.trim().toLowerCase();
-  const phone = digits(lead.phone);
   const now = Date.now();
   const recent = existing.some((item) => {
     const age = now - Date.parse(item.createdAt);
     if (Number.isNaN(age) || age > DUP_WINDOW_MS) return false;
-    return item.email.toLowerCase() === email || digits(item.phone) === phone;
+    return item.email.toLowerCase() === email && item.interest === lead.interest;
   });
   if (recent) return "duplicate";
 
   const next: Lead = {
     ...lead,
     email,
-    phone,
     name: lead.name.trim(),
     goal: lead.goal?.trim() || undefined,
     venue: lead.venue?.trim() || undefined,
@@ -100,7 +95,6 @@ export function formatLeadMessage(lead: Omit<Lead, "createdAt">) {
       ? [
           "Gig request — Brian Nolan Guitar",
           `Name: ${lead.name.trim()}`,
-          `Phone: ${lead.phone.trim()}`,
           `Email: ${lead.email.trim()}`,
           `Act: ${actLabel(lead.act)}`,
           `Date: ${lead.eventDate?.trim() ?? ""}`,
@@ -110,7 +104,6 @@ export function formatLeadMessage(lead: Omit<Lead, "createdAt">) {
       : [
           "Lesson request — Brian Nolan Guitar",
           `Name: ${lead.name.trim()}`,
-          `Phone: ${lead.phone.trim()}`,
           `Email: ${lead.email.trim()}`,
           `Format: ${lead.format === "online" ? "Live online" : "In person"}`,
           `Time: ${TIMINGS.find((item) => item.value === lead.timing)?.label ?? ""}`,
@@ -123,12 +116,10 @@ export function leadShareLinks(lead: Omit<Lead, "createdAt">) {
   const body = formatLeadMessage(lead);
   const subject =
     lead.interest === "gig" ? "Gig request — Brian Nolan Guitar" : "Lesson request — Brian Nolan Guitar";
-  const encodedBody = encodeURIComponent(body);
-  const iOS = typeof navigator !== "undefined" && /iPhone|iPad|iPod/i.test(navigator.userAgent);
   return {
     body,
     subject,
-    sms: iOS ? `sms:&body=${encodedBody}` : `sms:?body=${encodedBody}`,
-    mail: `mailto:?subject=${encodeURIComponent(subject)}&body=${encodedBody}`,
+    mail: `mailto:${SITE.email.address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+    dm: SITE.instagram.dm,
   };
 }
