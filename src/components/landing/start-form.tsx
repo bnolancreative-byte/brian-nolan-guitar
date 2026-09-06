@@ -3,7 +3,7 @@ import { getRouteApi } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2, Copy, Facebook, Instagram, Mail } from "lucide-react";
+import { CheckCircle2, Copy, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,7 +21,6 @@ import {
   type Interest,
   type Timing,
 } from "@/lib/leads";
-import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const schema = z
@@ -185,7 +184,7 @@ export function StartForm() {
     setCopied(false);
     setStatus(result);
     if (result === "duplicate") {
-      toast("Same request is ready. Email, Instagram, or Facebook.");
+      toast("Same request is ready. Email me.");
     } else {
       toast("Opening your mail app");
       openMail(links.mail);
@@ -199,8 +198,7 @@ export function StartForm() {
         <h3 className="mt-4 font-display text-3xl">Send it from your mail app.</h3>
         <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
           Your mail app should open with this request filled in. If it did not,
-          use a button below — email, Instagram, or Facebook. I do not take
-          texts from this page.
+          tap Email me.
         </p>
         {share ? (
           <>
@@ -214,18 +212,6 @@ export function StartForm() {
                   Email me
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={share.dm} target="_blank" rel="noreferrer">
-                  <Instagram className="size-4" />
-                  Instagram DM
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={share.facebook} target="_blank" rel="noreferrer">
-                  <Facebook className="size-4" />
-                  Facebook message
-                </a>
-              </Button>
               <Button
                 type="button"
                 variant="ghost"
@@ -233,7 +219,7 @@ export function StartForm() {
                   try {
                     await navigator.clipboard.writeText(share.body);
                     setCopied(true);
-                    toast("Copied. Paste it in email, Instagram, or Facebook.");
+                    toast("Copied. Paste it into the email.");
                   } catch {
                     toast("Copy failed — select the note above.");
                   }
@@ -419,25 +405,7 @@ export function StartForm() {
         {isSubmitting ? "Opening email…" : interest === "gig" ? "Email this date" : "Email this lesson"}
       </Button>
       <p className="mt-3 text-sm text-muted-foreground">
-        Opens your mail app with the request filled in. Or{" "}
-        <a
-          href={SITE.instagram.dm}
-          className="font-medium text-foreground underline-offset-4 hover:underline"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Instagram
-        </a>
-        {" / "}
-        <a
-          href={SITE.facebook.message}
-          className="font-medium text-foreground underline-offset-4 hover:underline"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Facebook
-        </a>
-        . No phone number on this page.
+        Opens your mail app with the request filled in.
       </p>
     </form>
   );
