@@ -1,24 +1,17 @@
-const STORIES = [
+import { Button } from "@/components/ui/button";
+
+const FACTS = [
   {
-    quote:
-      "I came back after fifteen years of not touching a guitar. Six months later I played a full set at my brother's wedding — and I was not pretending.",
-    name: "Maya",
-    role: "Adult student, Wallingford",
-    initials: "M",
+    title: "Kids through adults",
+    body: "Beginners, returning players, and students who already have chops. The hour bends around who is in the chair.",
   },
   {
-    quote:
-      "My son has a hard time sitting still for lectures. Here the lesson is the song. He actually opens the practice map without a fight.",
-    name: "Jordan",
-    role: "Parent, North Haven",
-    initials: "J",
+    title: "Parents stay in the loop",
+    body: "If I am teaching your kid, you hear what we worked on and what the week looks like. No mystery homework.",
   },
   {
-    quote:
-      "I did not want campfire chords. We went after jazz voicings without turning the hour into a theory class. Finally, something that sounds like me.",
-    name: "Dominic",
-    role: "Returning player, New Haven",
-    initials: "D",
+    title: "Jazz first",
+    body: "Standards, time, and ears. Rock, blues, and the song on your phone still count — they just sit on that foundation.",
   },
 ];
 
@@ -28,15 +21,18 @@ export function Testimonials() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Stories</p>
+            <p className="text-sm font-medium tracking-wide text-muted-foreground">The chair</p>
             <h2 id="stories-heading" className="mt-3 font-display text-title">
-              What the hour turns into.
+              Who the hour is for.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Students keep the work because the work is theirs — a wedding set,
-              a stubborn solo, a kid who finally wants to pick the guitar up.
-              That is the point of studying with a player who still takes the stage.
+              I teach one-to-one in North Haven and Wallingford, including School
+              of Rock North Haven, and live online. Students and parents tell me
+              how the week went — ask them, or email me and we will talk.
             </p>
+            <Button asChild className="mt-8">
+              <a href="/#book-lesson">Book a weekly hour</a>
+            </Button>
             <img
               src="/images/brian-portrait.jpg"
               alt="Portrait of Brian Nolan in a black blazer, holding a wine-red PRS guitar"
@@ -48,29 +44,13 @@ export function Testimonials() {
             />
           </div>
           <div className="grid gap-4 lg:col-span-8">
-            {STORIES.map((story) => (
-              <blockquote
-                key={story.name}
-                className="rounded-2xl bg-card p-6 shadow-border md:p-8"
-              >
-                <p className="font-display text-xl leading-snug text-foreground md:text-2xl">
-                  {story.quote}
+            {FACTS.map((fact) => (
+              <article key={fact.title} className="rounded-2xl bg-card p-6 shadow-border md:p-8">
+                <h3 className="text-base font-semibold text-foreground">{fact.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {fact.body}
                 </p>
-                <footer className="mt-6 flex items-center gap-3">
-                  <span
-                    className="flex size-11 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-foreground"
-                    aria-hidden="true"
-                  >
-                    {story.initials}
-                  </span>
-                  <div>
-                    <cite className="not-italic text-sm font-semibold text-foreground">
-                      {story.name}
-                    </cite>
-                    <p className="text-sm text-muted-foreground">{story.role}</p>
-                  </div>
-                </footer>
-              </blockquote>
+              </article>
             ))}
           </div>
         </div>

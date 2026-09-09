@@ -16,7 +16,7 @@ const FEATURES = [
   {
     icon: Compass,
     title: "Adaptive, not canned",
-    body: "Kids, adults, returning players, ADHD brains. The method bends around the person in the chair.",
+    body: "Kids, adults, returning players. The method bends around the person in the chair.",
   },
   {
     icon: ListChecks,
@@ -25,8 +25,8 @@ const FEATURES = [
   },
   {
     icon: Mic,
-    title: "Recorded recaps",
-    body: "A short takeaway clip after each session so home practice is the lesson, not a memory test.",
+    title: "Notes for the week",
+    body: "You leave with what to play before the next hour. Home practice is the lesson, not a memory test.",
   },
   {
     icon: Wifi,

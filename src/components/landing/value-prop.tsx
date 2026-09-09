@@ -13,8 +13,8 @@ const STEPS = [
   },
   {
     step: "03",
-    title: "Walk out with a four-week map",
-    body: "Warm-ups, song work, and a short daily plan. The hour is the lesson. The week is where you get good.",
+    title: "Leave with work for the week",
+    body: "Warm-ups, song work, and a short plan you can actually open. The hour is the lesson. The week is where you get good.",
   },
 ];
 
