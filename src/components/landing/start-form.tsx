@@ -51,7 +51,7 @@ function ErrorSummary({
       className="mt-4 rounded-md border border-destructive/40 p-4 outline-none"
     >
       <p className="text-sm font-medium text-destructive">
-        Please correct the fields below, then send the request again.
+        Please correct the fields below, then send again.
       </p>
       <ul className="mt-2 list-disc space-y-1 pl-5">
         {items.map((item) => (
@@ -192,10 +192,10 @@ function SuccessCard({
   return (
     <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10">
       <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} aria-hidden="true" />
-      <h3 className="mt-4 font-display text-3xl">Send the request from your mail application.</h3>
-      <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-        Your mail application should open with this request completed. If it does not, use Send email below.
-      </p>
+        <h3 className="mt-4 font-display text-3xl">Send this from your email.</h3>
+        <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
+          Your email should open with this filled in. If it doesn’t, use Send email below.
+        </p>
       <pre className="mt-6 max-h-48 overflow-auto whitespace-pre-wrap rounded-xl bg-secondary p-4 text-sm leading-relaxed text-foreground">
         {share.body}
       </pre>
@@ -266,7 +266,7 @@ export function LessonForm() {
   }, [isSubmitted, isValid]);
 
   function onInvalid() {
-    toast("Please correct the highlighted fields, then send the request again.");
+    toast("Fix the highlighted fields, then send again.");
   }
 
   function onSubmit(values: LessonValues) {
@@ -282,9 +282,9 @@ export function LessonForm() {
     const links = leadShareLinks(payload);
     setShare(links);
     if (result === "duplicate") {
-      toast("This request is ready. Send the email.");
+      toast("Same request is ready. Send the email.");
     } else {
-      toast("Opening your mail application.");
+      toast("Opening your email");
       openMail(links.mail);
     }
   }
@@ -299,8 +299,8 @@ export function LessonForm() {
       className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
-      <h3 className="font-display text-2xl tracking-tight">Request a weekly lesson</h3>
-      <p className="mt-1 text-sm text-muted-foreground">$60 per hour, weekly. I confirm by email.</p>
+      <h3 className="font-display text-2xl tracking-tight">Book a weekly lesson</h3>
+      <p className="mt-1 text-sm text-muted-foreground">$60 an hour, weekly. I’ll confirm by email.</p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
           id="lesson-errors"
@@ -359,7 +359,7 @@ export function LessonForm() {
             <FieldError id="lesson-email-error" message={errors.email.message} />
           ) : (
             <p id="lesson-email-hint" className="text-sm text-muted-foreground">
-              I write to this address.
+              I’ll write you here.
             </p>
           )}
         </div>
@@ -403,9 +403,9 @@ export function LessonForm() {
       </div>
 
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Opening email…" : "Send lesson request"}
+        {isSubmitting ? "Opening email…" : "Email this lesson"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This opens your mail application with the request completed.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This opens your email with the request filled in.</p>
     </form>
   );
 }
@@ -443,7 +443,7 @@ export function GigForm() {
   }, [isSubmitted, isValid]);
 
   function onInvalid() {
-    toast("Please correct the highlighted fields, then send the request again.");
+    toast("Fix the highlighted fields, then send again.");
   }
 
   function onSubmit(values: GigValues) {
@@ -460,9 +460,9 @@ export function GigForm() {
     const links = leadShareLinks(payload);
     setShare(links);
     if (result === "duplicate") {
-      toast("This request is ready. Send the email.");
+      toast("Same request is ready. Send the email.");
     } else {
-      toast("Opening your mail application.");
+      toast("Opening your email");
       openMail(links.mail);
     }
   }
@@ -477,9 +477,9 @@ export function GigForm() {
       className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
-      <h3 className="font-display text-2xl tracking-tight">Request a performance</h3>
+      <h3 className="font-display text-2xl tracking-tight">Book a gig</h3>
       <p className="mt-1 text-sm text-muted-foreground">
-        Select the engagement, venue, and date. A written quote follows by email.
+        Pick the act, the room, and the date. I’ll send a quote by email.
       </p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
@@ -545,7 +545,7 @@ export function GigForm() {
             <FieldError id="gig-email-error" message={errors.email.message} />
           ) : (
             <p id="gig-email-hint" className="text-sm text-muted-foreground">
-              I write to this address.
+              I’ll write you here.
             </p>
           )}
         </div>
@@ -553,7 +553,7 @@ export function GigForm() {
 
       <fieldset className="mt-6">
         <legend id="gig-act-legend" className="text-sm font-medium text-foreground">
-          Engagement <span className="font-normal text-muted-foreground">(required)</span>
+          Which gig <span className="font-normal text-muted-foreground">(required)</span>
         </legend>
         <ChoiceGroup
           value={act}
@@ -620,9 +620,9 @@ export function GigForm() {
       </div>
 
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Opening email…" : "Send performance request"}
+        {isSubmitting ? "Opening email…" : "Email this gig"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This opens your mail application with the request completed.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This opens your email with the request filled in.</p>
     </form>
   );
 }

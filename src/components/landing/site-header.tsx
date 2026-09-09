@@ -14,9 +14,9 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "#lessons", label: "Lessons" },
-  { href: "#gigs", label: "Performance" },
-  { href: "#pricing", label: "Fees" },
-  { href: "#book-lesson", label: "Enquire" },
+  { href: "#gigs", label: "Live" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#book-lesson", label: "Book" },
 ];
 
 export function SiteHeader() {
@@ -75,7 +75,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild className="hidden sm:inline-flex md:h-11 md:px-4">
-            <a href="/#book-lesson">Request a lesson</a>
+            <a href="/#book-lesson">Book a lesson</a>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -93,7 +93,7 @@ export function SiteHeader() {
             <SheetContent>
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
-                <SheetDescription>Select a section of the page.</SheetDescription>
+                <SheetDescription>Go to a section.</SheetDescription>
               </SheetHeader>
               <nav
                 id="mobile-nav"
@@ -113,7 +113,7 @@ export function SiteHeader() {
               </nav>
               <Button asChild className="mt-8 w-full" size="lg">
                 <a href="/#book-lesson" onClick={() => setOpen(false)}>
-                  Request a lesson
+                  Book a lesson
                 </a>
               </Button>
             </SheetContent>

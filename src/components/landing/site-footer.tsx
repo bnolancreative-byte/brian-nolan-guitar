@@ -4,9 +4,9 @@ import { SITE } from "@/lib/site";
 
 const LINKS = [
   { href: "#lessons", label: "Lessons" },
-  { href: "#gigs", label: "Performance" },
-  { href: "#pricing", label: "Fees" },
-  { href: "/#book-lesson", label: "Enquire" },
+  { href: "#gigs", label: "Live" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "/#book-lesson", label: "Book" },
 ];
 
 export function SiteFooter() {
@@ -16,8 +16,8 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-            I am a guitarist, vocalist, and private instructor in {SITE.region}.
-            Lessons are $60 per hour, weekly.
+            I teach guitar and play around {SITE.region}. Lessons are $60 an
+            hour, weekly.
           </p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
             <a
@@ -66,7 +66,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {SITE.name}
           </p>
-          <p>New Haven County · Instruction and performance</p>
+          <p>New Haven County · Lessons and gigs</p>
         </div>
       </div>
     </footer>

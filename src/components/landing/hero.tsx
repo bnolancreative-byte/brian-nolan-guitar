@@ -21,22 +21,23 @@ export function Hero() {
             id="hero-heading"
             className="rise-in rise-in-1 mt-6 font-display text-display text-hero-foreground"
           >
-            Private guitar lessons from a working musician.
+            Guitar lessons in North Haven and Wallingford.
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            I am Brian Nolan, a guitarist, vocalist, and private instructor in{" "}
-            {SITE.towns}. I teach one-to-one guitar lessons and I am available
-            for solo performance and ensemble engagements.
+            I’m Brian Nolan. I teach guitar one-to-one at $60 an hour, weekly,
+            in {SITE.towns} and live online. I also play out — solo (I sing and
+            play, acoustic or electric), a six-piece band I lead, and a small
+            jazz group I lead.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">
               <a href="/#book-lesson">
-                Request a weekly lesson
+                Book a weekly lesson
                 <ArrowRight className="size-4" />
               </a>
             </Button>
             <Button asChild variant="inverseOutline" size="lg" className="min-h-12">
-              <a href="/#book-gig">Request a performance</a>
+              <a href="/#book-gig">Book a gig</a>
             </Button>
           </div>
           <ul className="rise-in rise-in-4 mt-10 flex flex-col gap-2 text-sm text-hero-muted sm:flex-row sm:flex-wrap sm:gap-x-6">

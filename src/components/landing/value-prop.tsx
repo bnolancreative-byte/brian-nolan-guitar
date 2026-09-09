@@ -3,18 +3,18 @@ import { Button } from "@/components/ui/button";
 const STEPS = [
   {
     step: "01",
-    title: "State your aims",
-    body: "Name a song, a passage that is not yet secure, or a goal for the coming months. I begin there.",
+    title: "Tell me what you want to play",
+    body: "A song, a part that keeps falling apart, or you just want to get better. We start there.",
   },
   {
     step: "02",
     title: "The first hour",
-    body: "A private lesson is sixty minutes at $60. I listen, observe technique, and introduce material you can apply at once. If the arrangement is suitable, I reserve a weekly time.",
+    body: "Sixty minutes, $60. I listen, watch your hands, and teach something you can use that night. If it fits, we keep a weekly time.",
   },
   {
     step: "03",
-    title: "Practice between lessons",
-    body: "I give you a concise assignment. Progress is made in the days between hours, and the next lesson continues from that work.",
+    title: "Work for the week",
+    body: "You leave with a short list — not a pile of exercises. Next week we pick up from there.",
   },
 ];
 
@@ -24,18 +24,18 @@ export function ValueProp() {
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p className="text-sm font-medium tracking-wide text-muted-foreground">
-            Instruction
+            Lessons
           </p>
           <h2 id="value-heading" className="mt-3 font-display text-title text-foreground">
-            Private study with a working musician.
+            How lessons work.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            I emphasize listening, reliable technique, and theory only where it
-            serves the music. I teach in North Haven and Wallingford, and live
-            online.
+            I listen first, then we fix the part that’s in the way. Theory only
+            when it helps the song. I teach in North Haven and Wallingford, and
+            live online.
           </p>
           <Button asChild className="mt-8">
-            <a href="/#book-lesson">Request a weekly lesson</a>
+            <a href="/#book-lesson">Book a weekly lesson</a>
           </Button>
         </div>
         <ol className="grid gap-4 lg:col-span-7">

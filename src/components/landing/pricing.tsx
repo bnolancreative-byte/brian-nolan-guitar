@@ -9,31 +9,31 @@ const TIERS = [
     name: "Weekly lesson",
     price: SITE.lessonRate,
     cadence: SITE.lessonCadence,
-    blurb: "I reserve a weekly hour and provide written notes after each lesson.",
+    blurb: "A standing hour on the calendar. Same teacher, notes for the week.",
     featured: true,
     features: [
       "60-minute private lesson",
       "$60 flat. No packages.",
-      "Rock, blues, and jazz, according to the repertoire",
+      "Rock, blues, and jazz — whatever the song needs",
       "In person in North Haven and Wallingford, or live online",
       "Written notes for the week",
     ],
-    cta: "Request a weekly lesson",
+    cta: "Book a weekly lesson",
     href: "/#book-lesson",
   },
   {
-    name: "Performance",
+    name: "Gigs",
     price: "Quote",
-    cadence: "by venue and date",
-    blurb: "I perform as a soloist, lead a six-piece band, and lead an intimate jazz group. I send a written quote once I have the venue and date.",
+    cadence: "by room and date",
+    blurb: "Solo, the six-piece, or the jazz group. Tell me the room and the date and I’ll send a quote.",
     featured: false,
     features: [
-      "Solo performance, acoustic or electric, with voice",
-      "Weekend Update, a six-piece band I lead",
-      "Lowlight Collective, an intimate jazz group I also lead",
-      "New Haven County and neighbouring towns",
+      "Solo — I sing and play, acoustic or electric",
+      "Weekend Update — a six-piece band I lead",
+      "Lowlight Collective — a small jazz group I lead",
+      "New Haven County and nearby",
     ],
-    cta: "Request a performance",
+    cta: "Book a gig",
     href: "/#book-gig",
   },
 ];
@@ -43,13 +43,13 @@ export function Pricing() {
     <section id="pricing" className="border-y border-border bg-secondary/40" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium tracking-wide text-muted-foreground">Fees</p>
+          <p className="text-sm font-medium tracking-wide text-muted-foreground">Pricing</p>
           <h2 id="pricing-heading" className="mt-3 font-display text-title">
-            $60 per hour, billed weekly.
+            $60 an hour, weekly.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            I charge $60 for a reserved weekly hour, with no trial fee and no
-            monthly package. I quote performances by venue and date.
+            That’s the lesson rate. No trial fee, no monthly package. Gigs are
+            quoted for the room and the date.
           </p>
         </div>
 
@@ -123,13 +123,13 @@ export function Pricing() {
 
         <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2">
           <div className="rounded-2xl bg-card p-6 shadow-border">
-            <h3 className="text-sm font-semibold tracking-wide">Lesson payment</h3>
+            <h3 className="text-sm font-semibold tracking-wide">Paying for lessons</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {SITE.lessonRate} {SITE.lessonCadence}. {SITE.payment.lessons}
             </p>
           </div>
           <div className="rounded-2xl bg-card p-6 shadow-border">
-            <h3 className="text-sm font-semibold tracking-wide">Performance payment</h3>
+            <h3 className="text-sm font-semibold tracking-wide">Paying for gigs</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {SITE.payment.gigs}
             </p>

@@ -10,33 +10,33 @@ import {
 const FEATURES = [
   {
     icon: Music2,
-    title: "Repertoire first",
-    body: "I work from the recording and build the chords, technique, and feel the piece requires.",
+    title: "Songs you want to play",
+    body: "We take the recording apart and build the chords, riffs, and feel that song actually needs.",
   },
   {
     icon: UserRound,
-    title: "Tailored instruction",
-    body: "I plan each lesson for the student in the room — children, adults, and returning players.",
+    title: "Built around you",
+    body: "Kids, adults, and people coming back after years off. The hour follows who’s in the chair.",
   },
   {
     icon: ListChecks,
-    title: "A weekly practice plan",
-    body: "I end each hour with focused assignments you can complete before the next lesson.",
+    title: "Notes for the week",
+    body: "You leave with a short list you can actually open before the next hour.",
   },
   {
     icon: Users,
-    title: "Private lessons",
-    body: "I teach one student per hour, beginner through advanced, at a pace that holds.",
+    title: "One student at a time",
+    body: "Private hour. Beginner through advanced. We don’t rush, and we don’t stall.",
   },
   {
     icon: Wifi,
     title: "In person or live online",
-    body: "I offer the same instruction in North Haven and Wallingford, or by live video when you cannot come in.",
+    body: "Same teacher, same plan. North Haven and Wallingford, or live video when you can’t come in.",
   },
   {
     icon: MapPin,
-    title: "A standing weekly time",
-    body: "I reserve a weekly hour, including School of Rock North Haven, nearby in-person lessons, or online.",
+    title: "A weekly time",
+    body: "A standing hour on the calendar — School of Rock North Haven, nearby in person, or online.",
   },
 ];
 
@@ -46,15 +46,15 @@ export function Features() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Approach</p>
+            <p className="text-sm font-medium tracking-wide text-muted-foreground">The hour</p>
             <h2 id="features-heading" className="mt-3 font-display text-title">
-              A structured hour and a clear assignment.
+              Play in the lesson. Practice in the week.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            I follow the same sequence in every lesson: listen, isolate the
-            difficulty, play it until it is reliable, and assign practice for
-            the week ahead.
+            Every lesson works the same way: we play, we slow down the stuck
+            part, we play it until it holds, and you go home with work for the
+            week.
           </p>
         </div>
 
@@ -84,19 +84,19 @@ export function Features() {
             decoding="async"
           />
           <div className="flex flex-col justify-center p-8 text-hero-foreground md:p-12">
-            <p className="text-sm font-medium tracking-wide text-hero-muted">Students</p>
+            <p className="text-sm font-medium tracking-wide text-hero-muted">Who it’s for</p>
             <h3 className="mt-3 font-display text-3xl leading-snug">
-              Beginners, returning players, and advancing students.
+              Starting out, coming back, or leveling up.
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
-              I teach children and adults. If you have an instrument, I have a
-              weekly hour.
+              Kids, adults, rusty hands. If you have a guitar, I have a weekly
+              hour.
             </p>
             <a
               href="/#book-lesson"
               className="mt-8 inline-flex h-12 w-fit items-center rounded-md bg-background px-6 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-background/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
             >
-              Request a weekly lesson
+              Book a weekly lesson
             </a>
           </div>
         </div>

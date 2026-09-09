@@ -18,14 +18,14 @@ export function StartSection() {
     <section id="start" className="bg-hero text-hero-foreground" aria-labelledby="start-heading">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="max-w-2xl">
-          <p className="text-sm font-medium tracking-wide text-hero-muted">Enquire</p>
+          <p className="text-sm font-medium tracking-wide text-hero-muted">Book</p>
           <h2 id="start-heading" className="mt-3 font-display text-title text-hero-foreground">
-            Request a lesson or a performance.
+            Book a lesson or a gig.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-hero-muted">
-            I charge $60 per hour, weekly, in {SITE.towns} or live online.
-            For performances, select solo, the six-piece band, or the jazz
-            group. Completing a form opens an email to me with your request.
+            Lessons are $60 an hour, weekly, in {SITE.towns} or live online.
+            For gigs, pick solo, the six-piece, or the jazz group. The form
+            opens an email to me with your request filled in.
           </p>
         </div>
 
@@ -39,13 +39,12 @@ export function StartSection() {
             </p>
           </div>
           <div id="book-gig" className="scroll-mt-24">
-            <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Performance</p>
+            <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Gigs</p>
             <GigForm />
             <p className="mt-4 text-sm text-hero-muted">
-              I am available as a soloist (voice and guitar, acoustic or
-              electric); I lead Weekend Update, a six-piece band; and I lead
-              Lowlight Collective, an intimate jazz group. Appearances have
-              included {SITE.rooms}. {SITE.payment.gigs}
+              Solo (I sing and play, acoustic or electric), Weekend Update (the
+              six-piece I lead), or Lowlight Collective (the jazz group I lead).
+              I’ve played {SITE.rooms}. {SITE.payment.gigs}
             </p>
           </div>
         </div>

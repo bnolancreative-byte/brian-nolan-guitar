@@ -5,24 +5,24 @@ const GIGS = [
   {
     src: "/images/brian-formal.jpg",
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
-    title: "Solo performance",
-    kicker: "Voice and guitar",
-    body: "I sing and play, acoustic or electric — jazz, popular song, and requested repertoire — for receptions, dinners, and private events.",
+    title: "Solo",
+    kicker: "I sing and play",
+    body: "Acoustic or electric. Jazz, popular songs, and requests — dinners, receptions, and private events.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
     kicker: "Six-piece band",
-    body: "I lead a six-piece pop and rock ensemble for breweries, halls, and private events.",
+    body: "A six-piece pop and rock band I lead. Breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
     src: "/images/brian-jazz.jpg",
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
-    kicker: "Intimate jazz group",
-    body: "I lead a small jazz ensemble for speakeasies, cafes, and listening rooms.",
+    kicker: "Small jazz group",
+    body: "A small jazz group I lead. Cafes, speakeasies, and listening rooms.",
   },
 ] as const;
 
@@ -32,15 +32,15 @@ export function Gigs() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Performance</p>
+            <p className="text-sm font-medium tracking-wide text-muted-foreground">Live</p>
             <h2 id="gigs-heading" className="mt-3 font-display text-title">
-              Three forms of engagement.
+              Solo, a six-piece band, or a small jazz group.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            I perform as a soloist and lead two ensembles from North Haven and
-            Wallingford. Appearances have included Foolproof Brewing, Center
-            Street Brewing, and Carcosa Lounge.
+            I play solo and I lead two groups out of North Haven and
+            Wallingford. I’ve played Foolproof Brewing, Center Street Brewing,
+            and Carcosa Lounge.
           </p>
         </div>
 
@@ -78,10 +78,10 @@ export function Gigs() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button asChild size="lg">
-            <a href="/#book-gig">Request a performance</a>
+            <a href="/#book-gig">Book a gig</a>
           </Button>
           <p className="text-sm text-muted-foreground">
-            Recent performances on{" "}
+            See recent shows on{" "}
             <a
               href={SITE.instagram.href}
               className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
