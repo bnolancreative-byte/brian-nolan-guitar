@@ -9,7 +9,7 @@ const TIERS = [
     name: "Weekly lesson",
     price: SITE.lessonRate,
     cadence: SITE.lessonCadence,
-    blurb: "A reserved weekly hour with the same teacher and written notes after each lesson.",
+    blurb: "I reserve a weekly hour and provide written notes after each lesson.",
     featured: true,
     features: [
       "60-minute private lesson",
@@ -25,11 +25,11 @@ const TIERS = [
     name: "Performance",
     price: "Quote",
     cadence: "by venue and date",
-    blurb: "Solo voice and guitar, a six-piece band, or an intimate jazz group. A written quote follows receipt of the venue and date.",
+    blurb: "I perform as a soloist, lead a six-piece band, and lead an intimate jazz group. I send a written quote once I have the venue and date.",
     featured: false,
     features: [
       "Solo performance, acoustic or electric, with voice",
-      "Weekend Update, a six-piece band under my direction",
+      "Weekend Update, a six-piece band I lead",
       "Lowlight Collective, an intimate jazz group I also lead",
       "New Haven County and neighbouring towns",
     ],
@@ -48,8 +48,8 @@ export function Pricing() {
             $60 per hour, billed weekly.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Private lessons are a reserved weekly hour with no trial fee and no
-            monthly package. Performances are quoted by room and date.
+            I charge $60 for a reserved weekly hour, with no trial fee and no
+            monthly package. I quote performances by venue and date.
           </p>
         </div>
 

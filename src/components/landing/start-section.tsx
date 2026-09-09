@@ -23,9 +23,9 @@ export function StartSection() {
             Request a lesson or a performance.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-hero-muted">
-            Lessons are $60 per hour, weekly, in {SITE.towns} or live online.
+            I charge $60 per hour, weekly, in {SITE.towns} or live online.
             For performances, select solo, the six-piece band, or the jazz
-            group. Completing a form opens an email with your request.
+            group. Completing a form opens an email to me with your request.
           </p>
         </div>
 
@@ -34,17 +34,18 @@ export function StartSection() {
             <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Lessons</p>
             <LessonForm />
             <p className="mt-4 text-sm text-hero-muted">
-              In person around {SITE.towns}, including School of Rock North Haven,
-              or live online. {SITE.payment.lessons}
+              I teach in person around {SITE.towns}, including School of Rock
+              North Haven, and live online. {SITE.payment.lessons}
             </p>
           </div>
           <div id="book-gig" className="scroll-mt-24">
             <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Performance</p>
             <GigForm />
             <p className="mt-4 text-sm text-hero-muted">
-              Solo voice and guitar (acoustic or electric); Weekend Update, a
-              six-piece band; or Lowlight Collective, an intimate jazz group.
-              Venues have included {SITE.rooms}. {SITE.payment.gigs}
+              I am available as a soloist (voice and guitar, acoustic or
+              electric); I lead Weekend Update, a six-piece band; and I lead
+              Lowlight Collective, an intimate jazz group. Appearances have
+              included {SITE.rooms}. {SITE.payment.gigs}
             </p>
           </div>
         </div>

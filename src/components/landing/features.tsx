@@ -11,32 +11,32 @@ const FEATURES = [
   {
     icon: Music2,
     title: "Repertoire first",
-    body: "We study the recording and build the chords, technique, and feel the piece requires.",
+    body: "I work from the recording and build the chords, technique, and feel the piece requires.",
   },
   {
     icon: UserRound,
     title: "Tailored instruction",
-    body: "Lessons are planned for the student in the room — children, adults, and returning players.",
+    body: "I plan each lesson for the student in the room — children, adults, and returning players.",
   },
   {
     icon: ListChecks,
     title: "A weekly practice plan",
-    body: "Each hour ends with focused assignments you can complete before the next lesson.",
+    body: "I end each hour with focused assignments you can complete before the next lesson.",
   },
   {
     icon: Users,
     title: "Private lessons",
-    body: "One student per hour, beginner through advanced, at a pace that holds.",
+    body: "I teach one student per hour, beginner through advanced, at a pace that holds.",
   },
   {
     icon: Wifi,
     title: "In person or live online",
-    body: "The same instruction in North Haven and Wallingford, or by live video when you cannot come in.",
+    body: "I offer the same instruction in North Haven and Wallingford, or by live video when you cannot come in.",
   },
   {
     icon: MapPin,
     title: "A standing weekly time",
-    body: "A reserved hour on the calendar, including School of Rock North Haven, nearby in-person lessons, or online.",
+    body: "I reserve a weekly hour, including School of Rock North Haven, nearby in-person lessons, or online.",
   },
 ];
 
@@ -52,8 +52,9 @@ export function Features() {
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Each lesson follows the same sequence: listen, isolate the difficulty,
-            play it until it is reliable, and assign practice for the week ahead.
+            I follow the same sequence in every lesson: listen, isolate the
+            difficulty, play it until it is reliable, and assign practice for
+            the week ahead.
           </p>
         </div>
 
@@ -88,8 +89,8 @@ export function Features() {
               Beginners, returning players, and advancing students.
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
-              Children and adults are welcome. If you have an instrument, there
-              is a place for a weekly hour.
+              I teach children and adults. If you have an instrument, I have a
+              weekly hour.
             </p>
             <a
               href="/#book-lesson"

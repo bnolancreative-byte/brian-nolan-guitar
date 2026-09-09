@@ -7,14 +7,14 @@ const GIGS = [
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
     title: "Solo performance",
     kicker: "Voice and guitar",
-    body: "Acoustic or electric guitar, with voice. Jazz, popular song, and requested repertoire for receptions, dinners, and private events.",
+    body: "I sing and play, acoustic or electric — jazz, popular song, and requested repertoire — for receptions, dinners, and private events.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
     kicker: "Six-piece band",
-    body: "A six-piece pop and rock ensemble under my direction, for breweries, halls, and private events.",
+    body: "I lead a six-piece pop and rock ensemble for breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
@@ -22,7 +22,7 @@ const GIGS = [
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
     kicker: "Intimate jazz group",
-    body: "A small jazz ensemble under my direction, for speakeasies, cafes, and listening rooms.",
+    body: "I lead a small jazz ensemble for speakeasies, cafes, and listening rooms.",
   },
 ] as const;
 

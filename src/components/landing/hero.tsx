@@ -24,9 +24,9 @@ export function Hero() {
             Private guitar lessons from a working musician.
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            Brian Nolan is a guitarist, vocalist, and private instructor based
-            in {SITE.towns}. He offers one-to-one guitar lessons and is
-            available for solo performance as well as ensemble engagements.
+            I am Brian Nolan, a guitarist, vocalist, and private instructor in{" "}
+            {SITE.towns}. I teach one-to-one guitar lessons and I am available
+            for solo performance and ensemble engagements.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">

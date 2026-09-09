@@ -14,8 +14,8 @@ export const SITE = {
     href: "mailto:bnolancreative@gmail.com",
   },
   payment: {
-    lessons: "Payment is due at each weekly lesson. Cash, Zelle, or Venmo — details are sent when we confirm.",
-    gigs: "A written quote first. A deposit reserves the date; the balance is due the night of the engagement. Cash, Zelle, or Venmo.",
+    lessons: "Payment is due at each weekly lesson. Cash, Zelle, or Venmo — I send details when we confirm.",
+    gigs: "I send a written quote first. A deposit reserves the date; the balance is due the night of the engagement. Cash, Zelle, or Venmo.",
   },
   instagram: {
     href: "https://www.instagram.com/bnolan.mp4/",

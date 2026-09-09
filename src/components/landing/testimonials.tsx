@@ -30,18 +30,17 @@ export function Testimonials() {
                 Bring a song you want to learn, or a passage that is not yet
                 reliable. We play it together. I observe left and right hand,
                 isolate the difficulty — a chord change, a figure, or the time —
-                and we slow that material until it is secure.
+                and I slow that material until it is secure.
               </p>
               <p>
-                You leave with a short, specific practice assignment for the
-                days between lessons. The following hour continues from that
+                I send you home with a short, specific practice assignment for
+                the days between lessons. The following hour continues from that
                 work.
               </p>
               <p>
-                Instruction is one-to-one, for children, adults, and returning
-                players. Lessons are offered in North Haven and Wallingford,
-                at School of Rock North Haven, and live online, at $60 per hour
-                on a weekly schedule.
+                I teach one-to-one, for children, adults, and returning players,
+                in North Haven and Wallingford, at School of Rock North Haven,
+                and live online, at $60 per hour on a weekly schedule.
               </p>
             </div>
             <Button asChild className="mt-8" size="lg">

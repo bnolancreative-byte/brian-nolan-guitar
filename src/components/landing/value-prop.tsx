@@ -4,17 +4,17 @@ const STEPS = [
   {
     step: "01",
     title: "State your aims",
-    body: "Name a song, a passage that is not yet secure, or a goal for the coming months. Instruction begins there.",
+    body: "Name a song, a passage that is not yet secure, or a goal for the coming months. I begin there.",
   },
   {
     step: "02",
     title: "The first hour",
-    body: "A private lesson is sixty minutes at $60. I listen, observe technique, and introduce material you can apply at once. If the arrangement is suitable, a weekly time is reserved.",
+    body: "A private lesson is sixty minutes at $60. I listen, observe technique, and introduce material you can apply at once. If the arrangement is suitable, I reserve a weekly time.",
   },
   {
     step: "03",
     title: "Practice between lessons",
-    body: "You receive a concise assignment. Progress is made in the days between hours, and the next lesson continues from that work.",
+    body: "I give you a concise assignment. Progress is made in the days between hours, and the next lesson continues from that work.",
   },
 ];
 
@@ -30,9 +30,9 @@ export function ValueProp() {
             Private study with a working musician.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            Lessons emphasize listening, reliable technique, and theory only
-            where it serves the music. Instruction is offered in North Haven
-            and Wallingford, and live online.
+            I emphasize listening, reliable technique, and theory only where it
+            serves the music. I teach in North Haven and Wallingford, and live
+            online.
           </p>
           <Button asChild className="mt-8">
             <a href="/#book-lesson">Request a weekly lesson</a>
