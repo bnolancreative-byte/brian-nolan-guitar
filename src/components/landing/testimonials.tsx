@@ -23,24 +23,25 @@ export function Testimonials() {
           <div className="lg:col-span-7">
             <p className="text-sm font-medium tracking-wide text-muted-foreground">The hour</p>
             <h2 id="stories-heading" className="mt-3 font-display text-title">
-              You play. I listen. We fix the bar that is in the way.
+              You play. I listen. We fix the part that is stuck.
             </h2>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                You come in with a song, a stuck change, or “I just want to get
-                better.” We play. I watch your hands. When something hesitates —
-                a fret, a pick attack, the time — we stop, take that bar apart,
-                and put it back until it feels like yours.
+                Bring a song you want to play, or a spot that keeps falling
+                apart. We play it together. I watch your hands. When a chord
+                change, a riff, or the timing slips, we slow that part down,
+                fix the fingering, and play it again until it holds.
               </p>
               <p>
-                You leave with a small amount of work you will actually do: one
-                shape, one lick, one chorus in time. Not a binder. The next hour
-                starts further along.
+                You go home with a short list — a few focused minutes, not a
+                pile of exercises. Next week we start from there, a little
+                further along.
               </p>
               <p>
-                Kids, adults, rusty hands. One student at a time. North Haven,
-                Wallingford, School of Rock North Haven, or live online. $60.
-                Weekly.
+                One student at a time. Kids, adults, and players coming back
+                after years off. In person in North Haven and Wallingford,
+                at School of Rock North Haven, or live online. $60 an hour,
+                weekly.
               </p>
             </div>
             <Button asChild className="mt-8" size="lg">
