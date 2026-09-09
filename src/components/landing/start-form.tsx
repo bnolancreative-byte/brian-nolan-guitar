@@ -246,6 +246,7 @@ export function LessonForm() {
     resolver: zodResolver(lessonSchema),
     mode: "onTouched",
     reValidateMode: "onChange",
+    shouldFocusError: false,
     defaultValues: {
       name: "",
       email: "",
@@ -422,6 +423,7 @@ export function GigForm() {
     resolver: zodResolver(gigSchema),
     mode: "onTouched",
     reValidateMode: "onChange",
+    shouldFocusError: false,
     defaultValues: {
       name: "",
       email: "",
