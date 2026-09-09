@@ -12,7 +12,7 @@ export function Logo({
     <a
       href="#top"
       className={cn(
-        "flex h-11 items-center gap-2.5 rounded-md pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "flex h-11 items-center gap-2.5 rounded-md pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
     >

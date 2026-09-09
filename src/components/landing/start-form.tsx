@@ -1,5 +1,5 @@
-import { useRef, useState, type KeyboardEvent } from "react";
-import { useForm, type FieldErrors } from "react-hook-form";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle2, Copy, Mail } from "lucide-react";
@@ -29,7 +29,7 @@ import { cn } from "@/lib/utils";
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="text-sm text-destructive">
+    <p id={id} role="alert" className="text-sm text-destructive">
       {message}
     </p>
   );
@@ -51,7 +51,7 @@ function ErrorSummary({
       className="mt-4 rounded-md border border-destructive/40 p-4 outline-none"
     >
       <p className="text-sm font-medium text-destructive">
-        Fix the highlighted fields, then send again.
+        Please correct the fields below, then send the request again.
       </p>
       <ul className="mt-2 list-disc space-y-1 pl-5">
         {items.map((item) => (
@@ -115,13 +115,13 @@ function ChoiceGroup<T extends string>({
   onChange,
   items,
   columns,
-  ariaLabel,
+  ariaLabelledBy,
 }: {
   value: T;
   onChange: (value: T) => void;
   items: readonly { value: T; label: string }[];
   columns: string;
-  ariaLabel: string;
+  ariaLabelledBy: string;
 }) {
   const refs = useRef<Array<HTMLButtonElement | null>>([]);
 
@@ -143,7 +143,7 @@ function ChoiceGroup<T extends string>({
   }
 
   return (
-    <div role="radiogroup" aria-label={ariaLabel} className={cn("mt-3 grid gap-2", columns)}>
+    <div role="radiogroup" aria-labelledby={ariaLabelledBy} aria-required="true" className={cn("mt-3 grid gap-2", columns)}>
       {items.map((item, index) => {
         const selected = value === item.value;
         return (
@@ -191,7 +191,7 @@ function SuccessCard({
   const [copied, setCopied] = useState(false);
   return (
     <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10">
-      <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} />
+      <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} aria-hidden="true" />
       <h3 className="mt-4 font-display text-3xl">Send the request from your mail application.</h3>
       <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
         Your mail application should open with this request completed. If it does not, use Send email below.
@@ -239,7 +239,6 @@ export function LessonForm() {
     register,
     handleSubmit,
     setValue,
-    setFocus,
     watch,
     reset,
     formState: { errors, isSubmitting, isSubmitted, isValid },
@@ -259,13 +258,14 @@ export function LessonForm() {
   const format = watch("format");
   const timing = watch("timing");
 
-  function onInvalid(formErrors: FieldErrors<LessonValues>) {
-    toast("Fix the highlighted fields, then send again.");
-    requestAnimationFrame(() => {
+  useEffect(() => {
+    if (isSubmitted && !isValid) {
       document.getElementById("lesson-errors")?.focus();
-    });
-    const first = Object.keys(formErrors)[0] as keyof LessonValues | undefined;
-    if (first) setFocus(first);
+    }
+  }, [isSubmitted, isValid]);
+
+  function onInvalid() {
+    toast("Please correct the highlighted fields, then send the request again.");
   }
 
   function onSubmit(values: LessonValues) {
@@ -281,9 +281,9 @@ export function LessonForm() {
     const links = leadShareLinks(payload);
     setShare(links);
     if (result === "duplicate") {
-      toast("Same request is ready. Email me.");
+      toast("This request is ready. Send the email.");
     } else {
-      toast("Opening your mail app");
+      toast("Opening your mail application.");
       openMail(links.mail);
     }
   }
@@ -316,7 +316,9 @@ export function LessonForm() {
 
       <div className="mt-6 grid gap-5">
         <div className="grid gap-2">
-          <Label htmlFor="lesson-name">Name</Label>
+          <Label htmlFor="lesson-name">
+            Name <span className="font-normal text-muted-foreground">(required)</span>
+          </Label>
           <Input
             id="lesson-name"
             autoComplete="name"
@@ -332,7 +334,9 @@ export function LessonForm() {
           <FieldError id="lesson-name-error" message={errors.name?.message} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="lesson-email">Your email</Label>
+          <Label htmlFor="lesson-email">
+            Your email <span className="font-normal text-muted-foreground">(required)</span>
+          </Label>
           <Input
             id="lesson-email"
             type="email"
@@ -354,30 +358,34 @@ export function LessonForm() {
             <FieldError id="lesson-email-error" message={errors.email.message} />
           ) : (
             <p id="lesson-email-hint" className="text-sm text-muted-foreground">
-              I reply here.
+              I write to this address.
             </p>
           )}
         </div>
       </div>
 
       <fieldset className="mt-6">
-        <legend className="text-sm font-medium text-foreground">Where</legend>
+        <legend id="lesson-format-legend" className="text-sm font-medium text-foreground">
+          Where <span className="font-normal text-muted-foreground">(required)</span>
+        </legend>
         <ChoiceGroup
           value={format}
           onChange={(value) => setValue("format", value as Format, { shouldValidate: true })}
           items={FORMATS}
           columns="grid-cols-2"
-          ariaLabel="Lesson format"
+          ariaLabelledBy="lesson-format-legend"
         />
       </fieldset>
       <fieldset className="mt-6">
-        <legend className="text-sm font-medium text-foreground">Best time</legend>
+        <legend id="lesson-timing-legend" className="text-sm font-medium text-foreground">
+          Best time <span className="font-normal text-muted-foreground">(required)</span>
+        </legend>
         <ChoiceGroup
           value={timing}
           onChange={(value) => setValue("timing", value as Timing, { shouldValidate: true })}
           items={TIMINGS}
           columns="grid-cols-2"
-          ariaLabel="Best time"
+          ariaLabelledBy="lesson-timing-legend"
         />
       </fieldset>
       <div className="mt-6 grid gap-2">
@@ -388,15 +396,15 @@ export function LessonForm() {
           id="goal"
           rows={3}
           maxLength={280}
-          placeholder="A standard, a solo, a song on your phone…"
+          placeholder="A song, a passage, or a goal for the months ahead"
           {...register("goal")}
         />
       </div>
 
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Opening email…" : "Email this lesson"}
+        {isSubmitting ? "Opening email…" : "Send lesson request"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This opens your mail app with the request filled in.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This opens your mail application with the request completed.</p>
     </form>
   );
 }
@@ -407,7 +415,6 @@ export function GigForm() {
     register,
     handleSubmit,
     setValue,
-    setFocus,
     watch,
     reset,
     formState: { errors, isSubmitting, isSubmitted, isValid },
@@ -427,13 +434,14 @@ export function GigForm() {
 
   const act = watch("act");
 
-  function onInvalid(formErrors: FieldErrors<GigValues>) {
-    toast("Fix the highlighted fields, then send again.");
-    requestAnimationFrame(() => {
+  useEffect(() => {
+    if (isSubmitted && !isValid) {
       document.getElementById("gig-errors")?.focus();
-    });
-    const first = Object.keys(formErrors)[0] as keyof GigValues | undefined;
-    if (first) setFocus(first);
+    }
+  }, [isSubmitted, isValid]);
+
+  function onInvalid() {
+    toast("Please correct the highlighted fields, then send the request again.");
   }
 
   function onSubmit(values: GigValues) {
@@ -450,9 +458,9 @@ export function GigForm() {
     const links = leadShareLinks(payload);
     setShare(links);
     if (result === "duplicate") {
-      toast("Same request is ready. Email me.");
+      toast("This request is ready. Send the email.");
     } else {
-      toast("Opening your mail app");
+      toast("Opening your mail application.");
       openMail(links.mail);
     }
   }
@@ -493,7 +501,9 @@ export function GigForm() {
 
       <div className="mt-6 grid gap-5">
         <div className="grid gap-2">
-          <Label htmlFor="gig-name">Name</Label>
+          <Label htmlFor="gig-name">
+            Name <span className="font-normal text-muted-foreground">(required)</span>
+          </Label>
           <Input
             id="gig-name"
             autoComplete="name"
@@ -509,7 +519,9 @@ export function GigForm() {
           <FieldError id="gig-name-error" message={errors.name?.message} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="gig-email">Your email</Label>
+          <Label htmlFor="gig-email">
+            Your email <span className="font-normal text-muted-foreground">(required)</span>
+          </Label>
           <Input
             id="gig-email"
             type="email"
@@ -531,26 +543,30 @@ export function GigForm() {
             <FieldError id="gig-email-error" message={errors.email.message} />
           ) : (
             <p id="gig-email-hint" className="text-sm text-muted-foreground">
-              I reply here.
+              I write to this address.
             </p>
           )}
         </div>
       </div>
 
       <fieldset className="mt-6">
-        <legend className="text-sm font-medium text-foreground">Which act</legend>
+        <legend id="gig-act-legend" className="text-sm font-medium text-foreground">
+          Engagement <span className="font-normal text-muted-foreground">(required)</span>
+        </legend>
         <ChoiceGroup
           value={act}
           onChange={(value) => setValue("act", value as Act, { shouldValidate: true })}
           items={ACTS}
           columns="grid-cols-1"
-          ariaLabel="Which act"
+          ariaLabelledBy="gig-act-legend"
         />
       </fieldset>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <div className="grid gap-2">
-          <Label htmlFor="eventDate">Date</Label>
+          <Label htmlFor="eventDate">
+            Date <span className="font-normal text-muted-foreground">(required)</span>
+          </Label>
           <Input
             id="eventDate"
             autoComplete="off"
@@ -565,7 +581,9 @@ export function GigForm() {
           <FieldError id="eventDate-error" message={errors.eventDate?.message} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="venue">Town or venue</Label>
+          <Label htmlFor="venue">
+            Town or venue <span className="font-normal text-muted-foreground">(required)</span>
+          </Label>
           <Input
             id="venue"
             autoComplete="address-level2"
@@ -600,9 +618,9 @@ export function GigForm() {
       </div>
 
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Opening email…" : "Email this date"}
+        {isSubmitting ? "Opening email…" : "Send performance request"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This opens your mail app with the request filled in.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This opens your mail application with the request completed.</p>
     </form>
   );
 }

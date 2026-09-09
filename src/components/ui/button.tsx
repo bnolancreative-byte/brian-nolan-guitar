@@ -14,9 +14,9 @@ const buttonVariants = cva(
           "border border-border bg-transparent text-foreground hover:bg-secondary",
         ghost: "text-foreground hover:bg-secondary",
         inverse:
-          "bg-background text-foreground hover:bg-background/90",
+          "bg-background text-foreground hover:bg-background/90 focus-visible:ring-offset-hero",
         inverseOutline:
-          "border border-hero-foreground/25 bg-transparent text-hero-foreground hover:bg-hero-foreground/10",
+          "border border-hero-foreground/45 bg-transparent text-hero-foreground hover:bg-hero-foreground/10 focus-visible:ring-offset-hero",
       },
       size: {
         default: "h-11 px-4",

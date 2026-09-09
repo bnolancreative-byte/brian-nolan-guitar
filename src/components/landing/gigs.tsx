@@ -63,7 +63,7 @@ export function Gigs() {
                 {"follow" in gig ? (
                   <a
                     href={gig.follow.href}
-                    className="mt-3 inline-flex text-sm font-medium text-foreground underline-offset-4 hover:underline"
+              className="mt-3 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={gig.follow.ariaLabel}
@@ -84,7 +84,7 @@ export function Gigs() {
             Recent performances on{" "}
             <a
               href={SITE.instagram.href}
-              className="font-medium text-foreground underline-offset-4 hover:underline"
+              className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={SITE.instagram.ariaLabel}
@@ -94,7 +94,7 @@ export function Gigs() {
             {" and "}
             <a
               href={SITE.facebook.href}
-              className="font-medium text-foreground underline-offset-4 hover:underline"
+              className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={SITE.facebook.ariaLabel}

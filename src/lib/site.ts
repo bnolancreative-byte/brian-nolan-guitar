@@ -1,5 +1,6 @@
 export const SITE = {
   name: "Brian Nolan Guitar",
+  title: "Brian Nolan Guitar — lessons and performance in New Haven County, CT",
   teacher: "Brian Nolan",
   region: "New Haven County, CT",
   towns: "North Haven and Wallingford",

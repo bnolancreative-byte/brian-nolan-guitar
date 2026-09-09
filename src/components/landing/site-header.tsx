@@ -61,11 +61,11 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              aria-current={active === item.href ? "true" : undefined}
+              aria-current={active === item.href ? "location" : undefined}
               className={cn(
                 "flex h-11 items-center rounded-md px-3 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 active === item.href
-                  ? "text-foreground"
+                  ? "text-foreground underline decoration-foreground/40 underline-offset-8"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
@@ -74,12 +74,19 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Button asChild size="sm" className="hidden sm:inline-flex md:h-11 md:px-4">
+          <Button asChild className="hidden sm:inline-flex md:h-11 md:px-4">
             <a href="/#book-lesson">Request a lesson</a>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
+              <Button
+                variant="outline"
+                size="icon"
+                className="md:hidden"
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+                aria-controls="mobile-nav"
+              >
                 <Menu />
               </Button>
             </SheetTrigger>
@@ -88,13 +95,17 @@ export function SiteHeader() {
                 <SheetTitle>Menu</SheetTitle>
                 <SheetDescription>Select a section of the page.</SheetDescription>
               </SheetHeader>
-              <nav className="mt-8 flex flex-col gap-1" aria-label="Mobile">
+              <nav
+                id="mobile-nav"
+                className="mt-8 flex flex-col gap-1"
+                aria-label="Mobile"
+              >
                 {NAV.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="flex h-12 items-center rounded-md px-3 text-base font-medium text-foreground hover:bg-secondary"
+                    className="flex h-12 items-center rounded-md px-3 text-base font-medium text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     {item.label}
                   </a>
