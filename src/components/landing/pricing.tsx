@@ -9,12 +9,12 @@ const TIERS = [
     name: "Weekly lesson",
     price: SITE.lessonRate,
     cadence: SITE.lessonCadence,
-    blurb: "A standing hour on the calendar. Same teacher, notes for the week.",
+    blurb: "One hour a week, same teacher. I send notes after the lesson.",
     featured: true,
     features: [
       "60-minute private lesson",
       "$60 flat. No packages.",
-      "Rock, blues, and jazz — whatever the song needs",
+      "Rock, blues, and jazz, depending on the song",
       "In person in North Haven and Wallingford, or live online",
       "Written notes for the week",
     ],
@@ -25,7 +25,7 @@ const TIERS = [
     name: "Gigs",
     price: "Quote",
     cadence: "by room and date",
-    blurb: "Solo, the six-piece, or the jazz group. Tell me the room and the date and I’ll send a quote.",
+    blurb: "Solo, the six-piece, or the jazz group. Tell me the room and the date. I’ll send a quote.",
     featured: false,
     features: [
       "Solo — I sing and play, acoustic or electric",
@@ -48,8 +48,8 @@ export function Pricing() {
             $60 an hour, weekly.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            That’s the lesson rate. No trial fee, no monthly package. Gigs are
-            quoted for the room and the date.
+            Lessons are $60 an hour, once a week. No trial fee and no monthly
+            package. For gigs, I quote based on the room and the date.
           </p>
         </div>
 

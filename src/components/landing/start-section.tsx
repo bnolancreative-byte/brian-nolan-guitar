@@ -23,9 +23,9 @@ export function StartSection() {
             Book a lesson or a gig.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-hero-muted">
-            Lessons are $60 an hour, weekly, in {SITE.towns} or live online.
+            Lessons are $60 an hour, once a week, in {SITE.towns} or online.
             For gigs, pick solo, the six-piece, or the jazz group. The form
-            opens an email to me with your request filled in.
+            opens an email to me with your details filled in.
           </p>
         </div>
 
@@ -35,15 +35,15 @@ export function StartSection() {
             <LessonForm />
             <p className="mt-4 text-sm text-hero-muted">
               I teach in person around {SITE.towns}, including School of Rock
-              North Haven, and live online. {SITE.payment.lessons}
+              North Haven, and online. {SITE.payment.lessons}
             </p>
           </div>
           <div id="book-gig" className="scroll-mt-24">
             <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Gigs</p>
             <GigForm />
             <p className="mt-4 text-sm text-hero-muted">
-              Solo (I sing and play, acoustic or electric), Weekend Update (the
-              six-piece I lead), or Lowlight Collective (the jazz group I lead).
+              I sing and play solo, acoustic or electric. I lead Weekend Update,
+              a six-piece band, and Lowlight Collective, a small jazz group.
               I’ve played {SITE.rooms}. {SITE.payment.gigs}
             </p>
           </div>

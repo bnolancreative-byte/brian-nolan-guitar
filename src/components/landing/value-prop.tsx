@@ -4,17 +4,17 @@ const STEPS = [
   {
     step: "01",
     title: "Tell me what you want to play",
-    body: "A song, a part that keeps falling apart, or you just want to get better. We start there.",
+    body: "Bring a song, a part that isn’t working, or just say you want to get better. That’s where we start.",
   },
   {
     step: "02",
     title: "The first hour",
-    body: "Sixty minutes, $60. I listen, watch your hands, and teach something you can use that night. If it fits, we keep a weekly time.",
+    body: "The lesson is 60 minutes and costs $60. I listen, watch your hands, and teach something you can use that night. If we both want to continue, we set a weekly time.",
   },
   {
     step: "03",
     title: "Work for the week",
-    body: "You leave with a short list — not a pile of exercises. Next week we pick up from there.",
+    body: "You leave with a short list of what to practice. Next week we start from there.",
   },
 ];
 
@@ -30,9 +30,9 @@ export function ValueProp() {
             How lessons work.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            I listen first, then we fix the part that’s in the way. Theory only
-            when it helps the song. I teach in North Haven and Wallingford, and
-            live online.
+            I listen first. Then we fix the part that isn’t working. I only
+            bring in theory when it helps the song. I teach in North Haven and
+            Wallingford, and online.
           </p>
           <Button asChild className="mt-8">
             <a href="/#book-lesson">Book a weekly lesson</a>

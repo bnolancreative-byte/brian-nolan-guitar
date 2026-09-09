@@ -27,19 +27,19 @@ export function Testimonials() {
             </h2>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                Bring a song you want to play, or a part that keeps falling
-                apart. We play it together. I watch your hands. When a chord
-                change, a riff, or the timing slips, we slow that part down,
-                fix the fingering, and play it again until it holds.
+                Bring a song you want to play, or a part that isn’t working. We
+                play it together. I watch your hands. If a chord change, a riff,
+                or the timing slips, we slow that part down, fix the fingering,
+                and play it again until it holds.
               </p>
               <p>
-                You go home with a short list — a few focused minutes, not a
-                pile of exercises. Next week we start from there.
+                You go home with a short list of what to practice. Next week we
+                start from there.
               </p>
               <p>
-                Kids, adults, and people coming back after years off. One
-                student at a time. North Haven, Wallingford, School of Rock
-                North Haven, or live online. $60 an hour, weekly.
+                I teach kids and adults, one at a time, in North Haven,
+                Wallingford, at School of Rock North Haven, and online. Lessons
+                are $60 an hour, once a week.
               </p>
             </div>
             <Button asChild className="mt-8" size="lg">

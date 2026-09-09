@@ -24,10 +24,10 @@ export function Hero() {
             Guitar lessons in North Haven and Wallingford.
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            I’m Brian Nolan. I teach guitar one-to-one at $60 an hour, weekly,
-            in {SITE.towns} and live online. I also play out — solo (I sing and
-            play, acoustic or electric), a six-piece band I lead, and a small
-            jazz group I lead.
+            I’m Brian Nolan. I teach private guitar lessons in {SITE.towns},
+            and online. Lessons are $60 an hour, once a week. I also book gigs:
+            I sing and play solo, I lead a six-piece band, and I lead a small
+            jazz group.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">

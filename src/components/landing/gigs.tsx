@@ -7,14 +7,14 @@ const GIGS = [
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
     title: "Solo",
     kicker: "I sing and play",
-    body: "Acoustic or electric. Jazz, popular songs, and requests — dinners, receptions, and private events.",
+    body: "I sing and play, acoustic or electric. Jazz, popular songs, and requests. Good for dinners, receptions, and private events.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
     kicker: "Six-piece band",
-    body: "A six-piece pop and rock band I lead. Breweries, halls, and private events.",
+    body: "I lead this six-piece pop and rock band. We play breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
@@ -22,7 +22,7 @@ const GIGS = [
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
     kicker: "Small jazz group",
-    body: "A small jazz group I lead. Cafes, speakeasies, and listening rooms.",
+    body: "I lead this small jazz group. We play cafes, speakeasies, and listening rooms.",
   },
 ] as const;
 
@@ -38,7 +38,7 @@ export function Gigs() {
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            I play solo and I lead two groups out of North Haven and
+            I play solo gigs, and I lead two bands, from North Haven and
             Wallingford. I’ve played Foolproof Brewing, Center Street Brewing,
             and Carcosa Lounge.
           </p>
