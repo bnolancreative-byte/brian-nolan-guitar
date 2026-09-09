@@ -18,7 +18,7 @@ export function StartSection() {
     <section id="start" className="bg-hero text-hero-foreground" aria-labelledby="start-heading">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="max-w-2xl">
-          <p className="text-sm font-medium tracking-wide text-hero-muted">Book</p>
+          <p className="text-sm font-medium tracking-wide text-hero-muted">Enquire</p>
           <h2 id="start-heading" className="mt-3 font-display text-title text-hero-foreground">
             Request a lesson or a performance.
           </h2>
@@ -39,7 +39,7 @@ export function StartSection() {
             </p>
           </div>
           <div id="book-gig" className="scroll-mt-24">
-            <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Gigs</p>
+            <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Performance</p>
             <GigForm />
             <p className="mt-4 text-sm text-hero-muted">
               Solo voice and guitar (acoustic or electric); Weekend Update, a

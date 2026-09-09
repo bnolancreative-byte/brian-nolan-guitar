@@ -18,22 +18,22 @@ const TIERS = [
       "In person in North Haven and Wallingford, or live online",
       "Written notes for the week",
     ],
-    cta: "Book a weekly hour",
+    cta: "Request a weekly lesson",
     href: "/#book-lesson",
   },
   {
-    name: "Live booking",
+    name: "Performance",
     price: "Quote",
-    cadence: "by date and room",
-    blurb: "Solo voice and guitar, a six-piece band, or an intimate jazz group. Provide the venue and the date for a written quote.",
+    cadence: "by venue and date",
+    blurb: "Solo voice and guitar, a six-piece band, or an intimate jazz group. A written quote follows receipt of the venue and date.",
     featured: false,
     features: [
       "Solo performance, acoustic or electric, with voice",
-      "Weekend Update, a six-piece band led by Brian Nolan",
-      "Lowlight Collective, an intimate jazz group he also leads",
-      "New Haven County and nearby",
+      "Weekend Update, a six-piece band under my direction",
+      "Lowlight Collective, an intimate jazz group I also lead",
+      "New Haven County and neighbouring towns",
     ],
-    cta: "Request a date",
+    cta: "Request a performance",
     href: "/#book-gig",
   },
 ];
@@ -43,7 +43,7 @@ export function Pricing() {
     <section id="pricing" className="border-y border-border bg-secondary/40" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium tracking-wide text-muted-foreground">Booking</p>
+          <p className="text-sm font-medium tracking-wide text-muted-foreground">Fees</p>
           <h2 id="pricing-heading" className="mt-3 font-display text-title">
             $60 per hour, billed weekly.
           </h2>
@@ -123,13 +123,13 @@ export function Pricing() {
 
         <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2">
           <div className="rounded-2xl bg-card p-6 shadow-border">
-            <h3 className="text-sm font-semibold tracking-wide">How you pay for lessons</h3>
+            <h3 className="text-sm font-semibold tracking-wide">Lesson payment</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {SITE.lessonRate} {SITE.lessonCadence}. {SITE.payment.lessons}
             </p>
           </div>
           <div className="rounded-2xl bg-card p-6 shadow-border">
-            <h3 className="text-sm font-semibold tracking-wide">How you pay for gigs</h3>
+            <h3 className="text-sm font-semibold tracking-wide">Performance payment</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {SITE.payment.gigs}
             </p>

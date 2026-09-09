@@ -4,9 +4,9 @@ import { SITE } from "@/lib/site";
 
 const LINKS = [
   { href: "#lessons", label: "Lessons" },
-  { href: "#gigs", label: "Gigs" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "/#book-lesson", label: "Book" },
+  { href: "#gigs", label: "Performance" },
+  { href: "#pricing", label: "Fees" },
+  { href: "/#book-lesson", label: "Enquire" },
 ];
 
 export function SiteFooter() {
@@ -66,7 +66,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {SITE.name}
           </p>
-          <p>New Haven County · Lessons and live dates</p>
+          <p>New Haven County · Instruction and performance</p>
         </div>
       </div>
     </footer>

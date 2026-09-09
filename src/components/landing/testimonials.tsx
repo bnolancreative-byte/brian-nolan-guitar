@@ -45,7 +45,7 @@ export function Testimonials() {
               </p>
             </div>
             <Button asChild className="mt-8" size="lg">
-              <a href="/#book-lesson">Book a weekly hour</a>
+              <a href="/#book-lesson">Request a weekly lesson</a>
             </Button>
           </div>
         </div>

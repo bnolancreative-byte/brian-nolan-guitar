@@ -48,7 +48,7 @@ export function Features() {
           <div className="lg:col-span-7">
             <p className="text-sm font-medium tracking-wide text-muted-foreground">Approach</p>
             <h2 id="features-heading" className="mt-3 font-display text-title">
-              Structured hours. Clear work between them.
+              A structured hour and a clear assignment.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
@@ -95,7 +95,7 @@ export function Features() {
               href="/#book-lesson"
               className="mt-8 inline-flex h-12 w-fit items-center rounded-md bg-background px-6 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-background/90"
             >
-              Book a weekly hour
+              Request a weekly lesson
             </a>
           </div>
         </div>

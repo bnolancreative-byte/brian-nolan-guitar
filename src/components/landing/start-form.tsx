@@ -192,9 +192,9 @@ function SuccessCard({
   return (
     <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10">
       <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} />
-      <h3 className="mt-4 font-display text-3xl">Send it from your mail app.</h3>
+      <h3 className="mt-4 font-display text-3xl">Send the request from your mail application.</h3>
       <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-        Your mail app should open with this request filled in. If it did not, use Email me below.
+        Your mail application should open with this request completed. If it does not, use Send email below.
       </p>
       <pre className="mt-6 max-h-48 overflow-auto whitespace-pre-wrap rounded-xl bg-secondary p-4 text-sm leading-relaxed text-foreground">
         {share.body}
@@ -203,7 +203,7 @@ function SuccessCard({
         <Button asChild size="lg">
           <a href={share.mail}>
             <Mail className="size-4" />
-            Email me
+            Send email
           </a>
         </Button>
         <Button
@@ -298,7 +298,7 @@ export function LessonForm() {
       className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
-      <h3 className="font-display text-2xl tracking-tight">Book a weekly hour</h3>
+      <h3 className="font-display text-2xl tracking-tight">Request a weekly lesson</h3>
       <p className="mt-1 text-sm text-muted-foreground">$60 per hour, weekly. I confirm by email.</p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
@@ -467,7 +467,7 @@ export function GigForm() {
       className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
-      <h3 className="font-display text-2xl tracking-tight">Request a date</h3>
+      <h3 className="font-display text-2xl tracking-tight">Request a performance</h3>
       <p className="mt-1 text-sm text-muted-foreground">
         Select the engagement, venue, and date. A written quote follows by email.
       </p>

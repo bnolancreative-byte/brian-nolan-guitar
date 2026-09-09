@@ -7,14 +7,14 @@ const GIGS = [
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
     title: "Solo performance",
     kicker: "Voice and guitar",
-    body: "Acoustic or electric. Brian sings and plays — jazz, popular song, and requested repertoire — for receptions, dinners, and private events.",
+    body: "Acoustic or electric guitar, with voice. Jazz, popular song, and requested repertoire for receptions, dinners, and private events.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
     kicker: "Six-piece band",
-    body: "A large pop and rock ensemble led by Brian Nolan. Full-band performances for breweries, halls, and private events.",
+    body: "A six-piece pop and rock ensemble under my direction, for breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
@@ -22,7 +22,7 @@ const GIGS = [
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
     kicker: "Intimate jazz group",
-    body: "A small jazz ensemble led by Brian Nolan, suited to speakeasies, cafes, and listening rooms.",
+    body: "A small jazz ensemble under my direction, for speakeasies, cafes, and listening rooms.",
   },
 ] as const;
 
@@ -34,13 +34,13 @@ export function Gigs() {
           <div className="lg:col-span-7">
             <p className="text-sm font-medium tracking-wide text-muted-foreground">Performance</p>
             <h2 id="gigs-heading" className="mt-3 font-display text-title">
-              Solo, a six-piece band, or an intimate jazz group.
+              Three forms of engagement.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Brian Nolan performs as a soloist and leads two ensembles from
-            North Haven and Wallingford. Venues have included Foolproof Brewing,
-            Center Street Brewing, and Carcosa Lounge.
+            I perform as a soloist and lead two ensembles from North Haven and
+            Wallingford. Appearances have included Foolproof Brewing, Center
+            Street Brewing, and Carcosa Lounge.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export function Gigs() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button asChild size="lg">
-            <a href="/#book-gig">Request a date</a>
+            <a href="/#book-gig">Request a performance</a>
           </Button>
           <p className="text-sm text-muted-foreground">
             Recent performances on{" "}

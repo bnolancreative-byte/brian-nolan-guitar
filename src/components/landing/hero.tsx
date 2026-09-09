@@ -31,7 +31,7 @@ export function Hero() {
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">
               <a href="/#book-lesson">
-                Book a weekly hour — $60
+                Request a weekly lesson
                 <ArrowRight className="size-4" />
               </a>
             </Button>

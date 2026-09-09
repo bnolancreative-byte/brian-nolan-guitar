@@ -3,18 +3,18 @@ import { Button } from "@/components/ui/button";
 const STEPS = [
   {
     step: "01",
-    title: "Tell me what you want to play",
-    body: "Bring a song, a passage that is not working, or a goal for the next few months. We begin there.",
+    title: "State your aims",
+    body: "Name a song, a passage that is not yet secure, or a goal for the coming months. Instruction begins there.",
   },
   {
     step: "02",
-    title: "Take the first hour",
-    body: "A 60-minute private lesson is $60. I listen, observe your hands, and teach material you can use immediately. If the fit is right, we reserve a weekly time.",
+    title: "The first hour",
+    body: "A private lesson is sixty minutes at $60. I listen, observe technique, and introduce material you can apply at once. If the arrangement is suitable, a weekly time is reserved.",
   },
   {
     step: "03",
-    title: "Leave with work for the week",
-    body: "You receive a concise practice plan. The lesson is the hour together; progress happens in the days between.",
+    title: "Practice between lessons",
+    body: "You receive a concise assignment. Progress is made in the days between hours, and the next lesson continues from that work.",
   },
 ];
 
@@ -24,18 +24,18 @@ export function ValueProp() {
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p className="text-sm font-medium tracking-wide text-muted-foreground">
-            Why study with Brian
+            Instruction
           </p>
           <h2 id="value-heading" className="mt-3 font-display text-title text-foreground">
-            Instruction from a working guitarist.
+            Private study with a working musician.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            Lessons follow how I play: careful listening, clear technique, and
-            theory only when it serves the music. Private instruction in North
-            Haven and Wallingford, or live online.
+            Lessons emphasize listening, reliable technique, and theory only
+            where it serves the music. Instruction is offered in North Haven
+            and Wallingford, and live online.
           </p>
           <Button asChild className="mt-8">
-            <a href="/#book-lesson">Book a weekly hour</a>
+            <a href="/#book-lesson">Request a weekly lesson</a>
           </Button>
         </div>
         <ol className="grid gap-4 lg:col-span-7">
