@@ -20,11 +20,11 @@ export function StartSection() {
         <div className="max-w-2xl">
           <p className="text-sm font-medium tracking-wide text-hero-muted">Book</p>
           <h2 id="start-heading" className="mt-3 font-display text-title text-hero-foreground">
-            Two forms. Lessons or a date.
+            Book a lesson or a date.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-hero-muted">
             Lessons are $60 an hour, weekly, in {SITE.towns} or live online. Gigs
-            are quoted for the room. Email me — that is how a request lands.
+            are quoted for the room. Fill a form and your mail app opens to me.
           </p>
         </div>
 

@@ -4,17 +4,17 @@ const STEPS = [
   {
     step: "01",
     title: "Tell me what you want to play",
-    body: "A standard, a solo, a plateau. Jazz is the home base — rock, blues, and the song on your phone all count.",
+    body: "A song, a riff, or a spot that keeps falling apart. We start there.",
   },
   {
     step: "02",
     title: "Take the first hour",
-    body: "Sixty minutes, $60. I listen, watch your hands, and teach something you can use that night. If the fit is right, we keep the weekly slot.",
+    body: "Sixty minutes, $60. I listen, watch your hands, and teach something you can use that night. If it fits, we keep the weekly slot.",
   },
   {
     step: "03",
     title: "Leave with work for the week",
-    body: "Warm-ups, song work, and a short plan you can actually open. The hour is the lesson. The week is where you get good.",
+    body: "A short list you can actually open. The hour is the lesson. The week is where you get better.",
   },
 ];
 
@@ -27,12 +27,12 @@ export function ValueProp() {
             Why study with Brian
           </p>
           <h2 id="value-heading" className="mt-3 font-display text-title text-foreground">
-            A working jazz guitarist, not a content feed.
+            A working guitarist, not a content feed.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            I teach the way I play: ears first, hands honest, theory only when
-            it serves the tune. Private lessons in North Haven and Wallingford,
-            or live online if you are farther out.
+            I teach the way I play. We listen, get the hands right, and only
+            talk theory when it helps the song. Private lessons in North Haven
+            and Wallingford, or live online if you are farther out.
           </p>
           <Button asChild className="mt-8">
             <a href="/#book-lesson">Book a weekly hour</a>

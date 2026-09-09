@@ -6,20 +6,20 @@ const GIGS = [
     src: "/images/brian-formal.jpg",
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
     title: "Solo",
-    body: "Acoustic and electric sets for rooms that want one guitarist who can carry the night — jazz standards, roots, and the songs people actually request.",
+    body: "One guitarist for the night — jazz, roots, and the songs people actually request.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
-    body: "Six-piece pop and rock covers for breweries, halls, and private events. Full-band energy, tight setlists, county-wide.",
+    body: "Six-piece pop and rock covers for breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
     src: "/images/brian-jazz.jpg",
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
-    body: "Jazz with friends for speakeasies and cafes — small rooms, late lights, the set you lean in for.",
+    body: "Jazz with friends for speakeasies and cafes. Small rooms, late nights.",
   },
 ] as const;
 
@@ -77,7 +77,7 @@ export function Gigs() {
             <a href="/#book-gig">Request a date</a>
           </Button>
           <p className="text-sm text-muted-foreground">
-            Check out the work on{" "}
+            Check the work on{" "}
             <a
               href={SITE.instagram.href}
               className="font-medium text-foreground underline-offset-4 hover:underline"

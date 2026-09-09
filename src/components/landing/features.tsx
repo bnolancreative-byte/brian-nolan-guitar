@@ -1,42 +1,42 @@
 import {
-  Compass,
   ListChecks,
-  Mic,
+  MapPin,
   Music2,
   UserRound,
+  Users,
   Wifi,
 } from "lucide-react";
 
 const FEATURES = [
   {
     icon: Music2,
-    title: "Your songs first",
-    body: "We reverse-engineer the record you love, then build the technique it actually demands.",
+    title: "Songs you want to play",
+    body: "We take the record apart and build the chords, riffs, and feel that song actually needs.",
   },
   {
-    icon: Compass,
-    title: "Adaptive, not canned",
-    body: "Kids, adults, returning players. The method bends around the person in the chair.",
+    icon: UserRound,
+    title: "Built around you",
+    body: "Kids, adults, returning players. The hour follows the person in front of me, not a script.",
   },
   {
     icon: ListChecks,
-    title: "A plan you will open",
-    body: "Fifteen focused minutes beats an hour of wandering. You leave every lesson with the next week written down.",
+    title: "Work for the week",
+    body: "You leave with a short list — a few focused minutes, not a pile of exercises.",
   },
   {
-    icon: Mic,
-    title: "Notes for the week",
-    body: "You leave with what to play before the next hour. Home practice is the lesson, not a memory test.",
+    icon: Users,
+    title: "One student at a time",
+    body: "Private hour. Beginner through advanced. We do not rush, and we do not stall.",
   },
   {
     icon: Wifi,
     title: "In person or live online",
-    body: "Same teacher, same plan. In person in North Haven and Wallingford, or live online when the week is loud.",
+    body: "Same teacher, same plan. North Haven and Wallingford, or live video when you cannot come in.",
   },
   {
-    icon: UserRound,
-    title: "Paced to you",
-    body: "Beginner through advanced. Jazz first — then rock, blues, fingerstyle. We do not rush, and we do not stall.",
+    icon: MapPin,
+    title: "Local, weekly",
+    body: "A standing hour on the calendar. School of Rock North Haven, in person nearby, or online.",
   },
 ];
 
@@ -48,12 +48,12 @@ export function Features() {
           <div className="lg:col-span-7">
             <p className="text-sm font-medium tracking-wide text-muted-foreground">The method</p>
             <h2 id="features-heading" className="mt-3 font-display text-title">
-              Craft in the hour. Clarity for the week.
+              The hour, then the week.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Every lesson is built the same way: listen, isolate, play, and leave
-            with work that fits real life — not a fantasy practice schedule.
+            Every lesson works the same way: listen, slow down the stuck part,
+            play it until it holds, and send you home with work you will do.
           </p>
         </div>
 
@@ -85,11 +85,11 @@ export function Features() {
           <div className="flex flex-col justify-center p-8 text-hero-foreground md:p-12">
             <p className="text-sm font-medium tracking-wide text-hero-muted">Who it is for</p>
             <h3 className="mt-3 font-display text-3xl leading-snug">
-              Starting out. Coming back. Ready for jazz that actually sounds like jazz.
+              Starting out, coming back, or leveling up.
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
-              Kids, adults, returning players. If you have the instrument and
-              the itch, I have the structure. No shame about rusty hands.
+              Kids, adults, rusty hands. If you have a guitar, we have a weekly
+              hour. No shame about where you are starting.
             </p>
             <a
               href="/#book-lesson"

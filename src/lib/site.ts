@@ -6,7 +6,7 @@ export const SITE = {
   rooms: "Foolproof Brewing, Center Street Brewing, and Carcosa Lounge",
   url: "https://brian-nolan-guitar.vercel.app",
   description:
-    "Jazz guitar lessons at $60 an hour, weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",
+    "Guitar lessons at $60 an hour, weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",
   lessonRate: "$60",
   lessonCadence: "per hour, weekly",
   email: {
@@ -15,7 +15,7 @@ export const SITE = {
   },
   payment: {
     lessons: "Due at each weekly hour. Cash, Zelle, or Venmo — I send details when we confirm.",
-    gigs: "Quote first. A deposit holds the date; balance is due the night of the gig.",
+    gigs: "Quote first. A deposit holds the date; balance is due the night of the gig. Cash, Zelle, or Venmo.",
   },
   instagram: {
     href: "https://www.instagram.com/bnolan.mp4/",

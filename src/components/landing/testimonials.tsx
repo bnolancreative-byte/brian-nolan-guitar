@@ -16,7 +16,7 @@ export function Testimonials() {
               decoding="async"
             />
             <figcaption className="mt-3 text-sm text-muted-foreground">
-              Brian Nolan — the same player in the lesson and on the gig.
+              Brian Nolan — same player in the lesson and on the gig.
             </figcaption>
           </figure>
 

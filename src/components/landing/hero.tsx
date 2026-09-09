@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 
 const STATS = [
-  { label: "Jazz at the core" },
+  { label: "One-to-one lessons" },
   { label: "$60 per hour, weekly" },
   { label: "North Haven and Wallingford" },
 ];
@@ -25,9 +25,9 @@ export function Hero() {
             <em className="italic">books the room</em>.
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            I am Brian Nolan — jazz guitarist and private teacher. I play and
-            book solo sets, Weekend Update, and Lowlight Collective around{" "}
-            {SITE.towns}. One-to-one lessons. Real gigs. No YouTube rabbit holes.
+            I am Brian Nolan — guitarist and private teacher. I play solo sets,
+            Weekend Update, and Lowlight Collective around {SITE.towns}.
+            One-to-one lessons. Real gigs. Not a video course.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">
@@ -61,7 +61,7 @@ export function Hero() {
             decoding="async"
           />
           <figcaption className="mt-3 text-sm text-hero-muted">
-            Brian Nolan — Telecaster on the table, {SITE.towns}.
+            Brian Nolan with a Telecaster.
           </figcaption>
         </figure>
       </div>

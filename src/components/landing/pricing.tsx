@@ -13,8 +13,8 @@ const TIERS = [
     featured: true,
     features: [
       "60-minute private lesson",
-      "$60 flat — no packages, no hidden months",
-      "Jazz first; rock and blues in the bag",
+      "$60 flat. No packages.",
+      "Rock, blues, and jazz — whatever the song needs",
       "In person in North Haven and Wallingford, or live online",
       "Written notes for the week",
     ],
@@ -45,11 +45,11 @@ export function Pricing() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-medium tracking-wide text-muted-foreground">Booking</p>
           <h2 id="pricing-heading" className="mt-3 font-display text-title">
-            $60 an hour. Weekly. That is the lesson rate.
+            $60 an hour, weekly. That is the lesson.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            One standing hour a week. No trial fee, no monthly bundle. Gigs are
-            quoted separately by the room and the date.
+            One standing hour a week. No trial fee, no monthly bundle. Gigs
+            are quoted for the room and the date.
           </p>
         </div>
 
@@ -131,7 +131,7 @@ export function Pricing() {
           <div className="rounded-2xl bg-card p-6 shadow-border">
             <h3 className="text-sm font-semibold tracking-wide">How you pay for gigs</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {SITE.payment.gigs} Cash, Zelle, or Venmo after we lock the night.
+              {SITE.payment.gigs}
             </p>
           </div>
         </div>
