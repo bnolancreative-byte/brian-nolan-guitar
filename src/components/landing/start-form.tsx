@@ -396,7 +396,7 @@ export function LessonForm() {
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
         {isSubmitting ? "Opening email…" : "Email this lesson"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">Opens your mail app with the request filled in.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This opens your mail app with the request filled in.</p>
     </form>
   );
 }
@@ -469,7 +469,7 @@ export function GigForm() {
     >
       <h3 className="font-display text-2xl tracking-tight">Request a date</h3>
       <p className="mt-1 text-sm text-muted-foreground">
-        Tell me the act, the room, and the night. I will quote back by email.
+        Tell me the act, the room, and the date. I will send a quote by email.
       </p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
@@ -600,7 +600,7 @@ export function GigForm() {
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
         {isSubmitting ? "Opening email…" : "Email this date"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">Opens your mail app with the request filled in.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This opens your mail app with the request filled in.</p>
     </form>
   );
 }

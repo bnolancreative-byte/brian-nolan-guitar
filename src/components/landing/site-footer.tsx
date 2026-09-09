@@ -16,7 +16,7 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-            {SITE.teacher} — jazz guitar, private lessons, and live booking in{" "}
+            {SITE.teacher} — private guitar instruction and live performance in{" "}
             {SITE.region}. $60 per hour, weekly.
           </p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">

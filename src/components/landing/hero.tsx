@@ -21,13 +21,12 @@ export function Hero() {
             id="hero-heading"
             className="rise-in rise-in-1 mt-6 font-display text-display text-hero-foreground"
           >
-            Guitar lessons from a player who still{" "}
-            <em className="italic">books the room</em>.
+            Private guitar lessons from a working musician.
           </h1>
           <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            I am Brian Nolan — guitarist and private teacher. I play solo sets,
-            Weekend Update, and Lowlight Collective around {SITE.towns}.
-            One-to-one lessons. Real gigs. Not a video course.
+            Brian Nolan is a guitarist and private teacher in {SITE.towns}.
+            Lessons are one-to-one. Performances include solo sets, Weekend
+            Update, and Lowlight Collective.
           </p>
           <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="lg" className="min-h-12">

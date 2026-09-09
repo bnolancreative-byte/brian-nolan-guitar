@@ -6,20 +6,20 @@ const GIGS = [
     src: "/images/brian-formal.jpg",
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
     title: "Solo",
-    body: "One guitarist for the night — jazz, roots, and the songs people actually request.",
+    body: "Solo guitar for events: jazz, roots, and familiar requests.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
-    body: "Six-piece pop and rock covers for breweries, halls, and private events.",
+    body: "A six-piece pop and rock cover band for breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
     src: "/images/brian-jazz.jpg",
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
-    body: "Jazz with friends for speakeasies and cafes. Small rooms, late nights.",
+    body: "A small jazz ensemble for speakeasies, cafes, and listening rooms.",
   },
 ] as const;
 
@@ -31,13 +31,13 @@ export function Gigs() {
           <div className="lg:col-span-7">
             <p className="text-sm font-medium tracking-wide text-muted-foreground">Live</p>
             <h2 id="gigs-heading" className="mt-3 font-display text-title">
-              Book the player, or book the band.
+              Book a solo set or a band.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Solo guitar, Weekend Update, and Lowlight Collective — booked out of
-            North Haven and Wallingford. Rooms include Foolproof Brewing, Center
-            Street Brewing, and Carcosa Lounge.
+            Solo guitar, Weekend Update, and Lowlight Collective, based in
+            North Haven and Wallingford. Recent rooms include Foolproof Brewing,
+            Center Street Brewing, and Carcosa Lounge.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export function Gigs() {
             <a href="/#book-gig">Request a date</a>
           </Button>
           <p className="text-sm text-muted-foreground">
-            Check the work on{" "}
+            Recent performances on{" "}
             <a
               href={SITE.instagram.href}
               className="font-medium text-foreground underline-offset-4 hover:underline"

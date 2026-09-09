@@ -10,33 +10,33 @@ import {
 const FEATURES = [
   {
     icon: Music2,
-    title: "Songs you want to play",
-    body: "We take the record apart and build the chords, riffs, and feel that song actually needs.",
+    title: "Repertoire first",
+    body: "We study the recording and build the chords, technique, and feel the piece requires.",
   },
   {
     icon: UserRound,
-    title: "Built around you",
-    body: "Kids, adults, returning players. The hour follows the person in front of me, not a script.",
+    title: "Tailored instruction",
+    body: "Lessons are planned for the student in the room — children, adults, and returning players.",
   },
   {
     icon: ListChecks,
-    title: "Work for the week",
-    body: "You leave with a short list — a few focused minutes, not a pile of exercises.",
+    title: "A weekly practice plan",
+    body: "Each hour ends with focused assignments you can complete before the next lesson.",
   },
   {
     icon: Users,
-    title: "One student at a time",
-    body: "Private hour. Beginner through advanced. We do not rush, and we do not stall.",
+    title: "Private lessons",
+    body: "One student per hour, beginner through advanced, at a pace that holds.",
   },
   {
     icon: Wifi,
     title: "In person or live online",
-    body: "Same teacher, same plan. North Haven and Wallingford, or live video when you cannot come in.",
+    body: "The same instruction in North Haven and Wallingford, or by live video when you cannot come in.",
   },
   {
     icon: MapPin,
-    title: "Local, weekly",
-    body: "A standing hour on the calendar. School of Rock North Haven, in person nearby, or online.",
+    title: "A standing weekly time",
+    body: "A reserved hour on the calendar, including School of Rock North Haven, nearby in-person lessons, or online.",
   },
 ];
 
@@ -46,14 +46,14 @@ export function Features() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">The method</p>
+            <p className="text-sm font-medium tracking-wide text-muted-foreground">Approach</p>
             <h2 id="features-heading" className="mt-3 font-display text-title">
-              The hour, then the week.
+              Structured hours. Clear work between them.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Every lesson works the same way: listen, slow down the stuck part,
-            play it until it holds, and send you home with work you will do.
+            Each lesson follows the same sequence: listen, isolate the difficulty,
+            play it until it is reliable, and assign practice for the week ahead.
           </p>
         </div>
 
@@ -83,13 +83,13 @@ export function Features() {
             decoding="async"
           />
           <div className="flex flex-col justify-center p-8 text-hero-foreground md:p-12">
-            <p className="text-sm font-medium tracking-wide text-hero-muted">Who it is for</p>
+            <p className="text-sm font-medium tracking-wide text-hero-muted">Students</p>
             <h3 className="mt-3 font-display text-3xl leading-snug">
-              Starting out, coming back, or leveling up.
+              Beginners, returning players, and advancing students.
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-hero-muted">
-              Kids, adults, rusty hands. If you have a guitar, we have a weekly
-              hour. No shame about where you are starting.
+              Children and adults are welcome. If you have an instrument, there
+              is a place for a weekly hour.
             </p>
             <a
               href="/#book-lesson"

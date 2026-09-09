@@ -4,17 +4,17 @@ const STEPS = [
   {
     step: "01",
     title: "Tell me what you want to play",
-    body: "A song, a riff, or a spot that keeps falling apart. We start there.",
+    body: "Bring a song, a passage that is not working, or a goal for the next few months. We begin there.",
   },
   {
     step: "02",
     title: "Take the first hour",
-    body: "Sixty minutes, $60. I listen, watch your hands, and teach something you can use that night. If it fits, we keep the weekly slot.",
+    body: "A 60-minute private lesson is $60. I listen, observe your hands, and teach material you can use immediately. If the fit is right, we reserve a weekly time.",
   },
   {
     step: "03",
     title: "Leave with work for the week",
-    body: "A short list you can actually open. The hour is the lesson. The week is where you get better.",
+    body: "You receive a concise practice plan. The lesson is the hour together; progress happens in the days between.",
   },
 ];
 
@@ -27,12 +27,12 @@ export function ValueProp() {
             Why study with Brian
           </p>
           <h2 id="value-heading" className="mt-3 font-display text-title text-foreground">
-            A working guitarist, not a content feed.
+            Instruction from a working guitarist.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            I teach the way I play. We listen, get the hands right, and only
-            talk theory when it helps the song. Private lessons in North Haven
-            and Wallingford, or live online if you are farther out.
+            Lessons follow how I play: careful listening, clear technique, and
+            theory only when it serves the music. Private instruction in North
+            Haven and Wallingford, or live online.
           </p>
           <Button asChild className="mt-8">
             <a href="/#book-lesson">Book a weekly hour</a>

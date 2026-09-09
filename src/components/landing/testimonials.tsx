@@ -16,32 +16,32 @@ export function Testimonials() {
               decoding="async"
             />
             <figcaption className="mt-3 text-sm text-muted-foreground">
-              Brian Nolan — same player in the lesson and on the gig.
+              Brian Nolan, guitarist and teacher.
             </figcaption>
           </figure>
 
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">The hour</p>
+            <p className="text-sm font-medium tracking-wide text-muted-foreground">Lessons</p>
             <h2 id="stories-heading" className="mt-3 font-display text-title">
-              You play. I listen. We fix the part that is stuck.
+              How a lesson is structured.
             </h2>
             <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                Bring a song you want to play, or a spot that keeps falling
-                apart. We play it together. I watch your hands. When a chord
-                change, a riff, or the timing slips, we slow that part down,
-                fix the fingering, and play it again until it holds.
+                Bring a song you want to learn, or a passage that is not yet
+                reliable. We play it together. I observe left and right hand,
+                isolate the difficulty — a chord change, a figure, or the time —
+                and we slow that material until it is secure.
               </p>
               <p>
-                You go home with a short list — a few focused minutes, not a
-                pile of exercises. Next week we start from there, a little
-                further along.
+                You leave with a short, specific practice assignment for the
+                days between lessons. The following hour continues from that
+                work.
               </p>
               <p>
-                One student at a time. Kids, adults, and players coming back
-                after years off. In person in North Haven and Wallingford,
-                at School of Rock North Haven, or live online. $60 an hour,
-                weekly.
+                Instruction is one-to-one, for children, adults, and returning
+                players. Lessons are offered in North Haven and Wallingford,
+                at School of Rock North Haven, and live online, at $60 per hour
+                on a weekly schedule.
               </p>
             </div>
             <Button asChild className="mt-8" size="lg">
