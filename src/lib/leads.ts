@@ -18,9 +18,9 @@ export const TIMINGS = [
 ] as const;
 
 export const ACTS = [
-  { value: "solo", label: "Solo" },
-  { value: "weekend-update", label: "Weekend Update" },
-  { value: "lowlight", label: "Lowlight Collective" },
+  { value: "solo", label: "Solo — voice and guitar" },
+  { value: "weekend-update", label: "Weekend Update — six-piece" },
+  { value: "lowlight", label: "Lowlight Collective — jazz" },
 ] as const;
 
 export type Interest = (typeof INTERESTS)[number]["value"];

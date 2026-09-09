@@ -5,21 +5,24 @@ const GIGS = [
   {
     src: "/images/brian-formal.jpg",
     alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
-    title: "Solo",
-    body: "Solo guitar for events: jazz, roots, and familiar requests.",
+    title: "Solo performance",
+    kicker: "Voice and guitar",
+    body: "Acoustic or electric. Brian sings and plays — jazz, popular song, and requested repertoire — for receptions, dinners, and private events.",
   },
   {
     src: "/images/brian-outdoor.jpg",
     alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
     title: "Weekend Update",
-    body: "A six-piece pop and rock cover band for breweries, halls, and private events.",
+    kicker: "Six-piece band",
+    body: "A large pop and rock ensemble led by Brian Nolan. Full-band performances for breweries, halls, and private events.",
     follow: SITE.weekendUpdate,
   },
   {
     src: "/images/brian-jazz.jpg",
     alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
     title: "Lowlight Collective",
-    body: "A small jazz ensemble for speakeasies, cafes, and listening rooms.",
+    kicker: "Intimate jazz group",
+    body: "A small jazz ensemble led by Brian Nolan, suited to speakeasies, cafes, and listening rooms.",
   },
 ] as const;
 
@@ -29,14 +32,14 @@ export function Gigs() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Live</p>
+            <p className="text-sm font-medium tracking-wide text-muted-foreground">Performance</p>
             <h2 id="gigs-heading" className="mt-3 font-display text-title">
-              Book a solo set or a band.
+              Solo, a six-piece band, or an intimate jazz group.
             </h2>
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            Solo guitar, Weekend Update, and Lowlight Collective, based in
-            North Haven and Wallingford. Recent rooms include Foolproof Brewing,
+            Brian Nolan performs as a soloist and leads two ensembles from
+            North Haven and Wallingford. Venues have included Foolproof Brewing,
             Center Street Brewing, and Carcosa Lounge.
           </p>
         </div>
@@ -54,7 +57,8 @@ export function Gigs() {
                 decoding="async"
               />
               <div className="p-6">
-                <h3 className="font-display text-2xl tracking-tight">{gig.title}</h3>
+                <p className="text-sm font-medium tracking-wide text-muted-foreground">{gig.kicker}</p>
+                <h3 className="mt-1 font-display text-2xl tracking-tight">{gig.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{gig.body}</p>
                 {"follow" in gig ? (
                   <a

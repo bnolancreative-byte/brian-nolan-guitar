@@ -6,7 +6,7 @@ import { SITE, jsonLd } from "@/lib/site";
 import appCss from "../styles.css?url";
 
 const OG_IMAGE = `${SITE.url}/og.jpg`;
-const OG_ALT = "Brian Nolan holding a butterscotch Telecaster — Brian Nolan Guitar, jazz lessons and live dates in New Haven County, CT";
+const OG_ALT = "Brian Nolan with a butterscotch Telecaster — private guitar instruction and live performance in New Haven County, CT";
 
 export const Route = createRootRoute({
   head: () => ({

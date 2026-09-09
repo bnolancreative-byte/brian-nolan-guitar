@@ -24,8 +24,8 @@ export function StartSection() {
           </h2>
           <p className="mt-4 text-base leading-relaxed text-hero-muted">
             Lessons are $60 per hour, weekly, in {SITE.towns} or live online.
-            Performances are quoted for the room. Completing a form opens an
-            email with your request.
+            For performances, select solo, the six-piece band, or the jazz
+            group. Completing a form opens an email with your request.
           </p>
         </div>
 
@@ -42,8 +42,9 @@ export function StartSection() {
             <p className="mb-4 text-sm font-medium tracking-wide text-hero-muted">Gigs</p>
             <GigForm />
             <p className="mt-4 text-sm text-hero-muted">
-              Solo, Weekend Update, or Lowlight Collective. Rooms like {SITE.rooms}.{" "}
-              {SITE.payment.gigs}
+              Solo voice and guitar (acoustic or electric); Weekend Update, a
+              six-piece band; or Lowlight Collective, an intimate jazz group.
+              Venues have included {SITE.rooms}. {SITE.payment.gigs}
             </p>
           </div>
         </div>

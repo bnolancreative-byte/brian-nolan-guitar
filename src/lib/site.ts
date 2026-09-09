@@ -6,7 +6,7 @@ export const SITE = {
   rooms: "Foolproof Brewing, Center Street Brewing, and Carcosa Lounge",
   url: "https://brian-nolan-guitar.vercel.app",
   description:
-    "Guitar lessons at $60 an hour, weekly, plus solo, Weekend Update, and Lowlight Collective bookings in New Haven County, CT.",
+    "Private guitar lessons at $60 per hour, weekly, and live performance — solo voice and guitar, a six-piece band, or an intimate jazz group — in New Haven County, CT.",
   lessonRate: "$60",
   lessonCadence: "per hour, weekly",
   email: {
@@ -40,7 +40,7 @@ export const jsonLd = {
   name: SITE.teacher,
   url: SITE.url,
   image: `${SITE.url}/og.jpg`,
-  jobTitle: "Jazz guitarist and guitar teacher",
+  jobTitle: "Guitarist, vocalist, and guitar instructor",
   description: SITE.description,
   address: {
     "@type": "AdministrativeArea",

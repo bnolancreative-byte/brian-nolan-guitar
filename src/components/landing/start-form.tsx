@@ -469,7 +469,7 @@ export function GigForm() {
     >
       <h3 className="font-display text-2xl tracking-tight">Request a date</h3>
       <p className="mt-1 text-sm text-muted-foreground">
-        Tell me the act, the room, and the date. I will send a quote by email.
+        Select the engagement, venue, and date. A written quote follows by email.
       </p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
@@ -569,7 +569,7 @@ export function GigForm() {
           <Input
             id="venue"
             autoComplete="address-level2"
-            placeholder={act === "lowlight" ? "Cafe, speakeasy…" : "Wallingford, Foolproof…"}
+            placeholder={act === "lowlight" ? "Cafe or speakeasy" : "Wallingford, Foolproof Brewing"}
             maxLength={80}
             required
             aria-required="true"
@@ -590,8 +590,10 @@ export function GigForm() {
           maxLength={400}
           placeholder={
             act === "lowlight"
-              ? "Speakeasy, cafe, listening room…"
-              : "Wedding hour, brewery patio, private party…"
+              ? "Listening room, cafe, or private dinner"
+              : act === "weekend-update"
+                ? "Brewery, hall, or private event"
+                : "Acoustic or electric; dinner, reception, or private event"
           }
           {...register("notes")}
         />
