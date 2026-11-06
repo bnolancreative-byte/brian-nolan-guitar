@@ -20,7 +20,24 @@ export function isValidName(value: string) {
 }
 
 export function isValidEventDate(value: string) {
-  const date = value.trim();
-  if (date.length < 4 || date.length > 40) return false;
-  return /\d/.test(date) || /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(date);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+  if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
+    return false;
+  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date >= today;
+}
+
+export function formatEventDate(value: string) {
+  if (!isValidEventDate(value)) return value.trim();
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }

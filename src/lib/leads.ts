@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/site";
+import { formatEventDate } from "@/lib/validation";
 
 export const INTERESTS = [
   { value: "weekly", label: "Weekly lesson — $60/hr" },
@@ -97,7 +98,7 @@ export function formatLeadMessage(lead: Omit<Lead, "createdAt">) {
           `Name: ${lead.name.trim()}`,
           `Email: ${lead.email.trim()}`,
           `Act: ${actLabel(lead.act)}`,
-          `Date: ${lead.eventDate?.trim() ?? ""}`,
+          `Date: ${formatEventDate(lead.eventDate?.trim() ?? "")}`,
           `Venue: ${lead.venue?.trim() ?? ""}`,
           lead.notes?.trim() ? `Notes: ${lead.notes.trim()}` : "",
         ]

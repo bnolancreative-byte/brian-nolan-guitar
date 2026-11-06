@@ -100,7 +100,7 @@ const gigSchema = z.object({
     .string()
     .trim()
     .min(1, "Add the date")
-    .refine(isValidEventDate, "Add a date, like Sat Oct 18"),
+    .refine(isValidEventDate, "Pick a date from today on"),
   venue: z
     .string()
     .trim()
@@ -571,11 +571,11 @@ export function GigForm() {
           </Label>
           <Input
             id="eventDate"
+            type="date"
+            min={new Date().toISOString().slice(0, 10)}
             autoComplete="off"
-            placeholder="Sat Oct 18"
             required
             aria-required="true"
-            maxLength={40}
             aria-invalid={Boolean(errors.eventDate)}
             aria-describedby={errors.eventDate ? "eventDate-error" : undefined}
             {...register("eventDate")}

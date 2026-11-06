@@ -47,5 +47,12 @@ export const jsonLd = {
     "@type": "AdministrativeArea",
     name: SITE.region,
   },
+  makesOffer: {
+    "@type": "Offer",
+    name: "Weekly guitar lesson",
+    price: "60",
+    priceCurrency: "USD",
+    description: "60-minute private guitar lesson, billed weekly.",
+  },
   sameAs: [SITE.instagram.href, SITE.facebook.href, SITE.weekendUpdate.href],
 };

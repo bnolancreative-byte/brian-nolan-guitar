@@ -47,7 +47,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -74,8 +74,11 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden sm:inline-flex md:h-11 md:px-4">
-            <a href="/#book-lesson">Book a lesson</a>
+          <Button asChild size="sm" className="h-11 px-3 sm:px-4">
+            <a href="/#book-lesson">
+              <span className="sm:hidden">Book</span>
+              <span className="hidden sm:inline">Book a lesson</span>
+            </a>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
