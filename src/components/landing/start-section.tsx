@@ -25,7 +25,7 @@ export function StartSection() {
           <p className="mt-4 text-base leading-relaxed text-hero-muted">
             Lessons are $60 an hour, once a week, in {SITE.towns} or online.
             For gigs, pick solo, the six-piece, or the jazz group. The form
-            opens an email to me with your details filled in.
+            sends the request to me. I’ll reply by email.
           </p>
         </div>
 

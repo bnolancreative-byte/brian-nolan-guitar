@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type RefObject } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -18,6 +18,7 @@ import {
   type Format,
   type Timing,
 } from "@/lib/leads";
+import { submitBooking } from "@/lib/submit-booking";
 import {
   EMAIL_PATTERN,
   isValidEmail,
@@ -177,8 +178,30 @@ function ChoiceGroup<T extends string>({
   );
 }
 
-function openMail(href: string) {
-  window.location.assign(href);
+function SentCard({ email, onReset }: { email: string; onReset: () => void }) {
+  return (
+    <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10" role="status">
+      <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} aria-hidden="true" />
+      <h3 className="mt-4 font-display text-3xl">Request sent.</h3>
+      <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
+        I’ll reply to {email}.
+      </p>
+      <Button type="button" variant="ghost" className="mt-6" onClick={onReset}>
+        Start over
+      </Button>
+    </div>
+  );
+}
+
+function Trap({ inputRef }: { inputRef: RefObject<HTMLInputElement | null> }) {
+  return (
+    <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+      <label>
+        Fax
+        <input ref={inputRef} tabIndex={-1} autoComplete="off" defaultValue="" />
+      </label>
+    </div>
+  );
 }
 
 function SuccessCard({
@@ -235,6 +258,8 @@ type GigValues = z.infer<typeof gigSchema>;
 
 export function LessonForm() {
   const [share, setShare] = useState<ReturnType<typeof leadShareLinks> | null>(null);
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const trap = useRef<HTMLInputElement>(null);
   const {
     register,
     handleSubmit,
@@ -269,7 +294,7 @@ export function LessonForm() {
     toast("Fix the highlighted fields, then send again.");
   }
 
-  function onSubmit(values: LessonValues) {
+  async function onSubmit(values: LessonValues) {
     const payload = {
       name: values.name,
       email: values.email,
@@ -278,15 +303,32 @@ export function LessonForm() {
       timing: values.timing,
       goal: values.goal,
     };
-    const result = saveLead(payload);
+    saveLead(payload);
     const links = leadShareLinks(payload);
-    setShare(links);
-    if (result === "duplicate") {
-      toast("Same request is ready. Send the email.");
-    } else {
-      toast("Opening your email");
-      openMail(links.mail);
+    try {
+      const result = await submitBooking({ data: { ...payload, fax: trap.current?.value ?? "" } });
+      if (result.ok) {
+        setSentTo(values.email.trim());
+        toast("Request sent.");
+        return;
+      }
+    } catch {
+      // Fall through to the email backup.
     }
+    setShare(links);
+    toast("Could not send it directly. Use the email button.");
+  }
+
+  if (sentTo) {
+    return (
+      <SentCard
+        email={sentTo}
+        onReset={() => {
+          setSentTo(null);
+          reset();
+        }}
+      />
+    );
   }
 
   if (share) {
@@ -296,9 +338,10 @@ export function LessonForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onInvalid)}
-      className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
+      className="relative rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
+      <Trap inputRef={trap} />
       <h3 className="font-display text-2xl tracking-tight">Book a weekly lesson</h3>
       <p className="mt-1 text-sm text-muted-foreground">$60 an hour, weekly. I’ll confirm by email.</p>
       {isSubmitted && !isValid ? (
@@ -403,15 +446,17 @@ export function LessonForm() {
       </div>
 
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Opening email…" : "Email this lesson"}
+        {isSubmitting ? "Sending…" : "Send this lesson"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This opens your email with the request filled in.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This sends the request to me. I’ll reply by email.</p>
     </form>
   );
 }
 
 export function GigForm() {
   const [share, setShare] = useState<ReturnType<typeof leadShareLinks> | null>(null);
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const trap = useRef<HTMLInputElement>(null);
   const {
     register,
     handleSubmit,
@@ -446,7 +491,7 @@ export function GigForm() {
     toast("Fix the highlighted fields, then send again.");
   }
 
-  function onSubmit(values: GigValues) {
+  async function onSubmit(values: GigValues) {
     const payload = {
       name: values.name,
       email: values.email,
@@ -456,15 +501,32 @@ export function GigForm() {
       venue: values.venue,
       notes: values.notes,
     };
-    const result = saveLead(payload);
+    saveLead(payload);
     const links = leadShareLinks(payload);
-    setShare(links);
-    if (result === "duplicate") {
-      toast("Same request is ready. Send the email.");
-    } else {
-      toast("Opening your email");
-      openMail(links.mail);
+    try {
+      const result = await submitBooking({ data: { ...payload, fax: trap.current?.value ?? "" } });
+      if (result.ok) {
+        setSentTo(values.email.trim());
+        toast("Request sent.");
+        return;
+      }
+    } catch {
+      // Fall through to the email backup.
     }
+    setShare(links);
+    toast("Could not send it directly. Use the email button.");
+  }
+
+  if (sentTo) {
+    return (
+      <SentCard
+        email={sentTo}
+        onReset={() => {
+          setSentTo(null);
+          reset();
+        }}
+      />
+    );
   }
 
   if (share) {
@@ -474,9 +536,10 @@ export function GigForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onInvalid)}
-      className="rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
+      className="relative rounded-2xl bg-card p-6 text-card-foreground shadow-border md:p-8"
       noValidate
     >
+      <Trap inputRef={trap} />
       <h3 className="font-display text-2xl tracking-tight">Book a gig</h3>
       <p className="mt-1 text-sm text-muted-foreground">
         Pick the act, the room, and the date. I’ll send a quote by email.
@@ -620,9 +683,9 @@ export function GigForm() {
       </div>
 
       <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Opening email…" : "Email this gig"}
+        {isSubmitting ? "Sending…" : "Send this gig"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This opens your email with the request filled in.</p>
+      <p className="mt-3 text-sm text-muted-foreground">This sends the request to me. I’ll reply by email.</p>
     </form>
   );
 }
