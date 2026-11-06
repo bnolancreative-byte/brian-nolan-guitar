@@ -39,8 +39,8 @@ export function Gigs() {
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
             I play solo gigs, and I lead two bands, from North Haven and
-            Wallingford. I’ve played Foolproof Brewing, Center Street Brewing,
-            and Carcosa Lounge.
+            Wallingford. {SITE.travel} {SITE.sound} I’ve played Foolproof
+            Brewing, Center Street Brewing, and Carcosa Lounge.
           </p>
         </div>
 

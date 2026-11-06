@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 const QUESTIONS = [
   {
     q: "Do I need a guitar?",
@@ -12,8 +14,16 @@ const QUESTIONS = [
     a: "In North Haven or Wallingford, including School of Rock North Haven, or on a video call.",
   },
   {
+    q: "How far will you travel for a gig?",
+    a: `${SITE.travel} ${SITE.sound}`,
+  },
+  {
     q: "How do I pay?",
     a: "Lessons: cash, Zelle, or Venmo at the hour. Gigs: I send a quote first. A deposit holds the date. The rest is due the night of the gig.",
+  },
+  {
+    q: "What if I need to cancel?",
+    a: `${SITE.cancel.lessons} ${SITE.cancel.gigs}`,
   },
 ];
 

@@ -18,6 +18,13 @@ export const SITE = {
     lessons: "Pay at each lesson. Cash, Zelle, or Venmo. I’ll send details when we set the time.",
     gigs: "I’ll send a quote first. A deposit holds the date. The rest is due the night of the gig. Cash, Zelle, or Venmo.",
   },
+  travel: "I play within about 60 miles of Wallingford.",
+  sound: "I bring my own PA.",
+  cancel: {
+    lessons:
+      "Give me 24 hours if you need to move or cancel a lesson. Inside 24 hours, or if you miss the hour, I charge the $60.",
+    gigs: "The deposit holds the date. Cancel 14 days or more ahead and I refund the deposit. Inside 14 days, I keep it. If I have to cancel, you get the deposit back.",
+  },
   instagram: {
     href: "https://www.instagram.com/bnolan.mp4/",
     label: "@bnolan.mp4",

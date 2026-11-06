@@ -35,7 +35,7 @@ export function StartSection() {
             <LessonForm />
             <p className="mt-4 text-sm text-hero-muted">
               I teach in person around {SITE.towns}, including School of Rock
-              North Haven, and online. {SITE.payment.lessons}
+              North Haven, and online. {SITE.payment.lessons} {SITE.cancel.lessons}
             </p>
           </div>
           <div id="book-gig" className="scroll-mt-24">
@@ -44,7 +44,8 @@ export function StartSection() {
             <p className="mt-4 text-sm text-hero-muted">
               I sing and play solo, acoustic or electric. I lead Weekend Update,
               a six-piece band, and Lowlight Collective, a small jazz group.
-              I’ve played {SITE.rooms}. {SITE.payment.gigs}
+              I’ve played {SITE.rooms}. {SITE.travel} {SITE.sound} {SITE.payment.gigs}{" "}
+              {SITE.cancel.gigs}
             </p>
           </div>
         </div>

@@ -31,7 +31,8 @@ const TIERS = [
       "Solo — I sing and play, acoustic or electric",
       "Weekend Update — a six-piece band I lead",
       "Lowlight Collective — a small jazz group I lead",
-      "New Haven County and nearby",
+      "Within about 60 miles of Wallingford",
+      "I bring my own PA",
     ],
     cta: "Book a gig",
     href: "/#book-gig",
@@ -125,13 +126,14 @@ export function Pricing() {
           <div className="rounded-2xl bg-card p-6 shadow-border">
             <h3 className="text-sm font-semibold tracking-wide">Paying for lessons</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {SITE.lessonRate} {SITE.lessonCadence}. {SITE.payment.lessons}
+              {SITE.lessonRate} {SITE.lessonCadence}. {SITE.payment.lessons}{" "}
+              {SITE.cancel.lessons}
             </p>
           </div>
           <div className="rounded-2xl bg-card p-6 shadow-border">
             <h3 className="text-sm font-semibold tracking-wide">Paying for gigs</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {SITE.payment.gigs}
+              {SITE.payment.gigs} {SITE.cancel.gigs} {SITE.travel} {SITE.sound}
             </p>
           </div>
         </div>
