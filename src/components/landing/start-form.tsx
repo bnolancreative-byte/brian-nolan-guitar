@@ -9,9 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  ACTS,
-  FORMATS,
-  TIMINGS,
   saveLead,
   leadShareLinks,
   type Act,
@@ -120,7 +117,7 @@ function ChoiceGroup<T extends string>({
 }: {
   value: T;
   onChange: (value: T) => void;
-  items: readonly { value: T; label: string }[];
+  items: readonly { value: T; label: string; hint?: string }[];
   columns: string;
   ariaLabelledBy: string;
 }) {
@@ -160,15 +157,23 @@ function ChoiceGroup<T extends string>({
             onClick={() => onChange(item.value)}
             onKeyDown={(event) => move(event, index)}
             className={cn(
-              "flex min-h-12 items-center justify-between rounded-md border px-4 text-left text-sm font-medium transition-[border-color,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              "flex min-h-14 items-center justify-between gap-3 rounded-md border px-4 py-3 text-left transition-[border-color,background-color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               selected
                 ? "border-foreground bg-secondary text-foreground"
-                : "border-border bg-background text-muted-foreground hover:border-foreground/40 hover:text-foreground",
+                : "border-border bg-background text-foreground hover:border-foreground/40",
             )}
           >
-            {item.label}
+            <span>
+              <span className="block text-sm font-medium">{item.label}</span>
+              {item.hint ? (
+                <span className="mt-0.5 block text-sm font-normal text-muted-foreground">{item.hint}</span>
+              ) : null}
+            </span>
             <span
-              className={cn("size-2.5 shrink-0 rounded-full", selected ? "bg-foreground" : "bg-border")}
+              className={cn(
+                "size-4 shrink-0 rounded-full border",
+                selected ? "border-foreground bg-foreground shadow-[inset_0_0_0_3px_var(--color-secondary)]" : "border-input bg-background",
+              )}
               aria-hidden="true"
             />
           </button>
@@ -178,16 +183,44 @@ function ChoiceGroup<T extends string>({
   );
 }
 
-function SentCard({ email, onReset }: { email: string; onReset: () => void }) {
+const LESSON_FORMATS = [
+  { value: "studio" as const, label: "In person", hint: "North Haven or Wallingford" },
+  { value: "online" as const, label: "Online", hint: "A live video call" },
+];
+
+const LESSON_TIMES = [
+  { value: "weekday" as const, label: "Weekday", hint: "Daytime" },
+  { value: "evening" as const, label: "Evening", hint: "After work or school" },
+  { value: "weekend" as const, label: "Weekend", hint: "Saturday or Sunday" },
+  { value: "flex" as const, label: "Flexible", hint: "I’m open" },
+];
+
+const GIG_ACTS = [
+  { value: "solo" as const, label: "Solo", hint: "I sing and play, acoustic or electric" },
+  { value: "weekend-update" as const, label: "Weekend Update", hint: "The six-piece band I lead" },
+  { value: "lowlight" as const, label: "Lowlight Collective", hint: "The small jazz group I lead" },
+];
+
+function SentCard({
+  email,
+  kind,
+  onReset,
+}: {
+  email: string;
+  kind: "lesson" | "gig";
+  onReset: () => void;
+}) {
   return (
     <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10" role="status">
       <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} aria-hidden="true" />
-      <h3 className="mt-4 font-display text-3xl">Request sent.</h3>
+      <h3 className="mt-4 font-display text-3xl">Got it.</h3>
       <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-        I’ll reply to {email}.
+        {kind === "gig"
+          ? `I’ll email a quote to ${email}.`
+          : `I’ll email ${email} to set the weekly time.`}
       </p>
       <Button type="button" variant="ghost" className="mt-6" onClick={onReset}>
-        Start over
+        Send another
       </Button>
     </div>
   );
@@ -322,6 +355,7 @@ export function LessonForm() {
   if (sentTo) {
     return (
       <SentCard
+        kind="lesson"
         email={sentTo}
         onReset={() => {
           setSentTo(null);
@@ -343,7 +377,9 @@ export function LessonForm() {
     >
       <Trap inputRef={trap} />
       <h3 className="font-display text-2xl tracking-tight">Book a weekly lesson</h3>
-      <p className="mt-1 text-sm text-muted-foreground">$60 an hour, weekly. I’ll confirm by email.</p>
+      <p className="mt-1 text-sm text-muted-foreground">
+        $60 for one hour, once a week. Tell me who you are and when you can meet.
+      </p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
           id="lesson-errors"
@@ -360,14 +396,12 @@ export function LessonForm() {
 
       <div className="mt-6 grid gap-5">
         <div className="grid gap-2">
-          <Label htmlFor="lesson-name">
-            Name <span className="font-normal text-muted-foreground">(required)</span>
-          </Label>
+          <Label htmlFor="lesson-name">Your name</Label>
           <Input
             id="lesson-name"
             autoComplete="name"
             autoCapitalize="words"
-            placeholder="Your name"
+            placeholder="Alex Rivera"
             maxLength={80}
             required
             aria-required="true"
@@ -378,9 +412,7 @@ export function LessonForm() {
           <FieldError id="lesson-name-error" message={errors.name?.message} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="lesson-email">
-            Your email <span className="font-normal text-muted-foreground">(required)</span>
-          </Label>
+          <Label htmlFor="lesson-email">Email for my reply</Label>
           <Input
             id="lesson-email"
             type="email"
@@ -410,45 +442,45 @@ export function LessonForm() {
 
       <fieldset className="mt-6">
         <legend id="lesson-format-legend" className="text-sm font-medium text-foreground">
-          Where <span className="font-normal text-muted-foreground">(required)</span>
+          Where should we meet?
         </legend>
         <ChoiceGroup
           value={format}
           onChange={(value) => setValue("format", value as Format, { shouldValidate: true })}
-          items={FORMATS}
-          columns="grid-cols-2"
+          items={LESSON_FORMATS}
+          columns="grid-cols-1 sm:grid-cols-2"
           ariaLabelledBy="lesson-format-legend"
         />
       </fieldset>
       <fieldset className="mt-6">
         <legend id="lesson-timing-legend" className="text-sm font-medium text-foreground">
-          Best time <span className="font-normal text-muted-foreground">(required)</span>
+          What time works best?
         </legend>
         <ChoiceGroup
           value={timing}
           onChange={(value) => setValue("timing", value as Timing, { shouldValidate: true })}
-          items={TIMINGS}
-          columns="grid-cols-2"
+          items={LESSON_TIMES}
+          columns="grid-cols-1 sm:grid-cols-2"
           ariaLabelledBy="lesson-timing-legend"
         />
       </fieldset>
       <div className="mt-6 grid gap-2">
         <Label htmlFor="goal">
-          What do you want to play? <span className="font-normal text-muted-foreground">(optional)</span>
+          Anything you want to play? <span className="font-normal text-muted-foreground">Optional</span>
         </Label>
         <Textarea
           id="goal"
           rows={3}
           maxLength={280}
-          placeholder="A song, a passage, or a goal for the months ahead"
+          placeholder="A song, a part that’s stuck, or just getting started"
           {...register("goal")}
         />
       </div>
 
-      <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Sending…" : "Send this lesson"}
+      <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting} aria-busy={isSubmitting}>
+        {isSubmitting ? "Sending…" : "Send my lesson request"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This sends the request to me. I’ll reply by email.</p>
+      <p className="mt-3 text-center text-sm text-muted-foreground">I’ll reply by email. No account needed.</p>
     </form>
   );
 }
@@ -520,6 +552,7 @@ export function GigForm() {
   if (sentTo) {
     return (
       <SentCard
+        kind="gig"
         email={sentTo}
         onReset={() => {
           setSentTo(null);
@@ -542,7 +575,7 @@ export function GigForm() {
       <Trap inputRef={trap} />
       <h3 className="font-display text-2xl tracking-tight">Book a gig</h3>
       <p className="mt-1 text-sm text-muted-foreground">
-        Pick the act, the room, and the date. I’ll send a quote by email.
+        Pick what you want, then the date and the room. I’ll email you a quote.
       </p>
       {isSubmitted && !isValid ? (
         <ErrorSummary
@@ -566,14 +599,12 @@ export function GigForm() {
 
       <div className="mt-6 grid gap-5">
         <div className="grid gap-2">
-          <Label htmlFor="gig-name">
-            Name <span className="font-normal text-muted-foreground">(required)</span>
-          </Label>
+          <Label htmlFor="gig-name">Your name</Label>
           <Input
             id="gig-name"
             autoComplete="name"
             autoCapitalize="words"
-            placeholder="Your name"
+            placeholder="Alex Rivera"
             maxLength={80}
             required
             aria-required="true"
@@ -584,9 +615,7 @@ export function GigForm() {
           <FieldError id="gig-name-error" message={errors.name?.message} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="gig-email">
-            Your email <span className="font-normal text-muted-foreground">(required)</span>
-          </Label>
+          <Label htmlFor="gig-email">Email for my reply</Label>
           <Input
             id="gig-email"
             type="email"
@@ -616,12 +645,12 @@ export function GigForm() {
 
       <fieldset className="mt-6">
         <legend id="gig-act-legend" className="text-sm font-medium text-foreground">
-          Which gig <span className="font-normal text-muted-foreground">(required)</span>
+          What do you want to book?
         </legend>
         <ChoiceGroup
           value={act}
           onChange={(value) => setValue("act", value as Act, { shouldValidate: true })}
-          items={ACTS}
+          items={GIG_ACTS}
           columns="grid-cols-1"
           ariaLabelledBy="gig-act-legend"
         />
@@ -629,9 +658,7 @@ export function GigForm() {
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <div className="grid gap-2">
-          <Label htmlFor="eventDate">
-            Date <span className="font-normal text-muted-foreground">(required)</span>
-          </Label>
+          <Label htmlFor="eventDate">Date of the gig</Label>
           <Input
             id="eventDate"
             type="date"
@@ -640,15 +667,19 @@ export function GigForm() {
             required
             aria-required="true"
             aria-invalid={Boolean(errors.eventDate)}
-            aria-describedby={errors.eventDate ? "eventDate-error" : undefined}
+            aria-describedby={errors.eventDate ? "eventDate-error" : "eventDate-hint"}
             {...register("eventDate")}
           />
-          <FieldError id="eventDate-error" message={errors.eventDate?.message} />
+          {errors.eventDate ? (
+            <FieldError id="eventDate-error" message={errors.eventDate.message} />
+          ) : (
+            <p id="eventDate-hint" className="text-sm text-muted-foreground">
+              Within about 60 miles of Wallingford.
+            </p>
+          )}
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="venue">
-            Town or venue <span className="font-normal text-muted-foreground">(required)</span>
-          </Label>
+          <Label htmlFor="venue">Town or room</Label>
           <Input
             id="venue"
             autoComplete="address-level2"
@@ -665,7 +696,7 @@ export function GigForm() {
       </div>
       <div className="mt-6 grid gap-2">
         <Label htmlFor="notes">
-          Event notes <span className="font-normal text-muted-foreground">(optional)</span>
+          Anything else? <span className="font-normal text-muted-foreground">Optional</span>
         </Label>
         <Textarea
           id="notes"
@@ -682,10 +713,10 @@ export function GigForm() {
         />
       </div>
 
-      <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Sending…" : "Send this gig"}
+      <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting} aria-busy={isSubmitting}>
+        {isSubmitting ? "Sending…" : "Send my gig request"}
       </Button>
-      <p className="mt-3 text-sm text-muted-foreground">This sends the request to me. I’ll reply by email.</p>
+      <p className="mt-3 text-center text-sm text-muted-foreground">I’ll reply by email with a quote. No account needed.</p>
     </form>
   );
 }
