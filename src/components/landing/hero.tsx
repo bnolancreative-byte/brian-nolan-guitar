@@ -53,9 +53,10 @@ export function Hero() {
           <img
             src="/images/brian-hero.jpg"
             alt="Brian Nolan sitting at a table with a butterscotch Telecaster and a laptop"
-            className="aspect-4/5 w-full rounded-2xl object-cover object-top sm:aspect-4/5 lg:aspect-4/5"
-            width={536}
-            height={572}
+            className="aspect-4/5 w-full rounded-2xl object-cover object-top"
+            width={900}
+            height={1125}
+            sizes="(min-width: 1024px) 36rem, 100vw"
             fetchPriority="high"
             loading="eager"
             decoding="async"

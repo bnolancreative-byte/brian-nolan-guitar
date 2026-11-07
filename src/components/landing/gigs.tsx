@@ -63,7 +63,7 @@ export function Gigs() {
                 {"follow" in gig ? (
                   <a
                     href={gig.follow.href}
-              className="mt-3 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
+                    className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={gig.follow.ariaLabel}
@@ -75,6 +75,32 @@ export function Gigs() {
             </article>
           ))}
         </div>
+
+        <ol className="mt-10 grid gap-3 md:grid-cols-3">
+          {[
+            {
+              step: "1",
+              title: "Tell me the date",
+              body: "Pick solo, the six-piece, or the jazz group. Add the room and the day.",
+            },
+            {
+              step: "2",
+              title: "I send a quote",
+              body: "I’ll email the price for that room and that date.",
+            },
+            {
+              step: "3",
+              title: "A deposit holds it",
+              body: "Cancel 14 days or more ahead and I refund the deposit. Inside 14 days, I keep it.",
+            },
+          ].map((item) => (
+            <li key={item.step} className="rounded-2xl bg-card p-5 shadow-border">
+              <p className="font-display text-2xl text-muted-foreground">{item.step}</p>
+              <h3 className="mt-2 text-base font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+            </li>
+          ))}
+        </ol>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button asChild size="lg">
