@@ -32,7 +32,7 @@ export function Gigs() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Live</p>
+            <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Live</p>
             <h2 id="gigs-heading" className="mt-3 font-display text-title">
               Solo, a six-piece band, or a small jazz group.
             </h2>
@@ -46,11 +46,11 @@ export function Gigs() {
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {GIGS.map((gig) => (
-            <article key={gig.title} className="overflow-hidden rounded-2xl bg-card shadow-border">
+            <article key={gig.title} className="group overflow-hidden rounded-2xl bg-card shadow-border shadow-border-hover">
               <img
                 src={gig.src}
                 alt={gig.alt}
-                className="aspect-3/4 w-full object-cover object-top"
+                className="aspect-3/4 w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 width={900}
                 height={1200}
                 loading="lazy"

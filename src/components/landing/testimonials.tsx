@@ -47,7 +47,7 @@ export function Testimonials() {
             </figcaption>
           </figure>
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Before you book</p>
+            <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Before you book</p>
             <h2 id="questions-heading" className="mt-3 font-display text-title">
               A few things people ask.
             </h2>

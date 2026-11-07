@@ -63,7 +63,7 @@ export function SiteFooter() {
         </nav>
       </div>
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 pb-28 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6 md:pb-6">
           <p>
             © {new Date().getFullYear()} {SITE.name}
           </p>

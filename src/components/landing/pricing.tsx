@@ -44,7 +44,7 @@ export function Pricing() {
     <section id="pricing" className="border-y border-border bg-secondary/40" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium tracking-wide text-muted-foreground">Pricing</p>
+          <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Pricing</p>
           <h2 id="pricing-heading" className="mt-3 font-display text-title">
             $60 an hour, weekly.
           </h2>
@@ -61,7 +61,7 @@ export function Pricing() {
               className={cn(
                 "flex flex-col rounded-2xl p-6",
                 tier.featured
-                  ? "bg-hero text-hero-foreground shadow-border"
+                  ? "bg-hero text-hero-foreground shadow-border ring-1 ring-brass/70"
                   : "bg-card text-card-foreground shadow-border",
               )}
             >

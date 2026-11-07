@@ -11,8 +11,15 @@ const STATS = [
 
 export function Hero() {
   return (
-    <section className="bg-hero text-hero-foreground" aria-labelledby="hero-heading">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
+    <section
+      className="relative overflow-hidden bg-hero text-hero-foreground"
+      aria-labelledby="hero-heading"
+    >
+      <div
+        className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgb(166_132_86/0.28),transparent_68%)]"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
         <div>
           <Badge variant="inverse" className="rise-in">
             {SITE.teacher} · {SITE.region}
@@ -40,10 +47,12 @@ export function Hero() {
               <a href="/#book-gig">Book a gig</a>
             </Button>
           </div>
-          <ul className="rise-in rise-in-4 mt-10 flex flex-col gap-2 text-sm text-hero-muted sm:flex-row sm:flex-wrap sm:gap-x-6">
+          <ul className="rise-in rise-in-4 mt-10 flex flex-col gap-2 text-sm text-hero-muted sm:flex-row sm:flex-wrap sm:gap-2">
             {STATS.map((item) => (
-              <li key={item.label} className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-hero-foreground/70" aria-hidden="true" />
+              <li
+                key={item.label}
+                className="inline-flex min-h-9 items-center rounded-full border border-hero-foreground/20 px-3"
+              >
                 {item.label}
               </li>
             ))}
@@ -53,7 +62,7 @@ export function Hero() {
           <img
             src="/images/brian-hero.jpg"
             alt="Brian Nolan sitting at a table with a butterscotch Telecaster and a laptop"
-            className="aspect-4/5 w-full rounded-2xl object-cover object-top"
+            className="photo-frame aspect-4/5 w-full rounded-2xl object-cover object-top"
             width={900}
             height={1125}
             sizes="(min-width: 1024px) 36rem, 100vw"

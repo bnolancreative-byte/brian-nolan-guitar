@@ -23,7 +23,7 @@ export function ValueProp() {
     <section className="border-b border-border bg-background" aria-labelledby="value-heading">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <p className="text-sm font-medium tracking-wide text-muted-foreground">
+          <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">
             Lessons
           </p>
           <h2 id="value-heading" className="mt-3 font-display text-title text-foreground">

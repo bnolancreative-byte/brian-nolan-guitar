@@ -25,6 +25,7 @@
   --color-hero: #0e0d0c;
   --color-hero-foreground: #f3eee5;
   --color-hero-muted: #a39e93;
+  --color-brass: #a68456;
 
   --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
@@ -92,6 +93,26 @@
 }
 
 @layer utilities {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.25rem;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-brass);
+  }
+
+  .photo-frame {
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.14),
+      0 28px 50px -24px rgb(0 0 0 / 0.65);
+  }
+
   .press-scale {
     transition-property: scale;
     transition-duration: 150ms;

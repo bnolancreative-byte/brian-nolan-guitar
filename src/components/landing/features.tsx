@@ -46,7 +46,7 @@ export function Features() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-sm font-medium tracking-wide text-muted-foreground">Lessons</p>
+            <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Lessons</p>
             <h2 id="features-heading" className="mt-3 font-display text-title">
               What you get in an hour.
             </h2>
