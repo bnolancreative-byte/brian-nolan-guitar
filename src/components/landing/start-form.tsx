@@ -667,16 +667,10 @@ export function GigForm() {
             required
             aria-required="true"
             aria-invalid={Boolean(errors.eventDate)}
-            aria-describedby={errors.eventDate ? "eventDate-error" : "eventDate-hint"}
+            aria-describedby={errors.eventDate ? "eventDate-error" : undefined}
             {...register("eventDate")}
           />
-          {errors.eventDate ? (
-            <FieldError id="eventDate-error" message={errors.eventDate.message} />
-          ) : (
-            <p id="eventDate-hint" className="text-sm text-muted-foreground">
-              Within about 60 miles of Wallingford.
-            </p>
-          )}
+          <FieldError id="eventDate-error" message={errors.eventDate?.message} />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="venue">Town or room</Label>
@@ -688,10 +682,16 @@ export function GigForm() {
             required
             aria-required="true"
             aria-invalid={Boolean(errors.venue)}
-            aria-describedby={errors.venue ? "venue-error" : undefined}
+            aria-describedby={errors.venue ? "venue-error" : "venue-hint"}
             {...register("venue")}
           />
-          <FieldError id="venue-error" message={errors.venue?.message} />
+          {errors.venue ? (
+            <FieldError id="venue-error" message={errors.venue.message} />
+          ) : (
+            <p id="venue-hint" className="text-sm text-muted-foreground">
+              Within about 60 miles of Wallingford. I bring my own PA.
+            </p>
+          )}
         </div>
       </div>
       <div className="mt-6 grid gap-2">
