@@ -28,11 +28,18 @@ const bookingSchema = z.discriminatedUnion("interest", [
 
 type Booking = z.infer<typeof bookingSchema>;
 
-async function postJson(url: string, body: Record<string, string>) {
+async function postForm(url: string, fields: Record<string, string>) {
+  const body = new URLSearchParams();
+  for (const [key, value] of Object.entries(fields)) body.set(key, value);
   const res = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "application/json",
+      Origin: SITE.url,
+      Referer: `${SITE.url}/`,
+    },
+    body,
     signal: AbortSignal.timeout(12000),
   });
   const json = (await res.json().catch(() => ({}))) as {
@@ -42,7 +49,7 @@ async function postJson(url: string, body: Record<string, string>) {
   };
   return (
     res.ok &&
-    (json.success === true || json.success === "true" || json.status === "success" || json.ok === true)
+    (json.ok === true || json.success === true || json.success === "true" || json.status === "success")
   );
 }
 
@@ -60,7 +67,7 @@ export const submitBooking = createServerFn({ method: "POST" })
 
     try {
       if (key) {
-        const sent = await postJson("https://silentforms.com/api/submit", {
+        const sent = await postForm("https://silentforms.com/api/submit", {
           accessKey: key,
           name: data.name,
           email: data.email,
@@ -71,16 +78,31 @@ export const submitBooking = createServerFn({ method: "POST" })
         if (sent) return { ok: true as const };
       }
 
-      const sent = await postJson(`https://formsubmit.co/ajax/${encodeURIComponent(SITE.email.address)}`, {
-        name: data.name,
-        email: data.email,
-        _replyto: data.email,
-        _subject: subject,
-        _template: "box",
-        _captcha: "false",
-        message: body,
-      });
+      const sent = await postForm(
+        `https://shipmyform.com/to/${encodeURIComponent(SITE.email.address)}`,
+        {
+          name: data.name,
+          email: data.email,
+          _subject: subject,
+          message: body,
+          _gotcha: "",
+        },
+      );
       if (sent) return { ok: true as const };
+
+      const backup = await postForm(
+        `https://formsubmit.co/ajax/${encodeURIComponent(SITE.email.address)}`,
+        {
+          name: data.name,
+          email: data.email,
+          _replyto: data.email,
+          _subject: subject,
+          _template: "box",
+          _captcha: "false",
+          message: body,
+        },
+      );
+      if (backup) return { ok: true as const };
       return { ok: false as const };
     } catch {
       return { ok: false as const };
