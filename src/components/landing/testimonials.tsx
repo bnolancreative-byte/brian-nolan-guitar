@@ -29,14 +29,18 @@ const QUESTIONS = [
 
 export function Testimonials() {
   return (
-    <section id="questions" className="bg-background" aria-labelledby="questions-heading">
+    <section
+      id="questions"
+      className="scroll-mt-20 border-t border-border bg-background"
+      aria-labelledby="questions-heading"
+    >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
           <figure className="lg:col-span-5">
             <img
-              src="/images/brian-portrait.jpg"
-              alt="Portrait of Brian Nolan in a black blazer, holding a wine-red PRS guitar"
-              className="aspect-3/4 w-full rounded-2xl object-cover object-top"
+              src="/images/brian-formal.jpg"
+              alt="Brian Nolan in a navy suit and glasses, holding a dark electric guitar on a red carpet"
+              className="aspect-[3/4] w-full rounded-2xl object-cover object-[center_15%]"
               width={1200}
               height={1600}
               loading="lazy"
@@ -47,19 +51,24 @@ export function Testimonials() {
             </figcaption>
           </figure>
           <div className="lg:col-span-7">
-            <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Before you book</p>
+            <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">
+              Before you book
+            </p>
             <h2 id="questions-heading" className="mt-3 font-display text-title">
               A few things people ask.
             </h2>
             <div className="mt-8 divide-y divide-border rounded-2xl bg-card shadow-border">
               {QUESTIONS.map((item) => (
                 <details key={item.q} className="group px-6 py-1">
-                  <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+                  <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-3 text-base font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
                     {item.q}
                     <span className="text-muted-foreground group-open:hidden" aria-hidden="true">
                       +
                     </span>
-                    <span className="hidden text-muted-foreground group-open:inline" aria-hidden="true">
+                    <span
+                      className="hidden text-muted-foreground group-open:inline"
+                      aria-hidden="true"
+                    >
                       –
                     </span>
                   </summary>

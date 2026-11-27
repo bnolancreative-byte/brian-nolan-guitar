@@ -19,9 +19,9 @@ export const TIMINGS = [
 ] as const;
 
 export const ACTS = [
-  { value: "solo", label: "Solo — voice and guitar" },
-  { value: "weekend-update", label: "Weekend Update — six-piece" },
-  { value: "lowlight", label: "Lowlight Collective — jazz" },
+  { value: "weekend-update", label: "Weekend Update — pop covers, trio to 6-piece" },
+  { value: "lowlight", label: "Lowlight Collective — jazz trio or duo" },
+  { value: "solo", label: "Solo acoustic" },
 ] as const;
 
 export type Interest = (typeof INTERESTS)[number]["value"];
@@ -116,7 +116,9 @@ export function formatLeadMessage(lead: Omit<Lead, "createdAt">) {
 export function leadShareLinks(lead: Omit<Lead, "createdAt">) {
   const body = formatLeadMessage(lead);
   const subject =
-    lead.interest === "gig" ? "Gig request — Brian Nolan Guitar" : "Lesson request — Brian Nolan Guitar";
+    lead.interest === "gig"
+      ? "Gig request — Brian Nolan Guitar"
+      : "Lesson request — Brian Nolan Guitar";
   return {
     body,
     subject,

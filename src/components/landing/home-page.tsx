@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/landing/site-footer";
 import { SiteHeader } from "@/components/landing/site-header";
 import { StartSection } from "@/components/landing/start-section";
 import { Testimonials } from "@/components/landing/testimonials";
-import { ValueProp } from "@/components/landing/value-prop";
+import { bookGigHref, bookLessonHref } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 function overlapsBar(el: Element) {
@@ -23,11 +23,18 @@ function MobileBookBar() {
     let frame = 0;
     const measure = () => {
       frame = 0;
+      const heroCta = document.querySelector("[data-hero-cta]");
+      const heroVisible = heroCta
+        ? heroCta.getBoundingClientRect().bottom > 80 &&
+          heroCta.getBoundingClientRect().top < window.innerHeight
+        : false;
       const nodes = [
-        ...document.querySelectorAll("#book-lesson button[type='submit'], #book-gig button[type='submit']"),
+        ...document.querySelectorAll(
+          "#book-lesson button[type='submit'], #book-gig button[type='submit']",
+        ),
         document.querySelector("footer"),
       ].filter((node): node is Element => Boolean(node));
-      setBlocked(nodes.some(overlapsBar));
+      setBlocked(heroVisible || nodes.some(overlapsBar));
     };
     const onScroll = () => {
       if (frame) return;
@@ -51,17 +58,18 @@ function MobileBookBar() {
       )}
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
       aria-hidden={blocked}
+      inert={blocked}
     >
       <div className="mx-auto grid max-w-lg grid-cols-2 gap-2 rounded-2xl bg-hero p-2 shadow-[0_10px_40px_rgb(0_0_0/0.28)]">
         <a
-          href="/#book-lesson"
-          className="inline-flex h-11 items-center justify-center rounded-xl bg-background text-sm font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
+          href={bookLessonHref()}
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-background text-sm font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
         >
-          Book a lesson
+          Book lessons
         </a>
         <a
-          href="/#book-gig"
-          className="inline-flex h-11 items-center justify-center rounded-xl border border-hero-foreground/35 text-sm font-medium text-hero-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
+          href={bookGigHref()}
+          className="inline-flex h-11 items-center justify-center rounded-xl border border-hero-foreground/45 text-sm font-semibold text-hero-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
         >
           Book a gig
         </a>
@@ -76,7 +84,6 @@ export function HomePage() {
       <SiteHeader />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <ValueProp />
         <Features />
         <Gigs />
         <Pricing />

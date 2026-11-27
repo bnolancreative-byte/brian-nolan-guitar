@@ -6,7 +6,8 @@ import { SITE, jsonLd } from "@/lib/site";
 import appCss from "../styles.css?url";
 
 const OG_IMAGE = `${SITE.url}/og.jpg`;
-const OG_ALT = "Brian Nolan with a butterscotch Telecaster — private guitar instruction and live performance in New Haven County, CT";
+const OG_ALT =
+  "Brian Nolan smiling with a butterscotch Telecaster. Guitar lessons and live music in New Haven County, Connecticut.";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -15,8 +16,10 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: SITE.title },
       { name: "description", content: SITE.description },
-      { name: "theme-color", content: "#0e0d0c" },
+      { name: "theme-color", content: "#f6f3ee" },
       { name: "author", content: SITE.teacher },
+      { name: "geo.region", content: "US-CT" },
+      { name: "geo.placename", content: "New Haven County" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: SITE.name },
@@ -47,7 +50,7 @@ export const Route = createRootRoute({
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,650;1,9..144,560&family=Outfit:wght@400;500;600;700&display=swap",
       },
     ],
   }),
@@ -61,7 +64,7 @@ function RootDocument() {
         <HeadContent />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
       </head>
       <body className="min-h-dvh bg-background font-sans text-foreground">
