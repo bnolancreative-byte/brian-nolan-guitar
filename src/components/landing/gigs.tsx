@@ -1,135 +1,127 @@
-import { Button } from "@/components/ui/button";
-import { SITE } from "@/lib/site";
+import { SITE, LIVE_ACTS, bookGigHref } from "@/lib/site";
 
-const GIGS = [
+const STEPS = [
   {
-    src: "/images/brian-formal.jpg",
-    alt: "Brian Nolan standing in a navy blazer, holding a wine-red PRS guitar",
-    title: "Solo",
-    kicker: "I sing and play",
-    body: "I sing and play, acoustic or electric. Jazz, popular songs, and requests. Good for dinners, receptions, and private events.",
+    step: "1",
+    title: "Tell me the date",
+    body: "Pick Weekend Update, the jazz trio or duo, or solo acoustic. Add the room and the day.",
   },
   {
-    src: "/images/brian-outdoor.jpg",
-    alt: "Brian Nolan playing an electric guitar outdoors on a lawn",
-    title: "Weekend Update",
-    kicker: "Six-piece band",
-    body: "I lead this six-piece pop and rock band. We play breweries, halls, and private events.",
-    follow: SITE.weekendUpdate,
+    step: "2",
+    title: "I send a quote",
+    body: "I’ll email the price for that room and that date.",
   },
   {
-    src: "/images/brian-jazz.jpg",
-    alt: "Brian Nolan playing a nylon-string guitar in a small brick room with a microphone",
-    title: "Lowlight Collective",
-    kicker: "Small jazz group",
-    body: "I lead this small jazz group. We play cafes, speakeasies, and listening rooms.",
+    step: "3",
+    title: "A deposit holds it",
+    body: "Cancel 14 days or more ahead and I refund the deposit. Inside 14 days, I keep it.",
   },
-] as const;
+];
 
 export function Gigs() {
   return (
-    <section id="gigs" className="border-y border-border bg-secondary/40" aria-labelledby="gigs-heading">
+    <section
+      id="gigs"
+      className="scroll-mt-20 border-t border-border bg-secondary/50"
+      aria-labelledby="gigs-heading"
+    >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Live</p>
-            <h2 id="gigs-heading" className="mt-3 font-display text-title">
-              Solo, a six-piece band, or a small jazz group.
-            </h2>
-          </div>
-          <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:col-span-5">
-            I play solo gigs, and I lead two bands, from North Haven and
-            Wallingford. {SITE.travel} {SITE.sound} I’ve played Foolproof
-            Brewing, Center Street Brewing, and Carcosa Lounge.
+        <div className="max-w-3xl">
+          <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Live</p>
+          <h2 id="gigs-heading" className="mt-3 font-display text-title">
+            Weekend Update, a jazz trio or duo, or solo acoustic.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            I lead two bands, and I play solo, from {SITE.towns}. {SITE.travel} {SITE.sound} I’ve
+            played {SITE.rooms}.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {GIGS.map((gig) => (
-            <article key={gig.title} className="group overflow-hidden rounded-2xl bg-card shadow-border shadow-border-hover">
+        <div className="mt-12 grid gap-6">
+          {LIVE_ACTS.map((act) => (
+            <article
+              key={act.id}
+              className="grid overflow-hidden rounded-2xl bg-card shadow-border lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]"
+            >
               <img
-                src={gig.src}
-                alt={gig.alt}
-                className="aspect-3/4 w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                src={act.src}
+                alt={act.alt}
+                className="aspect-4/3 h-full w-full object-cover object-top lg:aspect-auto lg:min-h-72"
                 width={900}
                 height={1200}
                 loading="lazy"
                 decoding="async"
               />
-              <div className="p-6">
-                <p className="text-sm font-medium tracking-wide text-muted-foreground">{gig.kicker}</p>
-                <h3 className="mt-1 font-display text-2xl tracking-tight">{gig.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{gig.body}</p>
-                {"follow" in gig ? (
+              <div className="flex flex-col p-6 md:p-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brass">
+                  {act.kicker}
+                </p>
+                <h3 className="mt-2 font-display text-4xl tracking-tight">{act.title}</h3>
+                <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
+                  {act.body}
+                </p>
+                <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-foreground">
+                  {act.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                {act.follow ? (
                   <a
-                    href={gig.follow.href}
-                    className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    href={act.follow.href}
+                    className="mt-4 inline-flex min-h-11 w-fit items-center text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={gig.follow.ariaLabel}
+                    aria-label={act.follow.ariaLabel}
                   >
-                    {gig.follow.label}
+                    {act.follow.label}
                   </a>
                 ) : null}
+                <div className="mt-6">
+                  <a
+                    href={bookGigHref(act.id)}
+                    className="inline-flex h-12 items-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors duration-150 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+                  >
+                    {act.cta}
+                  </a>
+                </div>
               </div>
             </article>
           ))}
         </div>
 
         <ol className="mt-10 grid gap-3 md:grid-cols-3">
-          {[
-            {
-              step: "1",
-              title: "Tell me the date",
-              body: "Pick solo, the six-piece, or the jazz group. Add the room and the day.",
-            },
-            {
-              step: "2",
-              title: "I send a quote",
-              body: "I’ll email the price for that room and that date.",
-            },
-            {
-              step: "3",
-              title: "A deposit holds it",
-              body: "Cancel 14 days or more ahead and I refund the deposit. Inside 14 days, I keep it.",
-            },
-          ].map((item) => (
+          {STEPS.map((item) => (
             <li key={item.step} className="rounded-2xl bg-card p-5 shadow-border">
-              <p className="font-display text-2xl text-muted-foreground">{item.step}</p>
+              <p className="font-display text-2xl text-brass">{item.step}</p>
               <h3 className="mt-2 text-base font-semibold">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </li>
           ))}
         </ol>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Button asChild size="lg">
-            <a href="/#book-gig">Book a gig</a>
-          </Button>
-          <p className="text-sm text-muted-foreground">
-            See recent shows on{" "}
-            <a
-              href={SITE.instagram.href}
-              className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={SITE.instagram.ariaLabel}
-            >
-              Instagram
-            </a>
-            {" and "}
-            <a
-              href={SITE.facebook.href}
-              className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={SITE.facebook.ariaLabel}
-            >
-              Facebook
-            </a>
-            .
-          </p>
-        </div>
+        <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+          See recent shows on{" "}
+          <a
+            href={SITE.instagram.href}
+            className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={SITE.instagram.ariaLabel}
+          >
+            Instagram
+          </a>
+          {" and "}
+          <a
+            href={SITE.facebook.href}
+            className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={SITE.facebook.ariaLabel}
+          >
+            Facebook
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

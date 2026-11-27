@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { SITE } from "@/lib/site";
+import { SITE, bookGigHref, bookLessonHref } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const TIERS = [
@@ -18,30 +18,35 @@ const TIERS = [
       "In person in North Haven and Wallingford, or live online",
       "Written notes for the week",
     ],
-    cta: "Book a weekly lesson",
-    href: "/#book-lesson",
+    cta: "Book guitar lessons",
+    href: bookLessonHref(),
   },
   {
     name: "Gigs",
     price: "Quote",
     cadence: "by room and date",
-    blurb: "Solo, the six-piece, or the jazz group. Tell me the room and the date. I’ll send a quote.",
+    blurb:
+      "Weekend Update, the jazz trio or duo, or solo acoustic. Tell me the room and the date. I’ll send a quote.",
     featured: false,
     features: [
-      "Solo — I sing and play, acoustic or electric",
-      "Weekend Update — a six-piece band I lead",
-      "Lowlight Collective — a small jazz group I lead",
+      "Weekend Update — pop covers, trio to 6-piece",
+      "Lowlight Collective — jazz trio or duo, guitar and vocals or two guitars and vocals",
+      "Solo acoustic — I sing and play",
       "Within about 60 miles of Wallingford",
       "I bring my own PA",
     ],
     cta: "Book a gig",
-    href: "/#book-gig",
+    href: bookGigHref(),
   },
 ];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="border-y border-border bg-secondary/40" aria-labelledby="pricing-heading">
+    <section
+      id="pricing"
+      className="scroll-mt-20 border-t border-border bg-background"
+      aria-labelledby="pricing-heading"
+    >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-sm font-medium tracking-wide text-muted-foreground">Pricing</p>
@@ -49,8 +54,8 @@ export function Pricing() {
             $60 an hour, weekly.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Lessons are $60 an hour, once a week. No trial fee and no monthly
-            package. For gigs, I quote based on the room and the date.
+            Lessons are $60 an hour, once a week. No trial fee and no monthly package. For gigs, I
+            quote based on the room and the date.
           </p>
         </div>
 
@@ -126,8 +131,7 @@ export function Pricing() {
           <div className="rounded-2xl bg-card p-6 shadow-border">
             <h3 className="text-sm font-semibold tracking-wide">Paying for lessons</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {SITE.lessonRate} {SITE.lessonCadence}. {SITE.payment.lessons}{" "}
-              {SITE.cancel.lessons}
+              {SITE.lessonRate} {SITE.lessonCadence}. {SITE.payment.lessons} {SITE.cancel.lessons}
             </p>
           </div>
           <div className="rounded-2xl bg-card p-6 shadow-border">

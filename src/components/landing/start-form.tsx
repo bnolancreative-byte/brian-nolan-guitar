@@ -8,20 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  saveLead,
-  leadShareLinks,
-  type Act,
-  type Format,
-  type Timing,
-} from "@/lib/leads";
+import { saveLead, leadShareLinks, type Act, type Format, type Timing } from "@/lib/leads";
+import { LIVE_ACTS } from "@/lib/site";
 import { submitBooking } from "@/lib/submit-booking";
-import {
-  EMAIL_PATTERN,
-  isValidEmail,
-  isValidEventDate,
-  isValidName,
-} from "@/lib/validation";
+import { EMAIL_PATTERN, isValidEmail, isValidEventDate, isValidName } from "@/lib/validation";
 import { cn } from "@/lib/utils";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
@@ -141,7 +131,12 @@ function ChoiceGroup<T extends string>({
   }
 
   return (
-    <div role="radiogroup" aria-labelledby={ariaLabelledBy} aria-required="true" className={cn("mt-3 grid gap-2", columns)}>
+    <div
+      role="radiogroup"
+      aria-labelledby={ariaLabelledBy}
+      aria-required="true"
+      className={cn("mt-3 grid gap-2", columns)}
+    >
       {items.map((item, index) => {
         const selected = value === item.value;
         return (
@@ -166,13 +161,17 @@ function ChoiceGroup<T extends string>({
             <span>
               <span className="block text-sm font-medium">{item.label}</span>
               {item.hint ? (
-                <span className="mt-0.5 block text-sm font-normal text-muted-foreground">{item.hint}</span>
+                <span className="mt-0.5 block text-sm font-normal text-muted-foreground">
+                  {item.hint}
+                </span>
               ) : null}
             </span>
             <span
               className={cn(
                 "size-4 shrink-0 rounded-full border",
-                selected ? "border-foreground bg-foreground shadow-[inset_0_0_0_3px_var(--color-secondary)]" : "border-input bg-background",
+                selected
+                  ? "border-foreground bg-foreground shadow-[inset_0_0_0_3px_var(--color-secondary)]"
+                  : "border-input bg-background",
               )}
               aria-hidden="true"
             />
@@ -195,11 +194,11 @@ const LESSON_TIMES = [
   { value: "flex" as const, label: "Flexible", hint: "I’m open" },
 ];
 
-const GIG_ACTS = [
-  { value: "solo" as const, label: "Solo", hint: "I sing and play, acoustic or electric" },
-  { value: "weekend-update" as const, label: "Weekend Update", hint: "The six-piece band I lead" },
-  { value: "lowlight" as const, label: "Lowlight Collective", hint: "The small jazz group I lead" },
-];
+const GIG_ACTS = LIVE_ACTS.map((act) => ({
+  value: act.id,
+  label: act.title,
+  hint: act.formHint,
+}));
 
 function SentCard({
   email,
@@ -211,7 +210,10 @@ function SentCard({
   onReset: () => void;
 }) {
   return (
-    <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10" role="status">
+    <div
+      className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10"
+      role="status"
+    >
       <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} aria-hidden="true" />
       <h3 className="mt-4 font-display text-3xl">Got it.</h3>
       <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
@@ -248,10 +250,10 @@ function SuccessCard({
   return (
     <div className="rounded-2xl bg-card p-8 text-card-foreground shadow-border md:p-10">
       <CheckCircle2 className="size-8 text-foreground" strokeWidth={1.5} aria-hidden="true" />
-        <h3 className="mt-4 font-display text-3xl">Send this from your email.</h3>
-        <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-          Your email should open with this filled in. If it doesn’t, use Send email below.
-        </p>
+      <h3 className="mt-4 font-display text-3xl">Send this from your email.</h3>
+      <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
+        Your email should open with this filled in. If it doesn’t, use Send email below.
+      </p>
       <pre className="mt-6 max-h-48 overflow-auto whitespace-pre-wrap rounded-xl bg-secondary p-4 text-sm leading-relaxed text-foreground">
         {share.body}
       </pre>
@@ -366,7 +368,15 @@ export function LessonForm() {
   }
 
   if (share) {
-    return <SuccessCard share={share} onReset={() => { setShare(null); reset(); }} />;
+    return (
+      <SuccessCard
+        share={share}
+        onReset={() => {
+          setShare(null);
+          reset();
+        }}
+      />
+    );
   }
 
   return (
@@ -390,7 +400,9 @@ export function LessonForm() {
             errors.email?.message
               ? { href: "#lesson-email", label: "Email", message: errors.email.message }
               : null,
-          ].filter((item): item is { href: string; label: string; message: string } => Boolean(item))}
+          ].filter((item): item is { href: string; label: string; message: string } =>
+            Boolean(item),
+          )}
         />
       ) : null}
 
@@ -401,7 +413,7 @@ export function LessonForm() {
             id="lesson-name"
             autoComplete="name"
             autoCapitalize="words"
-            placeholder="Alex Rivera"
+            placeholder="Your name"
             maxLength={80}
             required
             aria-required="true"
@@ -466,7 +478,8 @@ export function LessonForm() {
       </fieldset>
       <div className="mt-6 grid gap-2">
         <Label htmlFor="goal">
-          Anything you want to play? <span className="font-normal text-muted-foreground">Optional</span>
+          Anything you want to play?{" "}
+          <span className="font-normal text-muted-foreground">Optional</span>
         </Label>
         <Textarea
           id="goal"
@@ -477,15 +490,23 @@ export function LessonForm() {
         />
       </div>
 
-      <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting} aria-busy={isSubmitting}>
+      <Button
+        type="submit"
+        size="lg"
+        className="mt-8 w-full"
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
+      >
         {isSubmitting ? "Sending…" : "Send my lesson request"}
       </Button>
-      <p className="mt-3 text-center text-sm text-muted-foreground">I’ll reply by email. No account needed.</p>
+      <p className="mt-3 text-center text-sm text-muted-foreground">
+        I’ll reply by email. No account needed.
+      </p>
     </form>
   );
 }
 
-export function GigForm() {
+export function GigForm({ initialAct }: { initialAct?: Act }) {
   const [share, setShare] = useState<ReturnType<typeof leadShareLinks> | null>(null);
   const [sentTo, setSentTo] = useState<string | null>(null);
   const trap = useRef<HTMLInputElement>(null);
@@ -504,7 +525,7 @@ export function GigForm() {
     defaultValues: {
       name: "",
       email: "",
-      act: "solo",
+      act: initialAct ?? "weekend-update",
       eventDate: "",
       venue: "",
       notes: "",
@@ -512,6 +533,10 @@ export function GigForm() {
   });
 
   const act = watch("act");
+
+  useEffect(() => {
+    if (initialAct) setValue("act", initialAct);
+  }, [initialAct, setValue]);
 
   useEffect(() => {
     if (isSubmitted && !isValid) {
@@ -563,7 +588,15 @@ export function GigForm() {
   }
 
   if (share) {
-    return <SuccessCard share={share} onReset={() => { setShare(null); reset(); }} />;
+    return (
+      <SuccessCard
+        share={share}
+        onReset={() => {
+          setShare(null);
+          reset();
+        }}
+      />
+    );
   }
 
   return (
@@ -593,7 +626,9 @@ export function GigForm() {
             errors.venue?.message
               ? { href: "#venue", label: "Town or venue", message: errors.venue.message }
               : null,
-          ].filter((item): item is { href: string; label: string; message: string } => Boolean(item))}
+          ].filter((item): item is { href: string; label: string; message: string } =>
+            Boolean(item),
+          )}
         />
       ) : null}
 
@@ -604,7 +639,7 @@ export function GigForm() {
             id="gig-name"
             autoComplete="name"
             autoCapitalize="words"
-            placeholder="Alex Rivera"
+            placeholder="Your name"
             maxLength={80}
             required
             aria-required="true"
@@ -677,7 +712,7 @@ export function GigForm() {
           <Input
             id="venue"
             autoComplete="address-level2"
-            placeholder={act === "lowlight" ? "Cafe or speakeasy" : "Wallingford, Foolproof Brewing"}
+            placeholder="Town or venue"
             maxLength={80}
             required
             aria-required="true"
@@ -702,21 +737,23 @@ export function GigForm() {
           id="notes"
           rows={3}
           maxLength={400}
-          placeholder={
-            act === "lowlight"
-              ? "Listening room, cafe, or private dinner"
-              : act === "weekend-update"
-                ? "Brewery, hall, or private event"
-                : "Acoustic or electric; dinner, reception, or private event"
-          }
+          placeholder={LIVE_ACTS.find((item) => item.id === act)?.notesPlaceholder}
           {...register("notes")}
         />
       </div>
 
-      <Button type="submit" size="lg" className="mt-8 w-full" disabled={isSubmitting} aria-busy={isSubmitting}>
+      <Button
+        type="submit"
+        size="lg"
+        className="mt-8 w-full"
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
+      >
         {isSubmitting ? "Sending…" : "Send my gig request"}
       </Button>
-      <p className="mt-3 text-center text-sm text-muted-foreground">I’ll reply by email with a quote. No account needed.</p>
+      <p className="mt-3 text-center text-sm text-muted-foreground">
+        I’ll reply by email with a quote. No account needed.
+      </p>
     </form>
   );
 }

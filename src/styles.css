@@ -2,30 +2,30 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
 
-  --color-background: #f3eee5;
-  --color-foreground: #161412;
-  --color-card: #fbf7f0;
-  --color-card-foreground: #161412;
-  --color-primary: #161412;
-  --color-primary-foreground: #f3eee5;
-  --color-secondary: #e8e0d2;
-  --color-secondary-foreground: #161412;
-  --color-muted: #e8e0d2;
-  --color-muted-foreground: #5c564e;
-  --color-accent: #161412;
-  --color-accent-foreground: #f3eee5;
+  --color-background: #f6f3ee;
+  --color-foreground: #1c1612;
+  --color-card: #fffcf8;
+  --color-card-foreground: #1c1612;
+  --color-primary: #1c1612;
+  --color-primary-foreground: #f6f3ee;
+  --color-secondary: #efe7db;
+  --color-secondary-foreground: #1c1612;
+  --color-muted: #efe7db;
+  --color-muted-foreground: #534b43;
+  --color-accent: #1c1612;
+  --color-accent-foreground: #f6f3ee;
   --color-destructive: #8f2d2d;
-  --color-destructive-foreground: #f3eee5;
-  --color-border: #ddd6c8;
-  --color-input: #8a8276;
-  --color-ring: #161412;
-  --color-hero: #0e0d0c;
-  --color-hero-foreground: #f3eee5;
-  --color-hero-muted: #a39e93;
-  --color-brass: #a68456;
+  --color-destructive-foreground: #f6f3ee;
+  --color-border: #e3d9cc;
+  --color-input: #6f675e;
+  --color-ring: #1c1612;
+  --color-hero: #1a120e;
+  --color-hero-foreground: #f6f3ee;
+  --color-hero-muted: #ddd4c6;
+  --color-brass: #8a5520;
 
   --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
@@ -36,20 +36,18 @@
   --radius-3xl: 2.5rem;
   --radius: 0.75rem;
 
-  --text-display: clamp(2.75rem, 1.1rem + 6vw, 5.25rem);
-  --text-display--line-height: 0.96;
+  --text-display: clamp(2.4rem, 1.15rem + 4.4vw, 4.35rem);
+  --text-display--line-height: 1.02;
   --text-display--letter-spacing: -0.03em;
-  --text-title: clamp(1.75rem, 1.1rem + 2vw, 2.75rem);
+  --text-title: clamp(1.85rem, 1.2rem + 2vw, 2.85rem);
   --text-title--line-height: 1.12;
   --text-title--letter-spacing: -0.025em;
 
   --shadow-border:
-    0 0 0 1px rgb(22 20 18 / 0.06),
-    0 1px 2px -1px rgb(22 20 18 / 0.06),
+    0 0 0 1px rgb(22 20 18 / 0.06), 0 1px 2px -1px rgb(22 20 18 / 0.06),
     0 2px 8px 0 rgb(22 20 18 / 0.04);
   --shadow-border-hover:
-    0 0 0 1px rgb(22 20 18 / 0.1),
-    0 1px 2px -1px rgb(22 20 18 / 0.08),
+    0 0 0 1px rgb(22 20 18 / 0.1), 0 1px 2px -1px rgb(22 20 18 / 0.08),
     0 8px 20px 0 rgb(22 20 18 / 0.08);
 
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -75,6 +73,12 @@
   h2,
   h3 {
     text-wrap: balance;
+    font-optical-sizing: auto;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
   }
 
   p {
@@ -109,8 +113,8 @@
 
   .photo-frame {
     box-shadow:
-      0 0 0 1px rgb(255 255 255 / 0.14),
-      0 28px 50px -24px rgb(0 0 0 / 0.65);
+      0 0 0 1px rgb(28 22 18 / 0.08),
+      0 22px 40px -28px rgb(28 22 18 / 0.55);
   }
 
   .press-scale {

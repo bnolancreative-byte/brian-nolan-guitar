@@ -1,14 +1,18 @@
 import { Facebook, Instagram, Mail } from "lucide-react";
 import { Logo } from "@/components/landing/logo";
-import { SITE } from "@/lib/site";
+import { SITE, bookLessonHref } from "@/lib/site";
 
 const LINKS = [
   { href: "#lessons", label: "Lessons" },
   { href: "#gigs", label: "Live" },
   { href: "#pricing", label: "Pricing" },
   { href: "#questions", label: "Questions" },
-  { href: "/#book-lesson", label: "Book" },
+  { href: "#contact", label: "Contact" },
+  { href: bookLessonHref(), label: "Book lessons" },
 ];
+
+const socialClass =
+  "inline-flex min-h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 export function SiteFooter() {
   return (
@@ -16,24 +20,21 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6 md:flex-row md:items-start md:justify-between">
         <div>
           <Logo />
-          <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-            I teach guitar and play around {SITE.region}. Lessons are $60 an
-            hour, weekly.
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            I teach guitar and play around {SITE.region}. Lessons are {SITE.lessonRate} an hour,
+            weekly.
           </p>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-            <a
-              href={SITE.email.href}
-              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
+          <div className="mt-4 flex flex-col items-start gap-1">
+            <a href={SITE.email.href} className={socialClass}>
               <Mail className="size-4" aria-hidden="true" />
-              Email me
+              {SITE.email.address}
             </a>
             <a
               href={SITE.instagram.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={SITE.instagram.ariaLabel}
-              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className={socialClass}
             >
               <Instagram className="size-4" aria-hidden="true" />
               {SITE.instagram.label}
@@ -43,7 +44,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={SITE.facebook.ariaLabel}
-              className="inline-flex h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className={socialClass}
             >
               <Facebook className="size-4" aria-hidden="true" />
               {SITE.facebook.label}
@@ -67,7 +68,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {SITE.name}
           </p>
-          <p>New Haven County · Lessons and gigs</p>
+          <p>New Haven County, Connecticut · Lessons and gigs</p>
         </div>
       </div>
     </footer>

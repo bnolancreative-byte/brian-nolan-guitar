@@ -1,68 +1,58 @@
-import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { SITE } from "@/lib/site";
+import { SITE, bookGigHref, bookLessonHref } from "@/lib/site";
 
-const STATS = [
-  { label: "One-to-one lessons" },
-  { label: "$60 per hour, weekly" },
-  { label: "North Haven and Wallingford" },
+const FACTS = [
+  { label: "Private", detail: "One student at a time" },
+  { label: SITE.lessonRate, detail: "An hour, once a week" },
+  { label: "Local", detail: SITE.towns },
 ];
 
 export function Hero() {
   return (
-    <section
-      className="relative overflow-hidden bg-hero text-hero-foreground"
-      aria-labelledby="hero-heading"
-    >
-      <div
-        className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgb(166_132_86/0.28),transparent_68%)]"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
+    <section className="bg-background" aria-labelledby="hero-heading">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16 lg:py-16">
         <div>
-          <Badge variant="inverse" className="rise-in">
+          <p className="text-sm font-medium uppercase tracking-[0.16em] text-brass">
             {SITE.teacher} · {SITE.region}
-          </Badge>
-          <h1
-            id="hero-heading"
-            className="rise-in rise-in-1 mt-6 font-display text-display text-hero-foreground"
-          >
+          </p>
+          <h1 id="hero-heading" className="mt-4 font-display text-display text-foreground">
             Guitar lessons in North Haven and Wallingford.
           </h1>
-          <p className="rise-in rise-in-2 mt-6 max-w-xl text-lg leading-relaxed text-hero-muted">
-            I’m Brian Nolan. I teach private guitar lessons in {SITE.towns},
-            and online. Lessons are $60 an hour, once a week. I also book gigs:
-            I sing and play solo, I lead a six-piece band, and I lead a small
-            jazz group.
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            I’m Brian Nolan. I teach private guitar lessons in {SITE.towns}, and online. Lessons are{" "}
+            {SITE.lessonRate} an hour, once a week.
           </p>
-          <div className="rise-in rise-in-3 mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild variant="inverse" size="lg" className="min-h-12">
-              <a href="/#book-lesson">
-                Book a weekly lesson
-                <ArrowRight className="size-4" />
-              </a>
-            </Button>
-            <Button asChild variant="inverseOutline" size="lg" className="min-h-12">
-              <a href="/#book-gig">Book a gig</a>
-            </Button>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={bookLessonHref()}
+              data-hero-cta=""
+              className="inline-flex h-14 items-center justify-center rounded-md bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors duration-150 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Book guitar lessons
+            </a>
+            <a
+              href={bookGigHref()}
+              className="inline-flex h-14 items-center justify-center rounded-md border border-foreground/20 bg-card px-6 text-base font-semibold text-foreground transition-colors duration-150 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Book a gig
+            </a>
           </div>
-          <ul className="rise-in rise-in-4 mt-10 flex flex-col gap-2 text-sm text-hero-muted sm:flex-row sm:flex-wrap sm:gap-2">
-            {STATS.map((item) => (
-              <li
-                key={item.label}
-                className="inline-flex min-h-9 items-center rounded-full border border-hero-foreground/20 px-3"
-              >
-                {item.label}
-              </li>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+            I also book live music: Weekend Update, a jazz trio or duo, and solo acoustic.
+          </p>
+          <dl className="mt-8 grid gap-4 border-t border-border pt-6 sm:grid-cols-3">
+            {FACTS.map((fact) => (
+              <div key={fact.label}>
+                <dt className="text-sm font-semibold text-foreground">{fact.label}</dt>
+                <dd className="mt-1 text-sm leading-snug text-muted-foreground">{fact.detail}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </div>
-        <figure className="rise-in rise-in-2">
+        <figure>
           <img
             src="/images/brian-hero.jpg"
-            alt="Brian Nolan sitting at a table with a butterscotch Telecaster and a laptop"
-            className="photo-frame aspect-4/5 w-full rounded-2xl object-cover object-top"
+            alt="Brian Nolan smiling and holding a butterscotch Telecaster in front of a stacked-stone wall"
+            className="photo-frame aspect-4/5 w-full rounded-2xl object-cover object-[center_20%]"
             width={900}
             height={1125}
             sizes="(min-width: 1024px) 36rem, 100vw"
@@ -70,7 +60,7 @@ export function Hero() {
             loading="eager"
             decoding="async"
           />
-          <figcaption className="mt-3 text-sm text-hero-muted">
+          <figcaption className="mt-3 text-sm text-muted-foreground">
             Brian Nolan with a Telecaster.
           </figcaption>
         </figure>
